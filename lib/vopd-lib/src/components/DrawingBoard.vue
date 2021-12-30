@@ -1,5 +1,5 @@
 <template>
-    <div>左侧11122444</div>
+    <div>画板</div>
 </template>
 
 <script>
