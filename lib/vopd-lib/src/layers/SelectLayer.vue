@@ -37,7 +37,6 @@ export default {
     },
     methods:{
         down(e){
-            console.log("down")
             this.mouseDown=true;
             this.start.x=e.layerX;
             this.start.y=e.layerY;
@@ -45,12 +44,15 @@ export default {
             this.end.y=e.layerY;
         },
         up(e){
-             console.log("up")
              this.mouseDown=false;
              ev.fire("SelectLayer","selectArea",{
                  start:this.start,
                  end:this.end,
              })
+             this.start.x=0;
+             this.start.y=0;
+             this.end.x=0;
+             this.end.y=0;
         },
         move(e){
             if(this.mouseDown){

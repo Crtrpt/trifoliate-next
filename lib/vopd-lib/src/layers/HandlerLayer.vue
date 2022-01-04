@@ -1,5 +1,5 @@
 <template>
-    <div class="HandlerLayer absolute" :style="HandlerLayerStyle">
+    <div class="HandlerLayer absolute" :style="HandlerLayerStyle"  v-if="display">
         <div class="left handler"></div>
         <div class="right handler"></div>
         <div class="top handler"></div>
@@ -13,11 +13,13 @@
         <div class="left_down gutter"></div>
         <div class="right_up gutter"></div>
         <div class="right_down gutter"></div>
-        
+
         <div class="top_left gutter"></div>
         <div class="top_right gutter"></div>
         <div class="bottom_left gutter"></div>
         <div class="bottom_right gutter"></div>
+
+        <div class="center handler"></div>
     </div>
 </template>
 <script>
@@ -27,14 +29,18 @@ export default {
     name:"HandlerLayer",
     data:function(){
         return {
-            start:{},
-            end:{},
-            source:{
-
-            }
+            start:{x:0,y:0},
+            end:{x:0,y:0},
+            source:{}
         }
     },
     computed:{
+        "display":function(){
+            return !(
+                (this.start.x-this.end.x)==0 ||
+                (this.start.y-this.end.y)==0
+            )
+        },
         "HandlerLayerStyle":function(){
             return  {
                 left:Math.min(this.start.x,this.end.x)+"px",
@@ -49,8 +55,9 @@ export default {
             this.source=e;
         },
         render(e){
-           this.start=e.start;
-           this.end=e.end;
+           var source=JSON.parse(JSON.stringify(e));
+           this.start=source.start;
+           this.end=source.end;
         }
     },
     mounted(){
@@ -69,6 +76,7 @@ export default {
     display: inline-grid;
     grid-template-columns: 10px auto 10px auto 10px;
     grid-template-rows: 10px auto 10px auto 10px;
+     border:1px solid blue;
     grid-template-areas: 'left_top top_left  top top_right right_top'
                          'left_up . . . right_up'
                          'left . center . right'
@@ -83,58 +91,78 @@ export default {
     // position: absolute;
 }
 .gutter {
-     border:1px solid red;
+     border:1px solid #ff00ff00;
 }
 .left{
      grid-area: left;
+     cursor: e-resize;
+     
 }
 .right {
+     cursor: e-resize;
      grid-area: right;
 }
 .top {
+    cursor: s-resize;
     grid-area: top;
 }
 .bottom {
+    cursor: s-resize;
     grid-area: bottom;
 }
 
+.center {
+    grid-area: center;
+}
 
 .left_top {
+    cursor:se-resize;
      grid-area: left_top;
 }
 .left_bottom {
+    cursor: sw-resize;
      grid-area: left_bottom;
 }
 .right_top {
+    cursor: sw-resize;
     grid-area: right_top;
 }
 .right_bottom {
+    cursor:se-resize;
     grid-area: right_bottom;
 }
 
 .left_up {
     grid-area: left_up;
+     cursor: e-resize;
 }
 .left_down {
     grid-area: left_down;
+     cursor: e-resize;
 }
 .right_up {
     grid-area: right_up;
+     cursor: e-resize;
 }
 .right_down{
     grid-area: right_down;
+     cursor: e-resize;
 }
 
 .top_left {
+         cursor: s-resize;
     grid-area: top_left;
 }
 .top_right{
+         cursor: s-resize;
     grid-area: top_right;
 }
 .bottom_left {
+         cursor: s-resize;
     grid-area: bottom_left;
 }
 .bottom_right{
+         cursor: s-resize;
     grid-area: bottom_right;
 }
 </style>

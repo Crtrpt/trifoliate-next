@@ -19,8 +19,8 @@ export default {
      computed:{
         style:function(){
             return  {
-                left:this.mouse.x+10+"px",
-                top:this.mouse.y+10+"px",
+                left:this.mouse.x+16+"px",
+                top:this.mouse.y+16+"px",
             }
         }
     },

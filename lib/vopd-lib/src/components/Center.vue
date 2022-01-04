@@ -1,11 +1,14 @@
 <template>
     <div class="b border-y" ref="canvas">
       <div class="layers">
-        <Layer name="BaseLayer" />
-        <Layer name="MouseLayer" />
-        <Layer name="SelectLayer" />
-         <Layer name="HandlerLayer" />
+         <Layer name="BaseLayer" />
+        
+         <Layer name="SelectLayer" />
+         
+         <Layer name="MouseLayer" />
       </div>
+     
+      <Layer name="HandlerLayer" />
     </div>
 </template>
 
