@@ -1,23 +1,23 @@
 <template>
-    <div class="flex flex-row ">
-      <Left style="width:200px " />
+    <div class="flex flex-row" style="width:100%">
+      <Left  class="w-20 border border-gray-600" />
       <drawing-board  class="flex-grow"/>
-      <attribute style="width:200px" />
+      <Right class="w-20"/>
     </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import Attribute from './components/Attribute.vue'
+import Right from './components/Right.vue'
 import DrawingBoard from './components/DrawingBoard.vue'
-import Left from "./components/Widget.vue"
-import './assets/index.css'
+import Left from "./components/Left.vue"
+
 
 export default defineComponent({
   components:{
     Left,
     DrawingBoard,
-    Attribute
+    Right
   },
   setup() {
     

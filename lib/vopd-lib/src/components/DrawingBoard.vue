@@ -1,5 +1,5 @@
 <template>
-    <div>画板</div>
+    <div>中间</div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-    <div>部件
+    <div>左侧
     </div>
 </template>
 
