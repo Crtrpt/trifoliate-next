@@ -15,13 +15,19 @@ import Left from "./components/Left.vue"
 import ev from "./utils/ev";
 
 export default defineComponent({
+  props:{
+    value:Object,
+  },
   components:{
     Left,
     Center,
     Right
   },
+  mounted(){
+    ev.fire("vopd","init",this.value);
+  },
   setup() {
-    ev.install("init");
+   
   }
 })
 </script>
