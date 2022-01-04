@@ -3,6 +3,8 @@
       <div class="layers">
         <Layer name="BaseLayer" />
         <Layer name="MouseLayer" />
+        <Layer name="SelectLayer" />
+         <Layer name="HandlerLayer" />
       </div>
     </div>
 </template>
@@ -24,6 +26,12 @@ export default defineComponent({
     var el=this.$refs.canvas;
     el.addEventListener("mousemove",(e)=>{
       ev.fire("main","mousemove",e);
+    }),
+    el.addEventListener("mousedown",(e)=>{
+      ev.fire("main","mousedown",e);
+    }),
+    el.addEventListener("mouseup",(e)=>{
+      ev.fire("main","mouseup",e);
     })
   },
   setup() {

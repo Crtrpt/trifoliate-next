@@ -1,6 +1,6 @@
 <template>
-    <div class="MouseLayer absolute" :style="style">
-        鼠标组件
+    <div class="MouseLayer absolute border border-blue-400 text-sm bg-blue-400 inline-block text-white p-1 opacity-80" :style="style">
+        {{mouse.x}},{{mouse.y}}
     </div>
 </template>
 <script>
@@ -10,15 +10,24 @@ export default {
     name:"MouseLayer",
     data:function(){
         return {
-        style:{
-            left:"200px"
+            mouse:{
+                x:0,
+                y:0
+            }
+        }
+    },
+     computed:{
+        style:function(){
+            return  {
+                left:this.mouse.x+10+"px",
+                top:this.mouse.y+10+"px",
             }
         }
     },
     methods:{
         render(e){
-            this.style.left=e.layerX+10+"px";
-            this.style.top=e.layerY+10+"px";
+            this.mouse.x=e.layerX;
+            this.mouse.y=e.layerY;
         }
     },
     mounted(){

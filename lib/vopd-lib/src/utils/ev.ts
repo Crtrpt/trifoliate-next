@@ -35,7 +35,7 @@ class EventBus{
         // console.log("来源: "+clientId+"\n事件: "+eventName,"\n负载: "+JSON.stringify(payload))
 
         var clientList=this.pipline.get(eventName);
-        console.log(this.pipline);
+        // console.log(this.pipline);
         clientList?.forEach((handler,idx) => {
             if(idx!=clientId){
                 handler(payload);
