@@ -4,6 +4,7 @@
     </div>
 </template>
 <script>
+import "./MouseLayer.scss";
 export default {
     name:"MouseLayer",
     setup() {
