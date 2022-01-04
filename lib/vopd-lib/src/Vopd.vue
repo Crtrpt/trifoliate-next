@@ -13,7 +13,7 @@ import Center from './components/Center.vue'
 import Left from "./components/Left.vue"
 
 import ev from "./utils/ev";
-
+import state from "./utils/state";
 export default defineComponent({
   props:{
     value:Object,
@@ -24,6 +24,7 @@ export default defineComponent({
     Right
   },
   mounted(){
+    state.init();
     ev.fire("vopd","init",this.value);
   },
   setup() {
