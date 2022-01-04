@@ -6,7 +6,7 @@ import './index.css'
 <template>
   <div>
     <div class="mb-3">演示</div>
-    <Vopd />
+    <Vopd v-model="data"/>
   </div>
   
 </template>
@@ -16,6 +16,18 @@ import './index.css'
 
 export default {
   components:{Vopd},
+  data(){
+    return {
+      data:[
+        {
+          id:1,
+        },
+        {
+          id:2,
+        }
+      ]
+    }
+  },
   setup() {
     
   },

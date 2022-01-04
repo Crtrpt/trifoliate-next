@@ -1,7 +1,7 @@
 <template>
-    <div class="flex flex-row" style="width:100%">
-      <Left  class="w-20 border border-gray-600" />
-      <drawing-board  class="flex-grow"/>
+    <div class="flex flex-row" style="width:100%; height:600px">
+      <Left  class="w-20 " />
+      <Center class="flex-grow"/>
       <Right class="w-20"/>
     </div>
 </template>
@@ -9,14 +9,14 @@
 <script>
 import { defineComponent } from 'vue'
 import Right from './components/Right.vue'
-import DrawingBoard from './components/DrawingBoard.vue'
+import Center from './components/Center.vue'
 import Left from "./components/Left.vue"
 
 
 export default defineComponent({
   components:{
     Left,
-    DrawingBoard,
+    Center,
     Right
   },
   setup() {

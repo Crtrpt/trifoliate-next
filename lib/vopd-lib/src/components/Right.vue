@@ -1,5 +1,5 @@
 <template>
-    <div>属性</div>
+    <div class="border  w-[20rem]"></div>
 </template>
 
 <script>
