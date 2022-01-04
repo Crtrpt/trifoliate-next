@@ -1,6 +1,7 @@
 <template>
     <div class="b border-y">
       <Layer name="BaseLayer" />
+      <Layer name="MouseLayer" />
     </div>
 </template>
 

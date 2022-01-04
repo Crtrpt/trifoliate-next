@@ -12,6 +12,7 @@ import Right from './components/Right.vue'
 import Center from './components/Center.vue'
 import Left from "./components/Left.vue"
 
+import ev from "./utils/ev";
 
 export default defineComponent({
   components:{
@@ -20,8 +21,7 @@ export default defineComponent({
     Right
   },
   setup() {
-    
-    
+    ev.install("init");
   }
 })
 </script>

@@ -3,14 +3,16 @@
 </template>
 
 <script>
-import BaseLayer from "./BaseLayer.vue"
+
+import BaseLayer from "../layers/BaseLayer.vue";
+import MouseLayer from "../layers/MouseLayer.vue";
 export default {
-    components:{BaseLayer},
+    components:{BaseLayer,MouseLayer},
     props:{
         name:String
     },
     setup() {
-        
+       
     },
 }
 </script>

@@ -10,7 +10,6 @@ import './index.css'
   </div>
   
 </template>
-
 <script>
 
 
