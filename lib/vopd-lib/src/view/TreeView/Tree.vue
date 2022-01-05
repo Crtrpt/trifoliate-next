@@ -1,5 +1,5 @@
 <template>
-    <div class="node">
+    <div class="node" @click="click($event)">
         <div class="name">
             {{data.name}}
         </div>
@@ -10,10 +10,17 @@
 </template>
 
 <script>
+import ev from "../../utils/eventbus"
 export default {
     props:{
         data:Object,
         level:Number
+    },
+    methods:{
+        click(e){
+             e.stopPropagation();
+            ev.fire("TreeView","selectContainer",this.data)
+        }
     },
     name:"Tree"
 }
