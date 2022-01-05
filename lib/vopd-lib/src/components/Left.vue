@@ -17,24 +17,24 @@ export default defineComponent({
       list:[
         {
           id:1,
-          name:"文字"
+          name:"文字",
+          widget:"Text",
         },
         {
           id:2,
-          name:"图片"
+          name:"图片",
+          widget:"Image",
         },
         {
           id:3,
-          name:"视频"
+          name:"视频",
+          widget:"Video",
         },
         {
           id:4,
-          name:"其他"
+          name:"图表",
+          widget:"Chart"
         },
-        {
-           id:5,
-          name:"增加"
-        }
       ]
     }
   },

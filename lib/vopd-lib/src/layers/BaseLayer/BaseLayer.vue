@@ -1,16 +1,15 @@
 <template>
     <div class="BaseLayer">
-        <Container v-for="n in this.source.list" :key="n"  :data="n" >
-            {{n.name}}
-        </Container>
+        <component v-bind:is="n.render"  v-for="n in this.source.list" :key="n"  :data="n" />
     </div>
 </template>
 <script>
 import "./BaseLayer.scss";
-import ev from "../../utils/eventbus"
-import Container from "./Container.vue"
+import ev from "../../utils/eventbus";
+import ContainerRender from "../../render/ContainerRender.vue";
+import TextRender from "../../render/TextRender.vue"
 export default {
-    components:{Container},
+    components:{ContainerRender,TextRender},
     name:"BaseLayer",
     data(){
         return {

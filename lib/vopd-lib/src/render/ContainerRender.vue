@@ -1,20 +1,17 @@
 <template>
     <div :style="data.style" @click="click($event)">
-        {{data.name}}
         <template v-if="data?.children?.length>0" >
             <!-- <Container v-for="n in data.children" :key="n.id" :data=n></Container> -->
+            <component v-bind:is="n.render"  v-for="n in data.children" :key="n"  :data="n" />
         </template>
     </div>
 </template>
 
 <script>
-import ev from "../../utils/eventbus"
-import TextRender from "../../render/TextRender.vue";
-import ContainerRender from "../../render/ContainerRender.vue";
+import ev from "../utils/eventbus"
+import TextRender from "./TextRender.vue"
 export default {
-    components:{
-        TextRender,ContainerRender,
-    },
+    components:{TextRender},
     props:{
         data:Object
     },
@@ -24,6 +21,6 @@ export default {
             ev.fire("Container","selectContainer",this.data)
         }
     },
-    name:"Container"
+    name:"ContainerRender"
 }
 </script>

@@ -6,9 +6,9 @@
          <Layer name="SelectLayer" />
          
          <Layer name="MouseLayer" />
+
+         <Layer name="HandlerLayer" />
       </div>
-     
-      <Layer name="HandlerLayer" />
     </div>
 </template>
 
@@ -50,8 +50,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.layers{
-  pointer-events:none
-}
+
 </style>
 

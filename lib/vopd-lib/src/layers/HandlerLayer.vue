@@ -73,10 +73,11 @@ export default {
 
 <style lang="scss" scoped>
 .HandlerLayer {
+    cursor: move;
     display: inline-grid;
     grid-template-columns: 10px auto 10px auto 10px;
     grid-template-rows: 10px auto 10px auto 10px;
-     border:1px solid blue;
+    border:1px solid blue;
     grid-template-areas: 'left_top top_left  top top_right right_top'
                          'left_up . . . right_up'
                          'left . center . right'

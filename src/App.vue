@@ -21,36 +21,48 @@ export default {
         list:[{
           id:1,
           name:"容器",
+          render:"ContainerRender",
+          widget:"Container",
           children:[
             {
             id:3,
             name:"文字",
+            render:"TextRender",
+            content:"显示一段文本",
+            widget:"Text",
               style:{
                 width:"100px",
                 left:"100px",
                 top:"100px",
-                position: "absolute"
+                position: "absolute",
+                border:"1px solid red",
+               
               }
             },
           ],
           style:{
             width:"200px",
+            height:"200px",
             left:"200px",
             top:"100px",
-            position: "absolute"
+            position: "absolute",
+            background:"lightblue"
           }
         },
         {
           id:2,
           name:"容器",
+          render:"ContainerRender",
+          widget:"Container",
           children:[
-
           ],
           style:{
             width:"400px",
             left:"400px",
+            height:"200px",
             top:"200px",
-            position: "absolute"
+            position: "absolute",
+            background:"lightblue"
           }
           
         }]
