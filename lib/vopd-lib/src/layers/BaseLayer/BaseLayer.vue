@@ -1,14 +1,16 @@
 <template>
     <div class="BaseLayer">
-        <div v-for="n in this.source.list" :key="n" :style=n.style >
+        <Container v-for="n in this.source.list" :key="n"  :data="n" >
             {{n.name}}
-        </div>
+        </Container>
     </div>
 </template>
 <script>
 import "./BaseLayer.scss";
-import ev from "../utils/ev"
+import ev from "../../utils/eventbus"
+import Container from "./Container.vue"
 export default {
+    components:{Container},
     name:"BaseLayer",
     data(){
         return {

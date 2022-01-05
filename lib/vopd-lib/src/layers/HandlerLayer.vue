@@ -24,7 +24,7 @@
 </template>
 <script>
 import "./HandlerLayer.scss";
-import ev from "../utils/ev"
+import ev from "../utils/eventbus"
 export default {
     name:"HandlerLayer",
     data:function(){

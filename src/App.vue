@@ -20,7 +20,19 @@ export default {
       data:{
         list:[{
           id:1,
-          name:"文字",
+          name:"容器",
+          children:[
+            {
+            id:3,
+            name:"文字",
+              style:{
+                width:"100px",
+                left:"100px",
+                top:"100px",
+                position: "absolute"
+              }
+            },
+          ],
           style:{
             width:"200px",
             left:"200px",
@@ -30,7 +42,10 @@ export default {
         },
         {
           id:2,
-          name:"图片",
+          name:"容器",
+          children:[
+
+          ],
           style:{
             width:"400px",
             left:"400px",

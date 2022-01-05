@@ -1,12 +1,17 @@
 import {Collection, fromJS} from 'immutable';
 
-import ev from "./ev";
+import ev from "./eventbus";
 
 class State{
-    data:any;
+    data:any=fromJS({});
     dataInit(payload:any){
-        //TODO
-       var s=fromJS(payload);
+    //    this.data=fromJS(payload);
+    }
+    get(key:String){
+
+    }
+    set(key:String,value:any){
+
     }
     init(){
         ev.on("State","init",this.dataInit)

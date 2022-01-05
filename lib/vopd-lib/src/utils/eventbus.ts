@@ -4,14 +4,11 @@ class EventBus{
     pipline:Map<String,Map<String,any>|undefined>=new Map();
     //订阅
     on(clientId:String,eventName:String,handler:any){
-        console.log("注册"+clientId);
+        console.log("注册:"+clientId+"事件:"+eventName);
         var clientList=this.pipline.get(eventName);
         if(clientList==undefined){
-            
             this.pipline.set(eventName,new Map());
             clientList=this.pipline.get(eventName);
-
-           
         }
         clientList?.set(clientId,handler);
         this.pipline.set(eventName,clientList);

@@ -7,7 +7,7 @@
 </template>
 <script>
 import "./SelectLayer.scss";
-import ev from "../utils/ev"
+import ev from "../utils/eventbus"
 export default {
     name:"SelectLayer",
     data(){
@@ -20,8 +20,6 @@ export default {
             end:{
                 x:0,
                 y:0,
-            },
-            style:{
             }
        }
     },

@@ -12,7 +12,7 @@ import Right from './components/Right.vue'
 import Center from './components/Center.vue'
 import Left from "./components/Left.vue"
 
-import ev from "./utils/ev";
+import ev from "./utils/eventbus";
 import state from "./utils/state";
 export default defineComponent({
   props:{

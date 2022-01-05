@@ -15,7 +15,7 @@
 <script >
 import { defineComponent } from 'vue'
 import Layer from './Layer.vue'
-import ev from "../utils/ev"
+import ev from "../utils/eventbus"
 
 
 export default defineComponent({
@@ -35,6 +35,12 @@ export default defineComponent({
     }),
     el.addEventListener("mouseup",(e)=>{
       ev.fire("main","mouseup",e);
+    }),
+    el.addEventListener("mouseenter",(e)=>{
+      ev.fire("main","mouseenter",e);
+    }),
+    el.addEventListener("mouseleave",(e)=>{
+      ev.fire("main","mouseleave",e);
     })
   },
   setup() {

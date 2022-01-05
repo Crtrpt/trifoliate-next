@@ -4,7 +4,7 @@
 
 <script>
 
-import BaseLayer from "../layers/BaseLayer.vue";
+import BaseLayer from "../layers/BaseLayer/BaseLayer.vue";
 import MouseLayer from "../layers/MouseLayer.vue";
 import SelectLayer from "../layers/SelectLayer.vue";
 import HandlerLayer from "../layers/HandlerLayer.vue"
