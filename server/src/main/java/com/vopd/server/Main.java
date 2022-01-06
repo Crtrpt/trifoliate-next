@@ -58,8 +58,7 @@ public class Main {
                         restful.init(ap);
                         res=restful.run(ap);
                     }
-                    var data=gson.toJson(res);
-                    exchange.getResponseSender().send(data);
+                    exchange.getResponseSender().send((String) res);
                 }).build();
         log.info("start server");
         server.start();

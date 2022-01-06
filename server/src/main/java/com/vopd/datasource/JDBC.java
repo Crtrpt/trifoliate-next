@@ -1,5 +1,6 @@
 package com.vopd.datasource;
 
+import com.google.gson.Gson;
 import com.vopd.dto.ApFlat;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -42,6 +43,7 @@ public class JDBC {
             ret.add(row);
         }
         conn.close();
-        return  ret;
+        Gson gson=new Gson();
+        return   gson.toJson(ret);
     }
 }

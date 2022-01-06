@@ -28,7 +28,7 @@
     "name":"测试Api查询",
     "render":"RESTFUL",
     "config":{
-      "url":"http://baidu.com",
+      "url":"http://127.0.0.1:8081",
       "token":""
     },
     "id":"2",
