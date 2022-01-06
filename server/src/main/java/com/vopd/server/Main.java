@@ -50,7 +50,7 @@ public class Main {
                     if(ap.getSource().getRender().equals("JDBC")){
                         JDBC jdbc=new JDBC();
                         jdbc.init(ap);
-                         res=jdbc.run(ap);
+                        res=jdbc.run(ap);
 
                     }
                     if(ap.getSource().getRender().equals("RESTFUL")){

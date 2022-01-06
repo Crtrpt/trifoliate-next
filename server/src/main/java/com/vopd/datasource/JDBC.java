@@ -15,7 +15,7 @@ public class JDBC {
     static HashMap<String,HikariDataSource> sourcePools =new HashMap<>();
 
     public void init(ApFlat ap){
-        if(sourcePools.containsKey(ap.getSource().getId())){
+        if(sourcePools.containsKey(ap.getSource().getId()) || (!sourcePools.get(ap.getSource().getId()).isClosed())){
             return;
         }
         log.info("init data pools");
