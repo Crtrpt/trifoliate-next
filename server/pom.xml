@@ -11,6 +11,8 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <maven.build.timestamp.format>yyyy_MM_dd</maven.build.timestamp.format>
+
     </properties>
 
     <dependencies>
@@ -73,9 +75,9 @@
 
 
         <dependency>
-            　　<groupId>org.slf4j</groupId>
-            　　<artifactId>slf4j-simple</artifactId>
-            　　<version>1.7.25</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
@@ -108,5 +110,9 @@
 
 
     </dependencies>
+
+    <build>
+        <finalName>DataSourceServer_${project.version}_${maven.build.timestamp}</finalName>
+    </build>
 
 </project>

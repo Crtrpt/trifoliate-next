@@ -29,8 +29,8 @@ public class JsonServer {
         Undertow server = Undertow.builder()
                 .addHttpListener(8081, "localhost")
                 .setHandler(exchange -> {
-
-                    var data=gson.toJson(Map.of("name","server"));
+                    log.info("url:  "+exchange.getRequestURL());
+                    var data=gson.toJson(Map.of("name","server","time",System.currentTimeMillis()));
                     exchange.getResponseSender().send(data);
                 }).build();
         log.info("start server");

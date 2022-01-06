@@ -39,7 +39,7 @@
         "name":"获取聚合查询1",
         "query":{
           "method":"GET",
-          "path":"/test1",
+          "path":"/test1xxx2",
           "requestBody":{
             "id":"$id"
           },
