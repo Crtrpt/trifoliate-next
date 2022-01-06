@@ -5,13 +5,12 @@ import './index.css'
 
 <template>
   <div>
-    <div class="mb-3">演示</div>
+    <div class="mb-3 text-center  ">演示</div>
     <Vopd :value="data"/>
   </div>
   
 </template>
 <script>
-
 
 export default {
   components:{Vopd},
@@ -24,18 +23,22 @@ export default {
                     render:"JDBC",
                     renderQuery:"JDBCQuery",
                     config:{
-                      url:"jdbc:postgresql://127.0.0.1:5432/vopd"
+                      url:"jdbc:postgresql://127.0.0.1:5432/vopd",
+                      username:"",
+                      password:"",
                     },
                     apList:[
                         {
                             id:"1",
                             name:"测试查询1",
-                            query:"select * from test1 where id=${id}"
+                            query:"select * from test1 where id=${id}",
+                            wheel:"5000",
                         },
                         {
                             id:"2",
                             name:"测试查询2",
-                            query:"select * form test2 where id=${id}"
+                            query:"select * form test2 where id=${id}",
+                            wheel:"5000",
                         }
                     ]
                 },
@@ -43,7 +46,8 @@ export default {
                     name:"测试Api查询",
                     render:"RESTFUL",
                     config:{
-                      url:"http://127.0.0.1:8888/test"
+                      url:"http://127.0.0.1:8888/test",
+                      token:"",
                     },
                     renderQuery:"RESTFULQuery",
                     apList:[
