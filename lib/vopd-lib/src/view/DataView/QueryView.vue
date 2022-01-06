@@ -2,7 +2,7 @@
     <div class=""> 
         <div class="p-1 border-b">查询结果视图 {{ap.id}}</div>
         <div>
-            <component v-bind:is="type.render"  :data="ap" />
+            <component v-bind:is="type.render"  :data="ap" :type="type"/>
         </div>
         <div>
             <component v-bind:is="type.renderQuery" />

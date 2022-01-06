@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div></div>
+        <div class="pl-1">url:{{type.config.url}}</div>
 
         <div class="p-1">
             {{data.query}}
@@ -11,7 +11,8 @@
 <script>
 export default {
     props:{
-        data:Object
+        data:Object,
+        type:Object
     }
 }
 </script>

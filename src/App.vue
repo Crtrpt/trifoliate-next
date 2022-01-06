@@ -20,9 +20,12 @@ export default {
       data:{
         datasource:[
                 {
-                    name:"测试数据1",
+                    name:"VopdTestDatabase",
                     render:"JDBC",
                     renderQuery:"JDBCQuery",
+                    config:{
+                      url:"jdbc:postgresql://127.0.0.1:5432/vopd"
+                    },
                     apList:[
                         {
                             id:"1",
@@ -39,6 +42,9 @@ export default {
                 {
                     name:"测试Api查询",
                     render:"RESTFUL",
+                    config:{
+                      url:"http://127.0.0.1:8888/test"
+                    },
                     renderQuery:"RESTFULQuery",
                     apList:[
                         {

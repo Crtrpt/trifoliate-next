@@ -1,5 +1,5 @@
 <template>
-    <div class="node" @click="click($event)">
+    <div class="node cursor-pointer" @click="click($event)">
         <div class="name">
             {{data.name}}
         </div>

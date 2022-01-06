@@ -1,7 +1,6 @@
 <template>
     <div>
-        <div  class="border-b pl-1">RESTFUL 请求</div>
-
+        <div  class="border-b pl-1">url:{{type.config.url}}</div>
         <div class="p-1">
             <div class="flex">
                  <div class="name w-1/3">method:</div>
@@ -21,7 +20,8 @@
 <script>
 export default {
     props:{
-        data:Object
+        data:Object,
+        type:Object
     }
 }
 </script>
