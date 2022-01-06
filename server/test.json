@@ -4,22 +4,22 @@
     "render":"JDBC",
     "renderQuery":"JDBCQuery",
     "config":{
-      "url":"jdbc:postgresql://127.0.0.1:5432/vopd",
-      "username":"",
-      "password":""
+      "url":"jdbc:mysql://127.0.0.1:3306/test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8",
+      "username":"root",
+      "password":"123456Zz..*"
     },
     "id":"1",
     "apList":[
       {
         "id":"1",
         "name":"测试查询1",
-        "query":"select * from test1 where id=${id}",
+        "query":"select * from china",
         "wheel":"5000"
       },
       {
         "id":"2",
         "name":"测试查询2",
-        "query":"select * form test2 where id=${id}",
+        "query":"select version()",
         "wheel":"5000"
       }
     ]
@@ -28,7 +28,7 @@
     "name":"测试Api查询",
     "render":"RESTFUL",
     "config":{
-      "url":"http://127.0.0.1:8888/test",
+      "url":"http://baidu.com",
       "token":""
     },
     "id":"2",

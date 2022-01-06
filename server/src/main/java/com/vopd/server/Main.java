@@ -3,6 +3,8 @@ package com.vopd.server;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import com.vopd.datasource.JDBC;
+import com.vopd.datasource.RESTFUL;
 import com.vopd.dto.ApFlat;
 import com.vopd.dto.SourceDto;
 import com.vopd.entity.Ap;
@@ -44,7 +46,19 @@ public class Main {
                     var sourceId=re[2];
                     var apId=re[3];
                     var ap=sourceMap.get(sourceId).get(apId);
-                    var data=gson.toJson(ap);
+                    Object res=null;
+                    if(ap.getSource().getRender().equals("JDBC")){
+                        JDBC jdbc=new JDBC();
+                        jdbc.init(ap);
+                         res=jdbc.run(ap);
+
+                    }
+                    if(ap.getSource().getRender().equals("RESTFUL")){
+                        RESTFUL restful=new RESTFUL();
+                        restful.init(ap);
+                        res=restful.run(ap);
+                    }
+                    var data=gson.toJson(res);
                     exchange.getResponseSender().send(data);
                 }).build();
         log.info("start server");
