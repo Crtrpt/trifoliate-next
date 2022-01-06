@@ -23,9 +23,19 @@ export default defineComponent({
     Center,
     Right
   },
+  render(){
+      console.log("----------------")
+  },
+  watch:{
+    value:{
+      handler(n,o){
+        console.log("变化")
+        ev.fire("vopd","init",this.value);
+      }
+    }
+  },
   mounted(){
     state.init();
-    ev.fire("vopd","init",this.value);
   },
   setup() {
    
