@@ -77,7 +77,7 @@
           "id": 3,
           "name": "文字",
           "render": "TextRender",
-          "content": "显示一段文本",
+          "content": "这是一段文本11",
           "widget": "Text",
           "style": {
             "width": "100px",
@@ -113,5 +113,6 @@
         "background": "lightblue"
       }
     }
-  ]
+  ],
+  "api":"http://127.0.0.1:8080"
 }

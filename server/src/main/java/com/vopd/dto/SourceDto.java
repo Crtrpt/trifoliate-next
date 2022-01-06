@@ -11,6 +11,7 @@ public class SourceDto  {
     String id;
     String name;
     String render;
+    String renderQuery;
     List<Ap> apList;
     HashMap<String,Object> config;
 }

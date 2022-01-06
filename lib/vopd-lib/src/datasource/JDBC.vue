@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="pl-1">url:{{type.config.url}}</div>
+        <div class="pl-1 break-words">url:{{type.config.url}}</div>
 
         <div class="p-1">
             {{data.query}}

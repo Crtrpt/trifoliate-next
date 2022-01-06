@@ -4,7 +4,6 @@
         <div class="p-1">
             <Tree v-for="i in source.list" :key="i" :data="i" :level="1"></Tree>
         </div>
-        
     </div>
 </template>
 

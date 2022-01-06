@@ -19,6 +19,7 @@ export default {
       data:{
         datasource:[],
         list:[],
+        api:"",
       }
     }
   },

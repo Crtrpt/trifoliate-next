@@ -9,8 +9,8 @@
             <AttrView class="border-t " />
         </div>
          <div class="border  w-[20rem]">
-            <DataView class="border-t"/>
-            <QueryView class="border-t"/>
+            <DataView class="border-t  h-1/3"/>
+            <QueryView class="border-t h-2/3"/>
         </div>
     </div>
 </template>

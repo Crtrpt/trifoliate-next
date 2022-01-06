@@ -24,8 +24,6 @@ import java.util.stream.Collectors;
 public class JsonServer {
     public static void main(String[] argv) throws SQLException, FileNotFoundException {
         Gson gson=new Gson();
-
-
         Undertow server = Undertow.builder()
                 .addHttpListener(8081, "localhost")
                 .setHandler(exchange -> {

@@ -9,8 +9,7 @@
                           <div class="name">{{ap.name}}</div>
                       </div>
                   </div>
-               </div>
-              
+                </div>
         </div>
     </div>
 </template>

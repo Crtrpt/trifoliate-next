@@ -10,6 +10,7 @@ public class Source {
     String id;
     String name;
     String render;
+    String renderQuery;
     HashMap<String,Object> config;
 
     public Source(SourceDto sourceDto){

@@ -1,12 +1,8 @@
 <template>
     <div class=""> 
-        <div class="p-1 border-b">查询结果视图 {{ap.id}}</div>
-        <div>
-            <component v-bind:is="type.render"  :data="ap" :type="type"/>
-        </div>
-        <div>
-            <component v-bind:is="type.renderQuery" />
-        </div>
+        <div class="p-1 border-b">查询结果视图 {{ap.id}} <a @click="query" class=" cursor-pointer hover:text-blue-400">查询</a></div>
+        <component v-bind:is="type.render"  :data="ap" :type="type" class=" h-1/3"/>
+        <component v-bind:is="type.renderQuery" :data="res" class=" h-1/3 scroll-auto"/>
     </div>
 </template>
 
@@ -24,6 +20,8 @@ export default {
         return {
             type:"",
             ap:"",
+            api:"",
+            res:null,
         }
     },
     methods:{
@@ -31,11 +29,22 @@ export default {
             this.type=ap.type;
             this.ap=ap.ap;
             console.log("修改Ap")
+        },
+        query(){
+            var _this=this;
+            fetch(this.api+"/query/"+this.type.id+"/"+this.ap.id).then(res=>res.json()).then((data)=>{
+                console.log("查询结果");
+                _this.res=data;
+            })
+        },
+        config(p){
+            this.api=p.api
         }
     },
       mounted(){
         console.log("订阅AP")
         ev.on("QueryView","ChangeAp",this.changeAp)
+        ev.on("QueryView","init",this.config)
     }
 }
 </script>
