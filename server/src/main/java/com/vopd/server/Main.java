@@ -8,26 +8,28 @@ import com.vopd.datasource.RESTFUL;
 import com.vopd.dto.ApFlat;
 import com.vopd.dto.SourceDto;
 import com.vopd.entity.Ap;
-import com.vopd.entity.Source;
 import io.undertow.Undertow;
 import io.undertow.util.Headers;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
 public class Main {
-    public static void main(String[] argv) throws SQLException, FileNotFoundException {
+    public static void main(String[] argv) throws FileNotFoundException {
         Gson gson=new Gson();
-        JsonReader jsonReader=new JsonReader(new FileReader(new File("./test.json")));
-        List<SourceDto> config= gson.fromJson(jsonReader,new TypeToken<List<SourceDto>>(){}.getType());
+        List<SourceDto> config=new ArrayList<>();
+        try{
+            JsonReader jsonReader=new JsonReader(new FileReader("./data/datasource.json"));
+            config= gson.fromJson(jsonReader,new TypeToken<List<SourceDto>>(){}.getType());
+            jsonReader.close();
+        }catch (Exception e){
+
+        }
 
         var sourceMap=config.stream().collect(
                 Collectors.toMap(SourceDto::getId, sourceDto -> sourceDto.getApList().stream().collect(
