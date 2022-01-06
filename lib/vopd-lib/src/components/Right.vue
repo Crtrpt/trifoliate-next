@@ -1,16 +1,16 @@
 <template>
-    <div class="w-[60rem] flex">
-        <div class="border  w-[20rem]">
+    <div class="w-[40rem] flex">
+        <!-- <div class="border  w-[20rem]">
             <MultipleSelectView class="border-t " />
             
-        </div>
+        </div> -->
         <div class="border  w-[20rem]">
             <TreeView class="border-t "/>
             <AttrView class="border-t " />
         </div>
          <div class="border  w-[20rem]">
-            <DataView class="border-t "/>
-            <QueryView class="border-t "/>
+            <DataView class="border-t"/>
+            <QueryView class="border-t"/>
         </div>
     </div>
 </template>

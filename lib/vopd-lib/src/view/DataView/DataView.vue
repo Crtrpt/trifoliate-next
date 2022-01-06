@@ -3,10 +3,10 @@
         <div class="p-1 border-b">数据视图</div>
         <div class="pt-1 pl-1 py-1">
                <div class="" v-for="l in list" :key="l">
-                  <div> {{l.name}}</div>
+                  <div class="cursor-pointer"> {{l.name}}</div>
                   <div class="ml-3">
-                      <div v-for="ap in l.apList" :key="ap" @click="updateQueryView"> 
-                        {{ap.name}}
+                      <div v-for="ap in l.apList" :key="ap" @click="updateQueryView(l,ap)"  class="cursor-pointer"> 
+                          <div class="name">{{ap.name}}</div>
                       </div>
                   </div>
                </div>
@@ -20,8 +20,9 @@ import ev from "../../utils/eventbus"
 export default {
     name:"DataView",
     methods:{
-        updateQueryView(){
-
+        updateQueryView(source,ap){
+            ev.fire("DataView","ChangeAp",{"type":source,"ap":ap})
+            console.log(ev);
         },
         render(p){
             this.list=p.datasource;

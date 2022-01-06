@@ -1,6 +1,9 @@
 <template>
-    <div class="b border-y" ref="canvas">
-      <div class="layers">
+    <div class="b border-y " >
+      <div ref="canvas" class=" w-full h-full">
+        <div class="layers">
+         <Layer name="refLineLayer" />
+        
          <Layer name="BaseLayer" />
         
          <Layer name="SelectLayer" />
@@ -8,6 +11,7 @@
          <Layer name="MouseLayer" />
 
          <Layer name="HandlerLayer" />
+        </div>
       </div>
     </div>
 </template>
@@ -50,6 +54,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 </style>
 

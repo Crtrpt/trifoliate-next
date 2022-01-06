@@ -1,13 +1,13 @@
 <template>
-    <div class="MouseLayer absolute border border-blue-400 text-sm bg-blue-400 inline-block text-white p-1 opacity-80  pointer-events-none" :style="style" v-if="display">
-        {{mouse.x}},{{mouse.y}}
+    <div class="RefLineLayer absolute border border-blue-400 text-sm bg-blue-400 inline-block text-white p-1 opacity-80  pointer-events-none" :style="style" v-if="display">
+       参考线层
     </div>
 </template>
 <script>
-import "./MouseLayer.scss";
+import "./RefLineLayer.scss";
 import ev from "../utils/eventbus"
 export default {
-    name:"MouseLayer",
+    name:"RefLineLayer",
     data:function(){
         return {
             display:false,
@@ -39,9 +39,9 @@ export default {
         }
     },
     mounted(){
-        ev.on("MouseLayer","mousemove",this.render)
-        ev.on("MouseLayer","mouseenter",this.enter)
-        ev.on("MouseLayer","mouseleave",this.level)
+        // ev.on("RefLineLayer","mousemove",this.render)
+        // ev.on("RefLineLayer","mouseenter",this.enter)
+        // ev.on("RefLineLayer","mouseleave",this.level)
     },
     setup() {
         

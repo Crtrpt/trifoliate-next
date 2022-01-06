@@ -21,51 +21,50 @@ export default {
         datasource:[
                 {
                     name:"测试数据1",
-                    render:"Mysql",
+                    render:"JDBC",
+                    renderQuery:"JDBCQuery",
                     apList:[
                         {
+                            id:"1",
                             name:"测试查询1",
-                            query:"select * from test1"
+                            query:"select * from test1 where id=${id}"
                         },
                         {
+                            id:"2",
                             name:"测试查询2",
-                            query:"select * form test2"
-                        }
-                    ]
-                },
-                {
-                    name:"测试数据2",
-                    render:"Postgresql",
-                    apList:[
-                        {
-                            name:"select * from test1"
-                        },
-                        {
-                            name:"select * form test2"
+                            query:"select * form test2 where id=${id}"
                         }
                     ]
                 },
                 {
                     name:"测试Api查询",
-                    render:"Api",
+                    render:"RESTFUL",
+                    renderQuery:"RESTFULQuery",
                     apList:[
                         {
+                            id:"3",
                             name:"获取聚合查询1",
                             query:{
                                 method:"GET",
-                                url:"/test1",
-                                query:"",
+                                path:"/test1",
+                                requestBody:{
+                                  id:"$id"
+                                },
                                 header:[
-
+                                  {
+                                    name:"token",
+                                    value:"333"
+                                  }
                                 ]
                             }
                         },
                          {
+                            id:"4",
                             name:"POST 查询获取请求",
                              query:{
                                 method:"POST",
-                                url:"/test2",
-                                query:"",
+                                path:"/test2",
+                                requestBody:"",
                                 header:[
                                     
                                 ]
@@ -73,20 +72,6 @@ export default {
                         }
                     ]
                 },
-                 {
-                    name:"Mqtt订阅数据",
-                    render:"Mqtt",
-                    apList:[
-                        {
-                            name:"获取聚合查询1",
-                            topic:"#/test",
-                        },
-                         {
-                            name:"获取聚合查询2",
-                            topic:"#/test1"
-                        }
-                    ]
-                }
         ],
         list:[{
           id:1,
