@@ -47,7 +47,7 @@
             "header": [
               {
                 "name": "token",
-                "value": "333"
+                "value": "asasasdshgfdskgfjkdsgf"
               }
             ]
           }
@@ -58,8 +58,12 @@
           "query": {
             "method": "POST",
             "path": "/test2",
-            "requestBody": "",
+            "requestBody": "what??? what's wrang with you",
             "header": [
+              {
+                "name": "token",
+                "value": "asasasdshgfdskgfjkdsgf"
+              }
             ]
           }
         }
