@@ -33,7 +33,6 @@ public class QueryHandler implements HttpHandler {
             JDBC jdbc = new JDBC();
             jdbc.init(ap);
             res = jdbc.run(ap);
-
         }
         if (ap.getSource().getRender().equals("RESTFUL")) {
             RESTFUL restful = new RESTFUL();
