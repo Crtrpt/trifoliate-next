@@ -50,7 +50,10 @@ public class RESTFUL {
                 return (String) query.get("method");
             }
         };
-        httpRequestBase.setEntity(new StringEntity((String) query.get("requestBody"), Charset.defaultCharset()));
+        if(((String) query.get("method")).equals("POST")){
+            httpRequestBase.setEntity(new StringEntity((String) query.get("requestBody"), Charset.defaultCharset()));
+        }
+
         httpRequestBase.setURI(new URI(url + (String) query.get("path")));
 
         //设置请求参数
