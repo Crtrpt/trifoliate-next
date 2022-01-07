@@ -3,7 +3,6 @@ package com.vopd.handler;
 
 import com.google.gson.Gson;
 import com.vopd.Ctx;
-import com.vopd.dto.ProjectDto;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
 import io.undertow.util.Headers;
@@ -13,7 +12,7 @@ public class GetHandler implements HttpHandler {
     Gson gson = new Gson();
     Ctx ctx;
     public GetHandler(Ctx project) {
-        this.ctx=ctx;
+        this.ctx=project;
     }
 
     @Override

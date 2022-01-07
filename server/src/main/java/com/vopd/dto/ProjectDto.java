@@ -2,7 +2,6 @@ package com.vopd.dto;
 
 import lombok.Data;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 @Data

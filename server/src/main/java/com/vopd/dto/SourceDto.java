@@ -1,7 +1,6 @@
 package com.vopd.dto;
 
 import com.vopd.entity.Ap;
-import com.vopd.entity.Source;
 import lombok.Data;
 
 import java.util.HashMap;
