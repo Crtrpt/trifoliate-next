@@ -34,9 +34,7 @@ class EventBus{
         var clientList=this.pipline.get(eventName);
         // console.log(this.pipline);
         clientList?.forEach((handler,idx) => {
-            if(idx!=clientId){
-                handler(payload);
-            }
+            handler(payload);
         });
     }
 }

@@ -3,9 +3,11 @@ import {Collection, fromJS} from 'immutable';
 import ev from "./eventbus";
 
 class State{
-    data:any=fromJS({});
+    data:any=[];
     dataInit(payload:any){
-    //    this.data=fromJS(payload);
+        // console.log("初始化数据");
+        // console.log(this);
+        // this.data=payload;
     }
     get(key:String){
 

@@ -21,9 +21,11 @@ export default {
     methods:{
         updateQueryView(source,ap){
             ev.fire("DataView","ChangeAp",{"type":source,"ap":ap})
+            console.log("初始化");
             console.log(ev);
         },
         render(p){
+            console.log(JSON.stringify(p));
             this.list=p.datasource;
         }
     },
@@ -33,6 +35,7 @@ export default {
         }
     },
     mounted(){
+         console.log("挂载")
          ev.on("DataView","init",this.render)
     }
 }
