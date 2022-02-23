@@ -5,6 +5,7 @@
             <div class="name flex-grow">数据视图</div>
             <div class="action">
                 <i class="las la-plus-circle"></i>
+                <i class="las la-window-maximize"></i>
             </div>
         </div>
         <div class="px-1 overflow-auto flex-grow">

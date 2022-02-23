@@ -4,11 +4,14 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import KvStr from './KvStr.vue'
 import KvInt from './KvInt.vue'
+import KvColor from './KvColor.vue'
+import KvBox from './KvBox.vue'
+import KvText from './KvText.vue'
 export default {
-    components: { KvStr,KvInt },
+    components: { KvStr,KvInt,KvColor,KvBox,KvText},
     name:"Text",
     props:{
         data:Object
@@ -36,10 +39,45 @@ export default {
                             value: 0,
                             placeholder:"全局唯一",
                         },
+                        name:{
+                            name:"name",
+                            displayName:"名称",
+                            type:"KvStr",
+                            value: 0,
+                            placeholder:"名称",
+                        },
                         content:{
                             name:"content",
                             displayName:"显示内容",
                             type:"KvStr",
+                            value: "要显示的内容",
+                            placeholder:"要显示的内容",
+                        },
+                        color:{
+                            name:"color",
+                            displayName:"前景色",
+                            type:"KvColor",
+                            value: "要显示的内容",
+                            placeholder:"要显示的内容",
+                        },
+                        backgroundColor:{
+                            name:"background-color",
+                            displayName:"背景色",
+                            type:"KvColor",
+                            value: "要显示的内容",
+                            placeholder:"要显示的内容",
+                        },
+                        box:{
+                            name:"box",
+                            displayName:"内间距",
+                            type:"KvBox",
+                            value: "要显示的内容",
+                            placeholder:"要显示的内容",
+                        },
+                        text:{
+                            name:"text",
+                            displayName:"文本",
+                            type:"KvText",
                             value: "要显示的内容",
                             placeholder:"要显示的内容",
                         }

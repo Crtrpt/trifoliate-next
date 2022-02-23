@@ -34,7 +34,7 @@ export default {
         },
         render(e){
             this.display=true;
-            console.log(e);
+            // console.log(e);
             this.mouse.x=e.layerX;
             this.mouse.y=e.layerY;
         }

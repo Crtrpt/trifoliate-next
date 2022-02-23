@@ -1,10 +1,7 @@
 <template>
     <div class="flex flex-col">
-        <div class="px-1 border-y"><i class="las la-th"></i> 数据库查询结果</div>
-
-        <div class=" border-y overflow-auto flex-grow" ref="editor">
-           
-        </div>
+        <div class="px-1 border-y"><i class="las la-th"></i>查询结果</div>
+        <div class=" border-y overflow-auto flex-grow" ref="editor"></div>
     </div>
 </template>
 

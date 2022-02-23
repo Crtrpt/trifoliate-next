@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="p-1 border-b">属性视图: {{source.widget}}</div>
+        <div class="p-1 border-b"><i class="las la-bars"></i> 属性视图: {{source.widget}}</div>
         <div class="p-1">
             <component v-bind:is="source.widget" v-if="source?.widget!=null" :data="source"></component>
         </div>

@@ -4,18 +4,18 @@
             <MultipleSelectView class="border-t " />
             
         </div> -->
-        <div class="border  w-[20rem]">
-            <TreeView class="border-t "/>
-            <AttrView class="border-t " />
+        <div class="border  w-[20rem] flex flex-col">
+            <TreeView class="border-t flex-grow  h-1/2"/>
+            <AttrView class="border-t flex-grow  h-1/2" />
         </div>
          <div class="border  w-[20rem]">
-            <DataView class="border-t  h-1/3"/>
-            <QueryView class="border-t h-2/3"/>
+            <DataView class="border-t  h-1/2"/>
+            <QueryView class="border-t h-1/2"/>
         </div>
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 import TreeView from "../view/TreeView/TreeView.vue"
 import AttrView from "../view/AttrView/AttrView.vue"
