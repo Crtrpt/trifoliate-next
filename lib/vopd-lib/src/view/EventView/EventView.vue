@@ -1,5 +1,13 @@
 <template>
     <BaseView name="事件">
+         <template v-slot:lead>
+                    <i class="las la-search"></i>
+        </template>
+        <template v-slot:action>
+                    <i class="las la-plus-circle"></i>
+                    <i class="las la-window-maximize"></i>
+                    <i class="las la-ellipsis-v"></i>
+        </template>
          <template v-slot:content>
              view 内容
         </template>
@@ -16,7 +24,6 @@ export default defineComponent({
         BaseView
     },
     setup() {
-        
     },
 })
 </script>
