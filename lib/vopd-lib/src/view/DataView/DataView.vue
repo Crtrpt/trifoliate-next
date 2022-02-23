@@ -2,7 +2,7 @@
     <div class="flex flex-col">
         <div class="p-1 border-b flex flex-row  justify-start items-center">
             <i class="las la-database"></i>
-            <div class="name flex-grow">数据视图</div>
+            <div class="name flex-grow">数据</div>
             <div class="action">
                 <i class="las la-plus-circle"></i>
                 <i class="las la-window-maximize"></i>

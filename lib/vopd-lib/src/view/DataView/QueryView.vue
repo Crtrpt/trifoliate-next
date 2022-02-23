@@ -3,7 +3,7 @@
         <div class="p-1 border-b flex flex-row">
             <div class="flex-grow">
                 <i class="las la-cloud-download-alt"></i>
-                查询结果视图 {{ap.id}} </div>
+                结果:{{ap.id}} </div>
             <div class="action">
                 <a @click="query" class=" cursor-pointer hover:text-blue-400"><i class="las la-play"></i></a>
                 <i class="las la-window-maximize"></i>

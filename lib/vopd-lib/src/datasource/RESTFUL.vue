@@ -7,7 +7,8 @@
         <div class="p-1 ">
             <div class="flex">
                  <div class="name w-1/3">method:</div>
-                {{data.query.method}}</div>
+                 <div>{{data.query.method}}</div>
+            </div>
             <div  class="flex">
                 <div class="name w-1/3">headers:</div>
                 <div v-for="h in data.query.header" :key="h" class="w-1/3 whitespace-nowrap">
