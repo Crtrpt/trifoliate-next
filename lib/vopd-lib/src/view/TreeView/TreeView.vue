@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <div class="p-1 border-b ">层级视图</div>
+        <div class="p-1 border-b "><i class="las la-layer-group"></i> 层级视图 </div>
         <div class="p-1">
             <Tree v-for="i in source.list" :key="i" :data="i" :level="1"></Tree>
         </div>

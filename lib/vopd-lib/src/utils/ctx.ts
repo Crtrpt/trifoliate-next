@@ -2,12 +2,11 @@ import {Collection, fromJS} from 'immutable';
 
 import ev from "./eventbus";
 
-class State{
-    data:any=[];
+class Ctx{
+    coordinates=[0,0]
+    bound=[0,0,0,0];
+    data=[];
     dataInit(payload:any){
-        // console.log("初始化数据");
-        // console.log(this);
-        // this.data=payload;
     }
     get(key:String){
 

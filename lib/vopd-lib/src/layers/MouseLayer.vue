@@ -5,7 +5,7 @@
 </template>
 <script>
 import "./MouseLayer.scss";
-import ev from "../utils/eventbus"
+import ev from "../utils/eventbus";
 export default {
     name:"MouseLayer",
     data:function(){
@@ -34,6 +34,7 @@ export default {
         },
         render(e){
             this.display=true;
+            console.log(e);
             this.mouse.x=e.layerX;
             this.mouse.y=e.layerY;
         }

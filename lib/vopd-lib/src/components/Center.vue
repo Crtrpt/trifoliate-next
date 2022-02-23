@@ -1,6 +1,6 @@
 <template>
     <div class="b border-y " >
-      <div ref="canvas" class=" w-full h-full">
+      <div ref="canvas" class="w-full h-full  relative">
         <div class="layers">
          <Layer name="refLineLayer" />
         

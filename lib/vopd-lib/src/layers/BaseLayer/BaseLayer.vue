@@ -1,5 +1,5 @@
 <template>
-    <div class="BaseLayer">
+    <div class="BaseLayer" :style=style>
         <component v-bind:is="n.render"  v-for="n in this.source.list" :key="n"  :data="n" />
     </div>
 </template>
@@ -13,17 +13,22 @@ export default {
     name:"BaseLayer",
     data(){
         return {
-            source:{}
+            source:{},
+            style:{
+                pointerEvents:"none",
+                userSelect:"none"
+            }
         };
     },
     methods:{
         render(payload){
-            console.log(payload);
             this.source=payload;
         }
     },
     mounted(){
         console.log("加载完成");
+        ev.on("BaseLayer","init",this.render);
+        
         ev.on("BaseLayer","init",this.render)
     },
     setup() {

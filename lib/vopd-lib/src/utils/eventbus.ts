@@ -29,10 +29,7 @@ class EventBus{
     }
     //触发
     fire(clientId:String,eventName:String,payload:any){
-        // console.log("来源: "+clientId+"\n事件: "+eventName,"\n负载: "+JSON.stringify(payload))
-
         var clientList=this.pipline.get(eventName);
-        // console.log(this.pipline);
         clientList?.forEach((handler,idx) => {
             handler(payload);
         });

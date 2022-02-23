@@ -1,8 +1,8 @@
 <template>
     <div class="SelectLayer absolute border border-blue-400 opacity-80" :style="style" v-if="mouseDown" >
-        <div class="text-sm bg-blue-400 inline-block text-white p-1 " >
+        <!-- <div class="text-sm bg-blue-400 inline-block text-white p-1 " >
             {{style.width}},{{style.height}}
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
@@ -36,12 +36,14 @@ export default {
     methods:{
         down(e){
             this.mouseDown=true;
+            console.log("修改为不可选择状态")
             this.start.x=e.layerX;
             this.start.y=e.layerY;
             this.end.x=e.layerX;
             this.end.y=e.layerY;
         },
         up(e){
+             console.log("恢复为可选状态")
              this.mouseDown=false;
              ev.fire("SelectLayer","selectArea",{
                  start:this.start,

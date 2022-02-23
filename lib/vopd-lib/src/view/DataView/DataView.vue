@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="p-1 border-b">数据视图</div>
+        <div class="p-1 border-b"><i class="las la-database"></i>数据视图</div>
         <div class="pt-1 pl-1 py-1">
                <div class="" v-for="l in list" :key="l">
                   <div class="cursor-pointer"> {{l.name}}</div>

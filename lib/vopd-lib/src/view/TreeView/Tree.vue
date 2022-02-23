@@ -18,7 +18,7 @@ export default {
     },
     methods:{
         click(e){
-             e.stopPropagation();
+            e.stopPropagation();
             ev.fire("TreeView","selectContainer",this.data)
         }
     },

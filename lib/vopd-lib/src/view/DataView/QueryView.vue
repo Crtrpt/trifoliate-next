@@ -1,6 +1,7 @@
 <template>
     <div class=""> 
-        <div class="p-1 border-b">查询结果视图 {{ap.id}} <a @click="query" class=" cursor-pointer hover:text-blue-400">查询</a></div>
+        <div class="p-1 border-b">查询结果视图 {{ap.id}} <a @click="query" class=" cursor-pointer hover:text-blue-400">
+            <i class="las la-play"></i></a></div>
         <component v-bind:is="type.render"  :data="ap" :type="type" class=" h-1/3"/>
         <component v-bind:is="type.renderQuery" :data="res" class=" h-1/3 scroll-auto"/>
     </div>
