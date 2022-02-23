@@ -1,9 +1,15 @@
 <template>
-    <div class=""> 
-        <div class="p-1 border-b">查询结果视图 {{ap.id}} <a @click="query" class=" cursor-pointer hover:text-blue-400">
-            <i class="las la-play"></i></a></div>
-        <component v-bind:is="type.render"  :data="ap" :type="type" class=" h-1/3"/>
-        <component v-bind:is="type.renderQuery" :data="res" class=" h-1/3 scroll-auto"/>
+    <div class="flex  flex-col"> 
+        <div class="p-1 border-b flex flex-row">
+            <div class="flex-grow">
+                <i class="las la-cloud-download-alt"></i>
+                查询结果视图 {{ap.id}} </div>
+            <div class="action">
+                <a @click="query" class=" cursor-pointer hover:text-blue-400"><i class="las la-play"></i></a>
+            </div>
+            </div>
+        <component v-bind:is="type.render"  :data="ap" :type="type" class=" h-1/3 scroll-auto"/>
+        <component v-bind:is="type.renderQuery" :data="res" class=" flex-grow h-2/3 scroll-auto"/>
     </div>
 </template>
 
@@ -33,9 +39,10 @@ export default {
         },
         query(){
             var _this=this;
-            fetch(this.api+"/query/"+this.type.id+"/"+this.ap.id).then(res=>res.json()).then((data)=>{
+            fetch(this.api+"/query/"+this.type.id+"/"+this.ap.id).then(res=>res.text()).then((data)=>{
                 console.log("查询结果");
-                _this.res=data;
+                console.log(data);
+                this.res=data;
             })
         },
         config(p){
