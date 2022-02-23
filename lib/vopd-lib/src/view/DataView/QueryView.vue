@@ -14,7 +14,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import ev from "../../utils/eventbus"
 import JDBC from "../../datasource/JDBC.vue"
 import RESTFUL from "../../datasource/RESTFUL.vue"

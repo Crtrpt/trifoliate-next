@@ -1,5 +1,5 @@
 <template>
-    <div class="ToolView border border-t-gray-200 p-2">
+    <div class="ToolView border border-t-gray-200 p-1">
               <div class="item">
                 <i class=" item las la-mouse-pointer"></i>
               </div>

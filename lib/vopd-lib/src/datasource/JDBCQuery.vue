@@ -28,7 +28,7 @@ export default {
             handler:function(n,w){
                 console.log(this?.editor);
                 this.editor.dispatch({
-                    changes: {from: 0, insert: n}
+                    changes: {from: 0, insert: JSON.stringify(JSON.parse(n),null, "  ")}
                 })
             }
         }
