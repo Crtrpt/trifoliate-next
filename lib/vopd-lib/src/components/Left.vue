@@ -1,42 +1,33 @@
 <template>
-    <div class="grid grid-cols-2  gap-1 auto-rows-max         p-1 w-[11rem] border  overflow-auto">
-      <div v-for="i in list" v-bind:key="i" class="border h-20 w-20 text-center cursor-pointer">
-         <div class="flex  justify-center items-center h-full">
-           <div>{{i.name}}</div>
-         </div>
-      </div>
+    <div class="w-[20rem] flex">
+       <Tab class=" border-t flex-grow  h-1/2 " :data="leftTop" :select="1"></Tab>
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
-
+import Tab from '../common/Tab.vue'
+import TabItem from '../common/TabItem.vue'
 export default defineComponent({
+  components:{ Tab, TabItem },
   data(){
-    return {
-      list:[
-        {
-          id:1,
-          name:"文字",
-          widget:"Text",
-        },
-        {
-          id:2,
-          name:"图片",
-          widget:"Image",
-        },
-        {
-          id:3,
-          name:"视频",
-          widget:"Video",
-        },
-        {
-          id:4,
-          name:"图表",
-          widget:"Chart"
-        },
-      ]
-    }
+      return {
+          leftTop:[
+          {
+              title:"页面",
+              icon:"lar la-copy",
+              componemt:"PageView"
+          },
+          {
+              title:"部件",
+              icon:"las la-cubes",
+              componemt:"ComponentView"
+          },{
+              title:"环境变量",
+              icon:"las la-ellipsis-v",
+              componemt:"EnvView"
+          }]
+      }
   },
   setup() {
     

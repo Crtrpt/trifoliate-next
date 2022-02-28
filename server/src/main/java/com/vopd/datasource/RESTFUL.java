@@ -37,9 +37,7 @@ public class RESTFUL {
         var url = ap.getSource().getConfig().get("url");
         var query = (LinkedTreeMap<String, Object>) ap.getAp().getQuery();
 
-        log.info(" url ===========" + url + (String) query.get("path"));
-
-
+        log.info(" url ===========" + url + query.get("path"));
 
         HttpEntityEnclosingRequestBase httpRequestBase = new HttpEntityEnclosingRequestBase ()  {
             @Override

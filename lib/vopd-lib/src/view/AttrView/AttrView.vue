@@ -1,6 +1,8 @@
 <template>
-    <div>
-        <div class="p-1 border-b"><i class="las la-bars"></i> 属性: {{source.widget}}</div>
+    <div class="AttrView">
+        <div class="p-1 border-b">
+             <i class="las la-search"></i>
+        </div>
         <div class="p-1">
             <component v-bind:is="source.widget" v-if="source?.widget!=null" :data="source"></component>
         </div>

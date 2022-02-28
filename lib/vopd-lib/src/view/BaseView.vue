@@ -1,7 +1,8 @@
 <template>
     <div class="flex flex-col">
         <div class="flex flex-row  justify-start items-center border border-b-gray-300">
-            <i :class="icon"></i>
+            <i :class="[
+            icon,'pl-1']"></i>
             <div class="flex-grow flex flex-row items-center">
                  <p class="name">{{name}}</p>
                   <slot name="lead"></slot>
@@ -27,7 +28,6 @@ export default defineComponent({
     props:{
         icon:{
             type:String,
-            default:"las la-recycle p-1"
         },
         name:Object
     },

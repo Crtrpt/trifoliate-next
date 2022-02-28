@@ -1,4 +1,17 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+
+import {TreeView,AttrView,EventView,DataView,QueryView,EnvView,PageView,ComponentView} from "../lib/vopd-lib/src/main.js"
+
+let app=createApp(App);
+app.component("TreeView",TreeView)
+app.component("AttrView",AttrView)
+app.component("EventView",EventView)
+app.component("DataView",DataView)
+app.component("QueryView",QueryView)
+app.component("EnvView",EnvView)
+app.component("PageView",PageView)
+app.component("ComponentView",ComponentView)
+
+app.mount('#app')

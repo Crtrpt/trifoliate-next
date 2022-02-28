@@ -1,5 +1,5 @@
 <template>
-    <BaseView name="事件">
+    <BaseView>
          <template v-slot:lead>
                     <i class="las la-search"></i>
         </template>

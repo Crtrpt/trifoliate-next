@@ -7,6 +7,7 @@
 <script>
 import KvStr from './KvStr.vue'
 import KvInt from './KvInt.vue'
+import KvColor from './KvColor.vue'
 export default {
     components: { KvStr,KvInt },
     name:"Container",
