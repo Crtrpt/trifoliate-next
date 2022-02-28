@@ -2,7 +2,7 @@
     <component v-bind:is="name"></component>
 </template>
 
-<script>
+<script lang="ts">
 
 import BaseLayer from "../layers/BaseLayer/BaseLayer.vue";
 import MouseLayer from "../layers/MouseLayer.vue";

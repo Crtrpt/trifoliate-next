@@ -23,9 +23,6 @@ import ToolView from "./view/ToolView/ToolView.vue"
 import TimeView from "./view/TimeView/TimeView.vue"
 import ev from "./utils/eventbus";
 
-
-
-
 // import state from "./utils/state";
 export default defineComponent({
   props:{
@@ -42,12 +39,14 @@ export default defineComponent({
     value:{
       handler(n,o){
         console.log(this.value)
-        ev.fire("vopd","init",this.value.project);
+        ev.initCtx(this.value)
       }
     }
   },
+  data(){
+  },
   mounted(){
-    // state.init();
+
   },
   setup() {
    

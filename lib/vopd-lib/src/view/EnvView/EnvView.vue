@@ -24,6 +24,7 @@
 import { defineComponent } from 'vue'
 import BaseView from "../BaseView.vue"
 
+import ev from "../../utils/eventbus"
 export default defineComponent({
     name:"EnvView",
     data(){
@@ -33,33 +34,19 @@ export default defineComponent({
                     name:"xxx",
                     value:"xxx"
                 },
-                {
-                    name:"333",
-                    value:"xxx"
-                },
-                {
-                    name:"444",
-                    value:"xxx"
-                },
-                {
-                    name:"222",
-                    value:"xxx"
-                },
-                {
-                    name:"111",
-                    value:"xxx"
-                },
-                {
-                    name:"xxx",
-                    value:"xxx"
-                }
             ]
         }
     },
     components:{
         BaseView
     },
-    setup() {
+    methods:{
+        render(p:any){
+             this.list=p.env;
+        }
+    },
+    mounted(){
+        ev.on("EnvView","init",this.render)
     },
 })
 </script>

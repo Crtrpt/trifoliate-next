@@ -11,7 +11,7 @@
         </div>
         <div class="content flex-grow overflow-auto">
             <KeepAlive>
-                <component :is="vnode.componemt" />
+                <component :is="vnode.componemt" ref="cur" />
             </KeepAlive>
         </div>
     </div>
@@ -22,7 +22,7 @@
 </style>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent,nextTick } from 'vue'
 import { KeepAlive } from 'vue'
 import TabItem from './TabItem.vue'
 

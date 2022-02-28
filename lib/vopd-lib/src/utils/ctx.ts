@@ -1,12 +1,12 @@
 import {Collection, fromJS} from 'immutable';
 
-import ev from "./eventbus";
-
 class Ctx{
     coordinates=[0,0]
     bound=[0,0,0,0];
     data=[];
     dataInit(payload:any){
+        console.log("数据状态树初始化");
+        console.log(payload);
     }
     get(key:String){
 
@@ -14,11 +14,8 @@ class Ctx{
     set(key:String,value:any){
 
     }
-    init(){
-        ev.on("State","init",this.dataInit)
-    }
 }
 
-const s=new State();
+const s=new Ctx();
 
 export default s;
