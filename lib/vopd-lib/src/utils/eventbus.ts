@@ -30,6 +30,7 @@ class EventBus{
     }
     //触发
     fire(clientId:String,eventName:String,payload:any){
+        console.log("更新xxxx")
         var clientList=this.pipline.get(eventName);
         clientList?.forEach((handler,idx) => {
             handler(payload,this.ctx);

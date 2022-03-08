@@ -7,11 +7,11 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import ev from "../utils/eventbus"
-import TextRender from "./TextRender.vue"
+
 export default {
-    components:{TextRender},
+    components:{},
     props:{
         data:Object
     },

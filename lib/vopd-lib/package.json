@@ -12,7 +12,10 @@
     "@codemirror/theme-one-dark": "^0.19.1",
     "@codemirror/view": "^0.19.15",
     "@simonwep/pickr": "^1.8.2",
+    "echarts": "^5.3.1",
     "immutable": "^4.0.0",
+    "install": "^0.13.0",
+    "npm": "^8.5.3",
     "vue": "^3.2.25"
   },
   "devDependencies": {

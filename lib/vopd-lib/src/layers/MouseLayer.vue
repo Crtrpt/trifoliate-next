@@ -3,7 +3,7 @@
         {{mouse.x}},{{mouse.y}}
     </div>
 </template>
-<script>
+<script lang="ts">
 import "./MouseLayer.scss";
 import ev from "../utils/eventbus";
 export default {
@@ -34,7 +34,7 @@ export default {
         },
         render(e){
             this.display=true;
-            // console.log(e);
+            console.log(e);
             this.mouse.x=e.layerX;
             this.mouse.y=e.layerY;
         }

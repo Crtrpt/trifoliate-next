@@ -9,11 +9,11 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import Text from "../../widget/Text.vue";
 import Image from "../../widget/Image.vue";
 import Video from "../../widget/Video.vue";
-import Chart from "../../widget/Chart.vue";
+import Echart from "../../widget/Echart.vue";
 import Container from "../../widget/Container.vue";
 
 import ev from "../../utils/eventbus"
@@ -27,7 +27,7 @@ export default {
         }
     },
     components:{
-        Text,Image,Video,Chart,Container
+        Text,Image,Video,Echart,Container
     },
     methods:{
        selectContainer(p){

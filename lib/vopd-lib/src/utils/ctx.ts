@@ -6,13 +6,13 @@ class Ctx{
     data={};
     dataInit(payload:any){
         console.log("数据状态树初始化");
-        console.log(this.data=payload);
+        this.data=payload
     }
     get(key:String){
 
     }
     set(key:String,value:any){
-
+        
     }
 }
 

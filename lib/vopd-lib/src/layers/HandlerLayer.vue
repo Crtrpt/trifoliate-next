@@ -22,7 +22,7 @@
         <div class="center handler"></div>
     </div>
 </template>
-<script>
+<script lang="ts">
 import "./HandlerLayer.scss";
 import ev from "../utils/eventbus"
 export default {
