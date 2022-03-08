@@ -1,6 +1,6 @@
 <template>
-      <Control class=" left-8 mt-4  top-4 sticky z-20"  >
-              <div class="ToolView border border-t-gray-200 p-1 absolute">
+      <Control class=" left-8  top-4 sticky z-20"  >
+              <div class="ToolView border border-t-gray-200 p-1 absolute mt-4 ">
                   <div class="item">
                     <i class="las la-mouse-pointer" @click="changeMode(0)"></i>
                   </div>
