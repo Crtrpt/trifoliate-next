@@ -6,6 +6,9 @@
               <div class="item">
                 <i class="las la-hand-paper"></i>
               </div>
+              <div class="item">
+                <i class="las la-plug"></i>
+              </div>
     </div>
 </template>
 

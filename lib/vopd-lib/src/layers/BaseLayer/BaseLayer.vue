@@ -3,7 +3,7 @@
         <component v-bind:is="n.render"  v-for="n in this.source.list" :key="n"  :data="n" />
     </div>
 </template>
-<script>
+<script lang="ts">
 import "./BaseLayer.scss";
 import ev from "../../utils/eventbus";
 import ContainerRender from "../../render/ContainerRender.vue";

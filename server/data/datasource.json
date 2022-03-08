@@ -289,8 +289,8 @@
         }
       ],
       "style": {
-        "width": "400px",
-        "left": "400px",
+        "width": "800px",
+        "left": "800px",
         "height": "200px",
         "top": "200px",
         "position": "absolute",

@@ -1,9 +1,8 @@
 <template>
-    <div class="flex flex-row" style="width:100%; height:600px">
+    <div class="vopd flex flex-row" style="width:100%; height:600px">
       <Left  class="w-15 " />
-      <div class="flex flex-col flex-grow">
-         <div class="flex flex-row flex-grow">
-            <ToolView></ToolView>
+      <div class="flex flex-col flex-grow border">
+         <div class="flex flex-row flex-grow  relative">
             <Center class="flex-grow h-full w-full"/>
          </div>
          <TimeView></TimeView>

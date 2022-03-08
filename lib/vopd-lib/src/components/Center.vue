@@ -1,6 +1,7 @@
 <template>
-    <div class="b border-y " >
-      <div ref="canvas" class="w-full h-full  relative">
+    <div class="border-y overflow-auto"  :class="[modeList[this.mode].cursor]"   >
+     
+      <div ref="canvas" class="w-full h-full  relative  ">
         <div class="layers">
          <Layer name="refLineLayer" />
         
@@ -11,8 +12,48 @@
          <Layer name="MouseLayer" />
 
          <Layer name="HandlerLayer" />
+     
         </div>
       </div>
+        <Control class=" left-8 top-8  absolute">
+          <div class="ToolView border border-t-gray-200 p-1">
+              <div class="item">
+                <i class="las la-mouse-pointer" @click="changeMode(0)"></i>
+              </div>
+              <div class="item">
+                <i class="las la-hand-paper" @click="changeMode(1)"></i>
+              </div>
+              <div class="item">
+                <i class="las la-plug" @click="changeMode(2)"></i>
+              </div>
+          </div>
+        </Control>
+        <Control class="top-0  left-0   w-full flex  absolute  bg-white">
+            <i class="las la-eye w-6 h-6"></i>
+         </Control>
+         <Control class="top-0    w-full flex  absolute  bg-white">
+            <div class="h-6 border shadow flex-grow"></div>
+         </Control>
+         <Control class="top-0  h-full flex text-center  absolute bg-white">
+            <div class=" w-6 border shadow flex-grow"></div>
+         </Control>
+        <Control class=" right-5 top-4  absolute flex">
+          <div class="flex items-center justify-center border rounded-full mx-1 px-2 bg-gray-200 shadow">
+            <input class=" inline text-sm w-10 text-center bg-inherit" value="1024"/>
+            <p class="text-sm">/</p>
+             <input class=" inline text-sm w-10 text-center bg-inherit" value="960"/>
+          </div>
+           <div class="flex items-center justify-center border rounded-full shadow bg-gray-200">
+              <i class="lab la-chrome leading-3 px-1 "></i>
+          </div>
+        </Control>
+        <Control class=" right-2 bottom-2 absolute ">
+            <div class="flex items-center justify-center border rounded-full bg-gray-200 shadow">
+              <i class=" item las la-search-plus leading-3 px-1 "></i>
+              <input class=" inline text-sm w-10 bg-inherit" value="100%"/>
+              <i class="item las la-search-minus leading-3 px-1 "></i>
+            </div>
+        </Control>
     </div>
 </template>
 
@@ -20,15 +61,37 @@
 import { defineComponent } from 'vue'
 import Layer from './Layer.vue'
 import ev from "../utils/eventbus"
+import Control from './Control.vue'
+import ToolView from '../view/ToolView/ToolView.vue'
 
 
 export default defineComponent({
-  components: { Layer },
+  components: { Layer, Control, ToolView },
   data(){
     return {
+      mode:0,
+      modeList:[
+        {
+          name:"select",
+          cursor:"normal"
+        },
+        {
+          name:"grab",
+           cursor:"cursor-grab"
+        },
+         {
+          name:"plug",
+           cursor:"plug"
+        }
+      ],
       el:null
     }
   },
+  methods:{
+    changeMode(m:number){
+      this.mode=m;
+    }
+  }, 
   mounted(){
     var el=this.$refs.canvas;
     el.addEventListener("mousemove",(e)=>{
