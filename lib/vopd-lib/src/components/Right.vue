@@ -34,7 +34,7 @@ export default defineComponent({
           },
           {
               title:"数据",
-              icon:"las la-ellipsis-v",
+              icon:"las la-database",
               componemt:"DataView"
           },{
               title:"结果",

@@ -34,7 +34,7 @@ export default {
                    attr: {
                         id:{
                             name:"id",
-                            displayName:"全局标识符",
+                            displayName:"标识符",
                             type:"KvInt",
                             value: 0,
                             placeholder:"全局唯一",

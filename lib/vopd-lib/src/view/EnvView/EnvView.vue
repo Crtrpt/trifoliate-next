@@ -8,10 +8,10 @@
         </template>
          <template v-slot:content>
              <div class="flex" v-for="i in list" v-bind:key="i.name">
-                 <div class="p-1 w-1/2">
+                 <div class="p-1 w-1/3">
                      <input  class="border inline-block  w-full" v-model="i.name"/>
                  </div>
-                 <div class="p-1 w-1/2">
+                 <div class="p-1 w-2/3">
                     <input  class="border inline-block   w-full" v-model="i.value"/>
                  </div>
              </div>
@@ -42,10 +42,13 @@ export default defineComponent({
     },
     methods:{
         render(p:any){
+            console.log("环境变量")
+               console.log(p)
              this.list=p.env;
         }
     },
     mounted(){
+        this.render(ev.ctx.data.project);
         ev.on("EnvView","init",this.render)
     },
 })
