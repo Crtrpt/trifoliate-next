@@ -7,8 +7,7 @@
          </div>
          <TimeView></TimeView>
       </div>
-     
-      <Right class="w-20"/>
+      <Right class="w-15"/>
     </div>
 </template>
 
@@ -43,6 +42,7 @@ export default defineComponent({
     }
   },
   data(){
+    return {}
   },
   mounted(){
 

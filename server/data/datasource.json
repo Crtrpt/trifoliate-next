@@ -94,6 +94,25 @@
           }
         }
       ]
+    },
+    {
+      "name": "mqtt消息订阅",
+      "render": "MQTT",
+      "renderQuery": "MQTTSubscribe",
+      "isExpand":false,
+      "config": {
+        "url": "mqtt://broker.emqx.io:8083",
+        "username": "",
+        "password": ""
+      },
+      "id": "3",
+      "apList": [
+        {
+          "id": "3",
+          "name": "订阅测试",
+          "query": "/aaa"
+        }
+      ]
     }
   ],
   "list": [

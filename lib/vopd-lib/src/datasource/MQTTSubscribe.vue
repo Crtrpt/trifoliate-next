@@ -1,6 +1,8 @@
 <template>
     <div class="flex flex-col">
+        <div class="px-1 border-y"><i class="las la-th"></i>订阅数据</div>
         <div class=" border-y overflow-auto flex-grow" ref="editor"></div>
+
     </div>
 </template>
 
@@ -18,7 +20,8 @@ export default {
     },
     data(){
         return {
-            editor:null
+            editor:null,
+            editor1:null
         }
     },
     watch:{
@@ -27,14 +30,12 @@ export default {
             handler:function(n,w){
                 console.log(this?.editor);
                 this.editor.dispatch({
-                    changes: {from: 0, insert: n}
+                    changes: {from: 0, insert: JSON.stringify(JSON.parse(n),null, "  ")}
                 })
             }
         }
     },
     mounted(){
-        console.log("挂载")
-        console.log(this.$refs.editor);
         this.editor = new EditorView({
         state: EditorState.create({
             extensions: [basicSetup, javascript()]

@@ -9,8 +9,7 @@
                 <i class="las la-window-maximize"></i>
             </div>
             </div>
-        <component v-bind:is="type.render"  :data="ap" :type="type" class=" h-1/3 scroll-auto"/>
-        <component v-bind:is="type.renderQuery" :data="res" class=" flex-grow h-2/3 scroll-auto"/>
+        <component  v-bind:is="type.render" :api="api" :data="ap" :type="type" ref="render" />
     </div>
 </template>
 
@@ -18,12 +17,10 @@
 import ev from "../../utils/eventbus"
 import JDBC from "../../datasource/JDBC.vue"
 import RESTFUL from "../../datasource/RESTFUL.vue"
-
-import JDBCQuery from "../../datasource/JDBCQuery.vue"
-import RESTFULQuery from "../../datasource/RESTFULQuery.vue"
+import MQTT from "../../datasource/MQTT.vue"
 
 export default {
-    components:{JDBC,JDBCQuery,RESTFUL,RESTFULQuery},
+    components:{JDBC,RESTFUL,MQTT},
     data(){
         return {
             type:"",
@@ -36,21 +33,16 @@ export default {
         changeAp(ap){
             this.type=ap.type;
             this.ap=ap.ap;
-            console.log("修改Ap")
         },
         query(){
             var _this=this;
-            fetch(this.api+"/query/"+this.type.id+"/"+this.ap.id).then(res=>res.text()).then((data)=>{
-                console.log("查询结果");
-                console.log(data);
-                this.res=data;
-            })
+            this.$refs.render.exec();
         },
         config(p){
             this.api=p.api
         }
     },
-      mounted(){
+    mounted(){
         console.log("订阅AP")
         ev.on("QueryView","ChangeAp",this.changeAp)
         ev.on("QueryView","init",this.config)

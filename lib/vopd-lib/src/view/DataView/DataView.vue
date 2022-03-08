@@ -40,7 +40,8 @@ export default {
             console.log(ev);
         },
         render(p){
-            console.log(JSON.stringify(p));
+            console.log("渲染数据");
+            console.log(p);
             this.list=p.datasource;
         },
         click(i){
@@ -53,7 +54,8 @@ export default {
         }
     },
     mounted(){
-         console.log("挂载")
+         console.log("挂载");
+         this.render(ev.ctx.data.project);
          ev.on("DataView","init",this.render)
     }
 }

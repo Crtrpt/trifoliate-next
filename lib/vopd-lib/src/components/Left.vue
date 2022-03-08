@@ -1,6 +1,6 @@
 <template>
     <div class="w-[20rem] flex">
-       <Tab class=" border-t flex-grow  h-1/2 " :data="leftTop" :select="1"></Tab>
+       <Tab class=" border-t flex-grow "  direction="left" :data="leftTop" :select="1"></Tab>
     </div>
 </template>
 
@@ -14,16 +14,16 @@ export default defineComponent({
       return {
           leftTop:[
           {
-              title:"页面",
-              icon:"lar la-copy",
-              componemt:"PageView"
-          },
-          {
               title:"部件",
               icon:"las la-cubes",
               componemt:"ComponentView"
+          },
+           {
+              title:"页面",
+              icon:"lar la-copy",
+              componemt:"PageView"
           },{
-              title:"环境变量",
+              title:"变量",
               icon:"las la-ellipsis-v",
               componemt:"EnvView"
           }]

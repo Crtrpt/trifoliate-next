@@ -1,14 +1,7 @@
 <template>
-    <div class="w-[40rem] flex">
-        <div class="border  w-[20rem] flex flex-col">
-            <Tab class=" border-t flex-grow  h-1/2 " :data="rightTop"></Tab>
-            <Tab class=" h-1/2" :data="right"></Tab>
+     <div class="border  w-[20rem] flex flex-col">
+            <Tab  class=" border-t flex-grow " direction="right" :data="right"></Tab>
         </div>
-         <div class="border  w-[20rem]">
-             <DataView class="border-t  h-1/2"/>
-             <QueryView class="border-t h-1/2"/>
-        </div>
-    </div>
 </template>
 
 <script lang="ts">
@@ -26,12 +19,11 @@ export default defineComponent({
   components:{ TreeView, AttrView, DataView, MultipleSelectView, QueryView, EventView, Tab, TabItem },
   data(){
       return {
-          rightTop:[{
+          right:[{
               title:"层级",
               icon:"las la-layer-group",
               componemt:"TreeView"
-          }],
-          right:[{
+          },{
               title:"属性",
               icon:"las la-bars",
               componemt:"AttrView"
@@ -39,6 +31,15 @@ export default defineComponent({
               title:"事件",
               icon:"las la-ellipsis-v",
               componemt:"EventView"
+          },
+          {
+              title:"数据",
+              icon:"las la-ellipsis-v",
+              componemt:"DataView"
+          },{
+              title:"结果",
+              icon:"las la-ellipsis-v",
+              componemt:"QueryView"
           }]
       }
   },

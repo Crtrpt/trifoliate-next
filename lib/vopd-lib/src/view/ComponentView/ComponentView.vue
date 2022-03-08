@@ -49,6 +49,11 @@ export default defineComponent({
                 name:"图表",
                 widget:"Chart"
                 },
+                {
+                id:5,
+                name:"地图",
+                widget:"Map"
+                },
             ]
         }
     },

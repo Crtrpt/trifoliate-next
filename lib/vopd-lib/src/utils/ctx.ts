@@ -3,10 +3,10 @@ import {Collection, fromJS} from 'immutable';
 class Ctx{
     coordinates=[0,0]
     bound=[0,0,0,0];
-    data=[];
+    data={};
     dataInit(payload:any){
         console.log("数据状态树初始化");
-        console.log(payload);
+        console.log(this.data=payload);
     }
     get(key:String){
 
