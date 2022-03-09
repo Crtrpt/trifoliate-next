@@ -315,6 +315,48 @@
         "position": "absolute",
         "background": "lightblue"
       }
+    },
+    {
+      "id": 100,
+      "name": "容器",
+      "render": "ContainerRender",
+      "widget": "Container",
+      "children": [
+        {
+          "id": 101,
+          "name": "测试图表",
+          "render": "EchartRender",
+          "widget": "Echart",
+          "style": {
+            "width": "400px",
+            "height":"400px"
+          },
+          "data":{
+            "title": {
+              "text": "测试的Echart"
+            },
+            "tooltip": {},
+            "xAxis": {
+              "data": ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"]
+            },
+            "yAxis": {},
+            "series": [
+              {
+                "name": "sales",
+                "type": "bar",
+                "data": [5, 20, 36, 10, 10, 20]
+              }
+            ]
+          }
+        }
+      ],
+      "style": {
+        "width": "400px",
+        "left": "500px",
+        "height": "200px",
+        "top": "400px",
+        "position": "absolute"
+      }
     }
   ],
   "env":[
