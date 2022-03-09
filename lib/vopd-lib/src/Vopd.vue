@@ -9,7 +9,6 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import { defineComponent } from 'vue'
 import Right from './components/Right.vue'
 import Center from './components/Center.vue'

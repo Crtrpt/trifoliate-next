@@ -1,13 +1,29 @@
 <template>
-    <div class="node cursor-pointer" @click="click($event)">
-        <div class="name flex flex-row items-center">
-            <i class="las la-caret-right" v-if="!isExpand && data?.children?.length>0"></i>
-            <i class="las la-caret-down" v-if="isExpand && data?.children?.length>0"></i>
+    <div class="node cursor-pointer border   hover:border hover:border-gray-200  "
+    
+    :class='{
+        "border-blue-400":isSelect,
+        "text-blue-400":isSelect,
+        "border-white":!isSelect
+    }'
+        
+     @click="click($event)">
+        <div class="name flex flex-row items-center px-2" @mouseover="hover" @mouseout="hover1">
+            <i class="las la-caret-right"  @click="expand" v-if="!isExpand && data?.children?.length>0"></i>
+            <i class="las la-caret-down"  @click="expand" v-if="isExpand && data?.children?.length>0"></i>
             <p class="flex-grow" @click="expand"> {{data.name}}</p>
-            <div class="action">
-                    <i class="las la-eye"></i>
-                    <i class="las la-trash"></i>
-                    <i class="las la-lock"></i>
+            <div class="action" v-if="isHover">
+                    <i class="las la-eye"
+                        :class='{
+                        "la-eye":isEye,
+                        "la-eye-slash":!isEye
+                    }'
+                     @click="eye(data)"></i>
+                    <i class="las la-trash" @click="trash(data)"></i>
+                    <i class="las " :class='{
+                        "la-lock":isLock,
+                        "la-unlock":!isLock
+                    }' @click="lock(data)"></i>
             </div>
         </div>
         <div class="children" :style="{marginLeft:20*level+'px'}" v-if=" isExpand && data?.children?.length>0">
@@ -25,11 +41,32 @@ export default {
     },
     data:function(){
         return {
-            isExpand:true
+            isHover:true,
+            isExpand:true,
+            isLock:false,
+            isEye:true,
+            isTrash:true,
+            isSelect:false,
         }
     },
     methods:{
+        hover(){
+            // this.isHover=true;
+        },
+         hover1(){
+            // this.isHover=false;
+        },
+        eye(){
+            this.isEye=!this.isEye;
+        },
+        trash(){
+
+        },
+        lock(){
+            this.isLock=!this.isLock;
+        },
         click(e:any){
+            this.isSelect=!this.isSelect;
             e.stopPropagation();
             ev.fire("TreeView","selectContainer",this.data)
         },

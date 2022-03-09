@@ -348,6 +348,16 @@
               }
             ]
           }
+        },
+        {
+          "id": 102,
+          "name": "测试地图",
+          "render": "MapRender",
+          "widget": "Map",
+          "style": {
+            "width": "400px",
+            "height": "400px"
+          }
         }
       ],
       "style": {

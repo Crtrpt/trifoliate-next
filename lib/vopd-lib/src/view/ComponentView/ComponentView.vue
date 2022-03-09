@@ -1,7 +1,7 @@
 <template>
     <BaseView>
          <template v-slot:lead>
-                    <i class="las la-search"></i>
+                    <SearchBox class="flex-grow" v-model="filter.keywords" @input="change"></SearchBox>
         </template>
         <template v-slot:action>
                     <i class="las la-plus-circle"></i>
@@ -10,9 +10,9 @@
         </template>
          <template v-slot:content>
             <div class="grid grid-cols-2  gap-1 auto-rows-max         p-1    overflow-auto">
-                <div v-for="i in list" v-bind:key="i" class="border h-20  text-center cursor-pointer">
+                <div v-for="i in list" v-bind:key="i" class="border h-20  text-center cursor-pointer hover:bg-gray-200 " @click="add(i)">
                     <div class="flex  justify-center items-center h-full">
-                    <div>{{i.name}}</div>
+                        <div>{{i.name}}</div>
                     </div>
                 </div>
             </div>
@@ -23,11 +23,15 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import BaseView from "../BaseView.vue"
-
+import ev from "../../utils/eventbus"
+import SearchBox from '../../common/SearchBox.vue'
 export default defineComponent({
     name:"ComponentView",
     data(){
         return {
+            filter:{
+                keywords:"111"
+            },
                 list:[
                 {
                 id:1,
@@ -58,7 +62,16 @@ export default defineComponent({
         }
     },
     components:{
-        BaseView
+    BaseView,
+    SearchBox
+},
+    methods:{
+        change(v){
+            console.log("变更下")
+        },  
+        add(i:any){
+           ev.fire("ComponentView","addComponent",i)
+        }
     },
     setup() {
     },
