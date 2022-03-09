@@ -30,8 +30,10 @@ class EventBus{
     }
     //触发
     fire(clientId:String,eventName:String,payload:any){
+       
         var clientList=this.pipline.get(eventName);
         clientList?.forEach((handler,idx) => {
+            console.log(idx+":"+eventName);
             handler(payload,this.ctx);
         });
     }

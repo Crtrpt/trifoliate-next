@@ -1,6 +1,7 @@
 <template>
     <div class="BaseLayer" :style=style>
         <component class="node" v-bind:is="n.render"  v-for="n in this.source.list" :key="n+'xx'"  :data="n" 
+        @click="click($event,n)"
         @mouseenter="enter(n)" 
  />
     </div>
@@ -18,7 +19,6 @@ export default {
     name:"BaseLayer",
     data(){
         return {
-            active:true,
             source:{},
             style:{
                 // pointerEvents:"none",
@@ -27,6 +27,11 @@ export default {
         };
     },
     methods:{
+        click(e,n){
+            console.log("选择部件")
+            ev.fire("BaseLayer","selectContainer",n);
+            e.stopPropagation();
+        },
         enter(n){
             ev.fire("BaseLayer","hoverContainer",n);
         },
@@ -34,9 +39,11 @@ export default {
             this.source=payload;
         },
         active(n){
-            this.style={};
+            this.style.pointerEvents="";
+            this.style.userSelect="";
         },
         inactivated(n){
+            //TODO 点选 框选冲突
             this.style.pointerEvents="none";
             this.style.userSelect="none";
         }

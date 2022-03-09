@@ -74,8 +74,7 @@ export default {
     mounted(){
         ev.on("HandlerLayer","init",this.init)
         ev.on("HandlerLayer","mousedown",this.cancelSelect)
-        // ev.on("HandlerLayer","selectArea",this.render)
-
+        ev.on("HandlerLayer","selectArea",this.render)
         ev.on("HandlerLayer","selectContainer",this.select)
     },
     setup() {
