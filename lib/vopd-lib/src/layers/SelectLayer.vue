@@ -21,7 +21,7 @@ export default {
        }
     },
     computed:{
-        style:function(){
+        style:function():any{
             return  {
                 left:Math.min(this.start.x,this.end.x)+"px",
                 top:Math.min(this.start.y,this.end.y)+"px",
@@ -31,7 +31,7 @@ export default {
         }
     },
     methods:{
-        down(e){
+        down(e:any){
             this.mouseDown=true;
             console.log("修改为不可选择状态")
             this.start.x=e.layerX;
@@ -39,7 +39,7 @@ export default {
             this.end.x=e.layerX;
             this.end.y=e.layerY;
         },
-        up(e){
+        up(e:any){
              console.log("恢复为可选状态")
              this.mouseDown=false;
              ev.fire("SelectLayer","selectArea",{
@@ -51,7 +51,7 @@ export default {
              this.end.x=0;
              this.end.y=0;
         },
-        move(e){
+        move(e:any){
             if(this.mouseDown){
                 this.end.x=e.layerX;
                 this.end.y=e.layerY;

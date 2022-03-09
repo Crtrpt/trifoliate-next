@@ -58,12 +58,10 @@
           
           <!-- <Layer name="MouseLayer" /> -->
 
-           <Layer name="HoverLayer" />
+          <Layer name="HoverLayer" />
 
           <Layer name="HandlerLayer" />
 
-         
-      
           </div>
         </div>
       </div>         
@@ -133,7 +131,8 @@ export default defineComponent({
   }, 
   mounted(){
     ev.on("EditorView","init",this.render)
-    var el=this.$refs.view;
+    let  el:any=this.$refs.view;
+
     el.addEventListener("mousemove",(e)=>{
       ev.fire("main","mousemove",e);
     }),

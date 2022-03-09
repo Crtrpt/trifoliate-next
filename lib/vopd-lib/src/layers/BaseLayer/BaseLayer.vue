@@ -18,6 +18,7 @@ export default {
     name:"BaseLayer",
     data(){
         return {
+            active:true,
             source:{},
             style:{
                 // pointerEvents:"none",
@@ -31,12 +32,20 @@ export default {
         },
         render(payload){
             this.source=payload;
+        },
+        active(n){
+            this.style={};
+        },
+        inactivated(n){
+            this.style.pointerEvents="none";
+            this.style.userSelect="none";
         }
     },
     mounted(){
         console.log("加载完成");
         ev.on("BaseLayer","init",this.render);
-        
+        ev.on("BaseLayer","mousedown",this.inactivated)
+        ev.on("BaseLayer","mouseup",this.active)
     },
     setup() {
         

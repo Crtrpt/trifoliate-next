@@ -59,6 +59,10 @@ export default {
            this.start=source.start;
            this.end=source.end;
         },
+        cancelSelect(e){
+                this.start.x=0;
+                this.end.x=0;
+        },
         select(e){
             console.log(e.style);
             this.start.x= parseInt(e.style.left)
@@ -69,8 +73,8 @@ export default {
     },
     mounted(){
         ev.on("HandlerLayer","init",this.init)
-        ev.on("HandlerLayer","selectArea",this.render)
-
+        ev.on("HandlerLayer","mousedown",this.cancelSelect)
+        // ev.on("HandlerLayer","selectArea",this.render)
 
         ev.on("HandlerLayer","selectContainer",this.select)
     },
