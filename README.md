@@ -1,3 +1,5 @@
+
+[![Node.js CI](https://github.com/Crtrpt/VOPD/actions/workflows/node.js.yml/badge.svg)](https://github.com/Crtrpt/VOPD/actions/workflows/node.js.yml)
 # 创建本地库
 
 
