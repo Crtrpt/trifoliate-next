@@ -1,10 +1,11 @@
 <template>
      <div class="flex items-center justify-center border rounded-full bg-gray-200 shadow">
-                  <i class=" item las la-search-plus leading-3 px-1 " @click="add"></i>
-                  <input class=" inline text-sm w-10 bg-inherit" v-model="v" type="number" @change="change" />%
-                  <i class="item las la-search-minus leading-3 px-1 " @click="sub"></i>
+                  <i class=" item las la-search-plus leading-2 px-1 " @click="add"></i>
+                  <input class=" inline text-xs w-10 bg-inherit" v-model="v" type="number" @change="change" min="0" />%
+                  <i class="item las la-search-minus leading-2 px-1 " @click="sub"></i>
                 </div>
 </template>
+
 
 <script lang="ts">
 import { defineComponent } from 'vue'

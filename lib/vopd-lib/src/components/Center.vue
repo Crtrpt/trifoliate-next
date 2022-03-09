@@ -1,73 +1,54 @@
 <template>
-      <Control class=" left-8  top-4  absolute z-20 control"  >
-              <div class="ToolView border border-t-gray-200 p-1 absolute mt-4 ">
-                  <div class="item">
-                    <i class="las la-mouse-pointer" @click="changeMode(0)"></i>
-                  </div>
-                  <div class="item">
-                    <i class="las la-hand-paper" @click="changeMode(1)"></i>
-                  </div>
-                  <div class="item">
-                    <i class="las la-plug" @click="changeMode(2)"></i>
-                  </div>
-              </div>
-      </Control>
-
-       <Control class=" right-5 mt-4 top-4   absolute control">
-              <div class=" ">
-                 <PageSize v-model="page"></PageSize>
-              </div>
-      </Control>
-
-      <Control class=" right-5 mt-4 bottom-4  absolute control">
-               <div class=" ">
-                 <PageScale v-model="page.scale"></PageScale>
-                </div>
-      </Control> 
-
-    <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  >
-      <div ref="canvas" class="  relative overflow-hidden  border shadow doc  bg-white" 
-            :style="{
-              width: page.width,
-              height:page.height,
-              margin:'80px 80px 80px 80px',
-              transform: 'scale('+page.scale+')',
-              'transform-origin': 'left top'
-              }">
-        <div class="layers">
-         <Layer name="refLineLayer" />
-        
-         <Layer name="BaseLayer" />
-        
-         <Layer name="SelectLayer" />
-         
-         <Layer name="MouseLayer" />
-
-         <Layer name="HandlerLayer" />
-     
-        </div>
-      </div>
-    </div>
     
-            <!-- <Control class="top-0  left-0   w-full   sticky  bg-white">
-                <i class="las la-eye w-6 h-6"></i>
-            </Control>
-            <Control class="top-0    w-full flex  absolute  bg-white">
-                <div class="h-6 border shadow flex-grow"></div>
-            </Control>
-            <Control class="top-0  h-full flex text-center  sticky bg-white">
-                <div class=" w-6 border shadow flex-grow"></div>
-            </Control>
-             -->
-           
+        <Control class=" left-8  top-4  absolute z-20 control"  >
+                <div class="ToolView border border-t-gray-200 p-1 absolute mt-4 ">
+                    <div class="item">
+                      <i class="las la-mouse-pointer" @click="changeMode(0)"></i>
+                    </div>
+                    <div class="item">
+                      <i class="las la-hand-paper" @click="changeMode(1)"></i>
+                    </div>
+                    <div class="item">
+                      <i class="las la-plug" @click="changeMode(2)"></i>
+                    </div>
+                </div>
+        </Control>
 
-             <!-- <Control class=" right-5 top-6  sticky ">
-              <div class=" absolute">
-                
-              </div>
-            </Control> -->
-           
-            
+        <Control class=" right-5 mt-4 top-4   absolute control">
+                <div class=" ">
+                  <PageSize :width="page.width"  :height="page.height" @input="changeSize"></PageSize>
+                </div>
+        </Control>
+
+        <Control class=" right-5 mt-4 bottom-4  absolute control">
+                <div class=" ">
+                  <PageScale v-model="page.scale"></PageScale>
+                  </div>
+        </Control> 
+
+      <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  >
+        <div ref="canvas" class="  relative overflow-hidden  border shadow doc  bg-white" 
+              :style="{
+                width: page.width,
+                height:page.height,
+                margin:'80px 80px 80px 80px',
+                transform: 'scale('+page.scale+')',
+                'transform-origin': 'left top'
+                }">
+          <div class="layers">
+          <Layer name="refLineLayer" />
+          
+          <Layer name="BaseLayer" />
+          
+          <Layer name="SelectLayer" />
+          
+          <Layer name="MouseLayer" />
+
+          <Layer name="HandlerLayer" />
+      
+          </div>
+        </div>
+      </div>         
 </template>
 
 <style scoped>
@@ -96,6 +77,8 @@ export default defineComponent({
   data(){
     return {
       page:{
+        width:"1024px",
+        height:"960px",
       },
       mode:0,
       modeList:[
@@ -116,6 +99,12 @@ export default defineComponent({
     }
   },
   methods:{
+    changeSize(p:any){
+      console.log(this);
+      console.log(p);
+        this.page.width=p.w;
+        this.page.height=p.h;
+    },
     changeMode(m:number){
       this.mode=m;
     },
