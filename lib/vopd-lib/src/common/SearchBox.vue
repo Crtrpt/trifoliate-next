@@ -1,7 +1,7 @@
 <template>
     <div class="border rounded-full">
                         <i class="las la-search px-1"></i>
-                        <input class=" outline-none" v-model="v" @change="change">
+                        <input class=" outline-none" v-model="v" @change="change" v-bind="$attrs">
     </div>
 </template>
 <script lang="ts">

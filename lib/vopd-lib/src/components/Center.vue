@@ -1,5 +1,5 @@
 <template>
-      <Control class=" left-8  top-4  absolute z-20"  >
+      <Control class=" left-8  top-4  absolute z-20 control"  >
               <div class="ToolView border border-t-gray-200 p-1 absolute mt-4 ">
                   <div class="item">
                     <i class="las la-mouse-pointer" @click="changeMode(0)"></i>
@@ -13,28 +13,27 @@
               </div>
       </Control>
 
-       <Control class=" right-5 mt-4 top-4   absolute ">
+       <Control class=" right-5 mt-4 top-4   absolute control">
               <div class=" ">
-                 <div class="flex items-center justify-center border rounded-full mx-1 px-2 bg-gray-200 shadow">
-                <input class=" inline text-sm w-10 text-center bg-inherit" value="1024"/>
-                <p class="text-sm">/</p>
-                <input class=" inline text-sm w-10 text-center bg-inherit" value="960"/>
-              </div>
+                 <PageSize v-model="page"></PageSize>
               </div>
       </Control>
 
-      <Control class=" right-5 mt-4 bottom-4  absolute ">
+      <Control class=" right-5 mt-4 bottom-4  absolute control">
                <div class=" ">
-                <div class="flex items-center justify-center border rounded-full bg-gray-200 shadow">
-                  <i class=" item las la-search-plus leading-3 px-1 "></i>
-                  <input class=" inline text-sm w-10 bg-inherit" value="100%"/>
-                  <i class="item las la-search-minus leading-3 px-1 "></i>
+                 <PageScale v-model="page.scale"></PageScale>
                 </div>
-                </div>
-            </Control> 
+      </Control> 
 
     <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  >
-      <div ref="canvas" class="  relative overflow-hidden  border shadow doc  bg-white" :style="{width:'1024px',height:'960px',margin:'80px auto'}">
+      <div ref="canvas" class="  relative overflow-hidden  border shadow doc  bg-white" 
+            :style="{
+              width: page.width,
+              height:page.height,
+              margin:'80px 80px 80px 80px',
+              transform: 'scale('+page.scale+')',
+              'transform-origin': 'left top'
+              }">
         <div class="layers">
          <Layer name="refLineLayer" />
         
@@ -71,18 +70,33 @@
             
 </template>
 
+<style scoped>
+.control {
+  z-index: 999;
+}
+</style>
+
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Layer from './Layer.vue'
 import ev from "../utils/eventbus"
 import Control from './Control.vue'
 import ToolView from '../view/ToolView/ToolView.vue'
+import PageScale from '../control/PageScale.vue'
+import PageSize from '../control/PageSize.vue'
 
 
 export default defineComponent({
-  components: { Layer, Control, ToolView },
+  components: { Layer, Control, ToolView, PageScale, PageSize },
+  computed:{
+    pageScale(){
+      return (this.page.scale)*100
+    }
+  },
   data(){
     return {
+      page:{
+      },
       mode:0,
       modeList:[
         {
@@ -104,9 +118,14 @@ export default defineComponent({
   methods:{
     changeMode(m:number){
       this.mode=m;
+    },
+    render(p:any){
+      console.log("页面初始化")
+      this.page=p.page;
     }
   }, 
   mounted(){
+    ev.on("EditorView","init",this.render)
     var el=this.$refs.view;
     el.addEventListener("mousemove",(e)=>{
       ev.fire("main","mousemove",e);

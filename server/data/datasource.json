@@ -369,6 +369,11 @@
       }
     }
   ],
+  "page":{
+    "width": "1024px",
+    "height": "960px",
+    "scale":1
+  },
   "env":[
     {
       "id": "name",
@@ -383,5 +388,6 @@
       "description":"所属企业"
     }
   ],
+  "maxId":1,
   "api":"http://127.0.0.1:8080"
 }

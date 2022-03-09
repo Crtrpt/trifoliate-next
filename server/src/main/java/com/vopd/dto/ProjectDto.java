@@ -10,4 +10,6 @@ public class ProjectDto {
     List<Object>    list;
     String api;
     List<Object> env;
+    Integer maxId;
+    Object page;
 }

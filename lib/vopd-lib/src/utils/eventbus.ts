@@ -5,7 +5,7 @@ class EventBus{
     pipline:Map<String,Map<String,any>|undefined>=new Map();
     //订阅
     on(clientId:String,eventName:String,handler:any){
-        console.log("注册:"+clientId+"事件:"+eventName);
+        // console.log("注册:"+clientId+"事件:"+eventName);
         var clientList=this.pipline.get(eventName);
         if(clientList==undefined){
             this.pipline.set(eventName,new Map());
@@ -30,7 +30,6 @@ class EventBus{
     }
     //触发
     fire(clientId:String,eventName:String,payload:any){
-        console.log("更新xxxx")
         var clientList=this.pipline.get(eventName);
         clientList?.forEach((handler,idx) => {
             handler(payload,this.ctx);

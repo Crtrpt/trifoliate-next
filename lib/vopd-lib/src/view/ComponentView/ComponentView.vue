@@ -1,7 +1,7 @@
 <template>
     <BaseView>
          <template v-slot:lead>
-                    <SearchBox class="flex-grow" v-model="filter.keywords" @input="change"></SearchBox>
+                    <SearchBox class="flex-grow" v-model="filter.keywords" @input="change" placeholder="搜索你需要的组件"></SearchBox>
         </template>
         <template v-slot:action>
                     <i class="las la-plus-circle"></i>
@@ -70,6 +70,7 @@ export default defineComponent({
             console.log("变更下")
         },  
         add(i:any){
+            console.log("增加")
            ev.fire("ComponentView","addComponent",i)
         }
     },

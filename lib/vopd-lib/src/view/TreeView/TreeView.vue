@@ -1,9 +1,7 @@
 <template>
-    
-
      <BaseView>
          <template v-slot:lead>
-                   <SearchBox class="flex-grow"></SearchBox>
+                   <SearchBox class="flex-grow" v-model="filter.keywords"></SearchBox>
         </template>
         <template v-slot:action>
                     <i class="las la-check"  v-if="!isMultipleSelect" @click="changeSelectMode"></i>
@@ -29,8 +27,14 @@ export default {
     components:{ Tree, BaseView, SearchBox },
     data(){
         return {
+            lastSelect:null,
+            selectList:[],
             isMultipleSelect:true,
+            filter:{
+                    keywords:""
+            },
             source:{
+               
                 list:{}
             }
         };
