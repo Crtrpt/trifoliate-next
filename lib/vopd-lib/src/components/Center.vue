@@ -34,7 +34,7 @@
             </Control> 
 
     <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  >
-      <div ref="canvas" class="  relative overflow-hidden  border shadow doc  bg-white" :style="{width:'1024px',height:'960px'}">
+      <div ref="canvas" class="  relative overflow-hidden  border shadow doc  bg-white" :style="{width:'1024px',height:'960px',margin:'80px auto'}">
         <div class="layers">
          <Layer name="refLineLayer" />
         
