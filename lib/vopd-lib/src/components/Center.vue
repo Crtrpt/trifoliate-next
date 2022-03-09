@@ -1,5 +1,5 @@
 <template>
-      <Control class=" left-8  top-4 sticky z-20"  >
+      <Control class=" left-8  top-4  absolute z-20"  >
               <div class="ToolView border border-t-gray-200 p-1 absolute mt-4 ">
                   <div class="item">
                     <i class="las la-mouse-pointer" @click="changeMode(0)"></i>
@@ -12,9 +12,29 @@
                   </div>
               </div>
       </Control>
-    <div   class="z-10" :class="[modeList[this.mode].cursor]"  ref="view"  >
-     
-      <div ref="canvas" class="  relative overflow-hidden  border shadow doc " :style="{width:'1024px',height:'960px'}">
+
+       <Control class=" right-5 mt-4 top-4   absolute ">
+              <div class=" ">
+                 <div class="flex items-center justify-center border rounded-full mx-1 px-2 bg-gray-200 shadow">
+                <input class=" inline text-sm w-10 text-center bg-inherit" value="1024"/>
+                <p class="text-sm">/</p>
+                <input class=" inline text-sm w-10 text-center bg-inherit" value="960"/>
+              </div>
+              </div>
+      </Control>
+
+      <Control class=" right-5 mt-4 bottom-4  absolute ">
+               <div class=" ">
+                <div class="flex items-center justify-center border rounded-full bg-gray-200 shadow">
+                  <i class=" item las la-search-plus leading-3 px-1 "></i>
+                  <input class=" inline text-sm w-10 bg-inherit" value="100%"/>
+                  <i class="item las la-search-minus leading-3 px-1 "></i>
+                </div>
+                </div>
+            </Control> 
+
+    <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  >
+      <div ref="canvas" class="  relative overflow-hidden  border shadow doc  bg-white" :style="{width:'1024px',height:'960px'}">
         <div class="layers">
          <Layer name="refLineLayer" />
         
@@ -40,16 +60,7 @@
                 <div class=" w-6 border shadow flex-grow"></div>
             </Control>
              -->
-            <Control class=" right-5 mt-4 top-4  sticky ">
-              <div class=" ">
-                 <div class="flex items-center justify-center border rounded-full mx-1 px-2 bg-gray-200 shadow">
-                <input class=" inline text-sm w-10 text-center bg-inherit" value="1024"/>
-                <p class="text-sm">/</p>
-                <input class=" inline text-sm w-10 text-center bg-inherit" value="960"/>
-              </div>
-              </div>
-              
-            </Control>
+           
 
              <!-- <Control class=" right-5 top-6  sticky ">
               <div class=" absolute">
@@ -57,15 +68,7 @@
               </div>
             </Control> -->
            
-            <Control class=" left-5 mt-4 top-4 sticky ">
-               <div class=" ">
-                <div class="flex items-center justify-center border rounded-full bg-gray-200 shadow">
-                  <i class=" item las la-search-plus leading-3 px-1 "></i>
-                  <input class=" inline text-sm w-10 bg-inherit" value="100%"/>
-                  <i class="item las la-search-minus leading-3 px-1 "></i>
-                </div>
-                </div>
-            </Control> 
+            
 </template>
 
 <script lang="ts">

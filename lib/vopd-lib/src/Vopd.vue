@@ -1,7 +1,7 @@
 <template>
     <div class="vopd flex flex-row" style="width:100%; height:600px">
       <Left  class="w-15 " />
-      <div class="flex-grow border overflow-scroll   relative  window">
+      <div class="flex-grow border  relative  window bg-gray-50">
           <Center class="flex-grow-0 "/>
       </div>
       <Right class="w-15"/>
