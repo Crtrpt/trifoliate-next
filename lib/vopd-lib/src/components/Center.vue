@@ -1,15 +1,29 @@
 <template>
     
-        <Control class=" left-8  top-4  absolute z-20 control"  >
-                <div class="ToolView border border-t-gray-200 p-1 absolute mt-4 ">
-                    <div class="item">
-                      <i class="las la-mouse-pointer" @click="changeMode(0)"></i>
+        <Control class=" left-8  top-4  absolute z-20 control rounded-sm"  >
+                <div class="border border-t-gray-200 p-2 absolute mt-4  shadow">
+                    <div class="">
+                      <i class="las la-mouse-pointer  "
+                        :class="{
+                          'text-blue-400':mode==0
+                        }"
+                       @click="changeMode(0)"></i>
                     </div>
-                    <div class="item">
-                      <i class="las la-hand-paper" @click="changeMode(1)"></i>
+                    <div class="">
+                      <i class="las la-hand-paper" 
+                      
+                         :class="{
+                          'text-blue-400':mode==1
+                        }"
+                      @click="changeMode(1)"></i>
                     </div>
-                    <div class="item">
-                      <i class="las la-plug" @click="changeMode(2)"></i>
+                    <div class="">
+                      <i class="las la-plug" @click="changeMode(2)" 
+                      
+                         :class="{
+                          'text-blue-400':mode==2
+                        }"
+                      ></i>
                     </div>
                 </div>
         </Control>
@@ -36,15 +50,19 @@
                 'transform-origin': 'left top'
                 }">
           <div class="layers">
-          <Layer name="refLineLayer" />
+          <!-- <Layer name="refLineLayer" /> -->
           
           <Layer name="BaseLayer" />
           
           <Layer name="SelectLayer" />
           
-          <Layer name="MouseLayer" />
+          <!-- <Layer name="MouseLayer" /> -->
+
+           <Layer name="HoverLayer" />
 
           <Layer name="HandlerLayer" />
+
+         
       
           </div>
         </div>

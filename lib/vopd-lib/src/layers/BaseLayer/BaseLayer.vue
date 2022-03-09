@@ -1,6 +1,8 @@
 <template>
     <div class="BaseLayer" :style=style>
-        <component v-bind:is="n.render"  v-for="n in this.source.list" :key="n+'xx'"  :data="n" />
+        <component class="node" v-bind:is="n.render"  v-for="n in this.source.list" :key="n+'xx'"  :data="n" 
+        @mouseenter="enter(n)" 
+ />
     </div>
 </template>
 <script lang="ts">
@@ -18,12 +20,15 @@ export default {
         return {
             source:{},
             style:{
-                pointerEvents:"none",
-                userSelect:"none"
+                // pointerEvents:"none",
+                // userSelect:"none"
             }
         };
     },
     methods:{
+        enter(n){
+            ev.fire("BaseLayer","hoverContainer",n);
+        },
         render(payload){
             this.source=payload;
         }

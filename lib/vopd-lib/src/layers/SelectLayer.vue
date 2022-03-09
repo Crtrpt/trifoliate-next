@@ -1,11 +1,8 @@
 <template>
-    <div class="SelectLayer absolute border border-blue-400 opacity-80" :style="style" v-if="mouseDown" >
-        <!-- <div class="text-sm bg-blue-400 inline-block text-white p-1 " >
-            {{style.width}},{{style.height}}
-        </div> -->
+    <div class="SelectLayer absolute border border-blue-400 opacity-40 bg-blue-400" :style="style" v-if="mouseDown" >
     </div>
 </template>
-<script>
+<script lang="ts">
 import "./SelectLayer.scss";
 import ev from "../utils/eventbus"
 export default {

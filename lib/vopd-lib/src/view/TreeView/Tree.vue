@@ -6,7 +6,7 @@
         "text-blue-400":isSelect,
         "border-white":!isSelect
     }'
-        
+    @mouseenter="enter()"
      @click="click($event)">
         <div class="name flex flex-row items-center px-2" @mouseover="hover" @mouseout="hover1">
             <i class="las la-caret-right"  @click="expand" v-if="!isExpand && data?.children?.length>0"></i>
@@ -50,6 +50,9 @@ export default {
         }
     },
     methods:{
+        enter(){
+             ev.fire("TreeView","hoverContainer",this.data);
+        },
         hover(){
             // this.isHover=true;
         },

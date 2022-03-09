@@ -58,11 +58,21 @@ export default {
            var source=JSON.parse(JSON.stringify(e));
            this.start=source.start;
            this.end=source.end;
+        },
+        select(e){
+            console.log(e.style);
+            this.start.x= parseInt(e.style.left)
+            this.start.y=parseInt(e.style.top)
+            this.end.x=parseInt(e.style.left)+parseInt(e.style.width)
+            this.end.y=parseInt(e.style.top)+parseInt(e.style.height);
         }
     },
     mounted(){
         ev.on("HandlerLayer","init",this.init)
         ev.on("HandlerLayer","selectArea",this.render)
+
+
+        ev.on("HandlerLayer","selectContainer",this.select)
     },
     setup() {
         
@@ -77,9 +87,9 @@ export default {
     display: inline-grid;
     grid-template-columns: 10px auto 10px auto 10px;
     grid-template-rows: 10px auto 10px auto 10px;
-    border:2px solid #50622b;
-    background-color: #b4cd8a;
-    opacity: .75;
+    border:1px solid #00ACDC;
+    // background-color: #b4cd8a;
+    // opacity: .75;
     grid-template-areas: 'left_top top_left  top top_right right_top'
                          'left_up . . . right_up'
                          'left . center . right'
@@ -90,9 +100,10 @@ export default {
     width:10px;
     height:10px;
     // border:1px solid blue;
-    background-color:#95bc59;
-    box-shadow: 0 0 0 2px white, 0 0 10px rgb(0 0 0 / 35%);
-    border-radius: 50%;
+    background-color: white;
+    border:1px solid #00ACDC;
+    // box-shadow: 0 0 0 1px white, 0 0 10px rgb(0 0 0 / 35%);
+    // border-radius: 50%;
     // display: inline-block;
     // position: absolute;
 }
