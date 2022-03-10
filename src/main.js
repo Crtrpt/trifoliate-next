@@ -1,7 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-
+import {
+    Dialog,
+    DialogOverlay,
+    DialogTitle,
+    DialogDescription,
+  } from '@headlessui/vue'
+  
 import {TreeView,AttrView,EventView,DataView,QueryView,EnvView,PageView,ComponentView,ContainerRender,TextRender,EchartRender} from "../lib/vopd-lib/src/main.js"
 
 let app=createApp(App);

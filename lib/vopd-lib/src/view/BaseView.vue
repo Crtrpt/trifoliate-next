@@ -9,7 +9,7 @@
             </div>
             <div class="action  p-1">
                 <slot name="action">
-                    <i class="las la-ellipsis-v"></i>
+                   
                 </slot>
             </div>
           

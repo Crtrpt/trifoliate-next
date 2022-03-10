@@ -4,17 +4,17 @@
                     <SearchBox class="flex-grow" v-model="filter.keywords" @input="change" placeholder="搜索你需要的组件"></SearchBox>
         </template>
         <template v-slot:action>
-                    <i class="las la-plus-circle"></i>
-                    <i class="las la-window-maximize"></i>
-                    <i class="las la-ellipsis-v"></i>
+                     <i class="las la-plus-circle  cursor-pointer"></i>
         </template>
          <template v-slot:content>
             <div class="grid grid-cols-2  gap-1 auto-rows-max         p-1    overflow-auto">
-                <div v-for="i in list" v-bind:key="i" class="border h-20  text-center cursor-pointer hover:bg-gray-200 " @click="add(i)">
-                    <div class="flex  justify-center items-center h-full">
-                        <div>{{i.name}}</div>
+                <template v-for="i in list" v-bind:key="i" >
+                   <div v-if="filter.keywords=='' || i.name.search(filter.keywords)>-1" class="border h-20  text-center cursor-pointer hover:bg-gray-200 "  @click="add(i)">
+                        <div class="flex  justify-center items-center h-full">
+                            <div>{{i.name}}</div>
+                        </div>
                     </div>
-                </div>
+                </template>
             </div>
         </template>
     </BaseView>

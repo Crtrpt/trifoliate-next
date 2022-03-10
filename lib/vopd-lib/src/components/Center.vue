@@ -1,6 +1,6 @@
 <template>
     
-        <Control class=" left-8  top-4  absolute z-20 control rounded-sm"  >
+        <Control class=" left-8  top-4  absolute  control rounded-sm z-40"  >
                 <div class="border border-t-gray-200 p-2 absolute mt-4  shadow">
                     <div class="">
                       <i class="las la-mouse-pointer  "
@@ -28,13 +28,13 @@
                 </div>
         </Control>
 
-        <Control class=" right-5 mt-4 top-4   absolute control">
+        <Control class=" right-5 mt-4 top-4   absolute control z-40">
                 <div class=" ">
                   <PageSize :width="page.width"  :height="page.height" @input="changeSize"></PageSize>
                 </div>
         </Control>
 
-        <Control class=" right-5 mt-4 bottom-4  absolute control">
+        <Control class=" right-5 mt-4 bottom-4  absolute control z-40">
                 <div class=" ">
                   <PageScale v-model="page.scale"></PageScale>
                   </div>
@@ -68,9 +68,7 @@
 </template>
 
 <style scoped>
-.control {
-  z-index: 999;
-}
+
 </style>
 
 <script lang="ts">

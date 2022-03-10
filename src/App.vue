@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="m-3 text-center  ">演示</div>
+
     <Vopd :value="data" ref="vopd"/>
   </div>
   
@@ -11,7 +12,8 @@ import Vopd from '../lib/vopd-lib/src/Vopd.vue'
 import './index.css'
 
 export default {
-  components:{Vopd},
+  components:{Vopd
+  },
   data(){
     return {
       data:{
