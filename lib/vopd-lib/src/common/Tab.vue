@@ -1,26 +1,28 @@
 <template>
     <div class="flex ">
         <div class="flex flex-col border border-t-gray-200 " v-if="direction=='left'">
-            <div :class="{
+            <div 
+            class="flex  flex-col  "
+            :class="{
                 'handler border  cursor-pointer p-1 text-sm  text-center ':true,
-                'bg-gray-200':this.select==i,
-            }" style="writing-mode: vertical-rl; text-orientation: upright;" v-for="(e,i) in data" :key="e.title" @click="changeSelect(i)">
-                <i :class="e.icon"></i>
-                <!-- {{e.title}} -->
+                'bg-gray-200':this.active==i,
+            }"  v-for="(e,i) in data" :key="e.title" @click="changeSelect(i)">
+                <i :class="e.icon" class="text-3xl" ></i>
+                <p>{{e.title}}</p>
             </div>
         </div>
-        <div class="content flex-grow overflow-auto border">
-            <KeepAlive>
-                <component :is="vnode.componemt" ref="cur" />
-            </KeepAlive>
-        </div>
+        <KeepAlive>
+                <component class="content flex-grow overflow-auto border w-80" :key="vnode.componemt" :is="vnode.componemt" ref="cur" @close="close" v-if="vnode!=null" />
+        </KeepAlive>
         <div class="flex flex-col border border-t-gray-200 " v-if="direction=='right'">
-            <div :class="{
+            <div
+            class="flex  flex-col "
+             :class="{
                 'handler border  cursor-pointer  text-sm  text-center p-1':true,
-                'bg-gray-200':this.select==i,
-            }" style="writing-mode: vertical-rl;" v-for="(e,i) in data" :key="e.title" @click="changeSelect(i)">
-                <i :class="e.icon"></i>
-                <!-- {{e.title}} -->
+                'bg-gray-200':this.active==i,
+            }" v-for="(e,i) in data" :key="e.title" @click="changeSelect(i)">
+                <i :class="e.icon" class="text-3xl"></i>
+                <p>{{e.title}}</p>
             </div>
         </div>
     </div>
@@ -31,29 +33,37 @@
 </style>
 
 <script lang="ts">
-import { defineComponent,nextTick } from 'vue'
+import { defineComponent } from 'vue'
 import { KeepAlive } from 'vue'
 import TabItem from './TabItem.vue'
-
 
 export default defineComponent({
     props:{
         data:Array,
         direction:String,
+        select:Number,
     },
     data() {
         return {
-            select: 0
+            active: 0
         };
     },
     computed:{
       vnode(){
-          return this.data[this.select];
+          if(this.active==-1){
+              return null
+          }else{
+              return this.data[this.active];
+          }
+          
       } 
     },
     methods:{
         changeSelect(i:number){
-            this.select=i;
+            this.active=i;
+        },
+        close(){
+            this.active=-1;
         }
     },
     mounted() {

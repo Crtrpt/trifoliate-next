@@ -1,7 +1,5 @@
 <template>
-    <div class="w-[20rem] flex">
-       <Tab class=" border-t flex-grow "  direction="left" :data="leftTop" :select="1"></Tab>
-    </div>
+     <Tab class="h-full" direction="left" :data="leftTop" :select="1"></Tab>
 </template>
 
 <script lang="ts">
@@ -18,13 +16,14 @@ export default defineComponent({
               icon:"las la-cubes",
               componemt:"ComponentView"
           },
-           {
-              title:"页面",
-              icon:"lar la-copy",
-              componemt:"PageView"
-          },{
+        //   {
+        //       title:"页面",
+        //       icon:"lar la-copy",
+        //       componemt:"PageView"
+        //   },
+          {
               title:"变量",
-              icon:"las la-ellipsis-v",
+              icon:"las la-dice-d20",
               componemt:"EnvView"
           }]
       }

@@ -1,12 +1,15 @@
 <template>
-    <div class="AttrView">
-        <div class="p-1 border-b">
-             <i class="las la-search"></i>
-        </div>
-        <div class="p-1">
-            <component v-bind:is="source.widget" v-if="source?.widget!=null" :data="source"></component>
-        </div>
-    </div>
+     <BaseView>
+            <template v-slot:lead>
+                   <SearchBox class="flex-grow" v-model="filter.keywords"></SearchBox>
+            </template>
+            <template v-slot:action>
+                    <i class="las la-times-circle cursor-pointer" @click="$emit('close')"></i>
+            </template>
+            <template v-slot:content>
+                    <component v-bind:is="source.widget" v-if="source?.widget!=null" :data="source"></component>
+            </template>
+    </BaseView>
 </template>
 
 <script lang="ts">
@@ -17,18 +20,29 @@ import Echart from "../../widget/Echart.vue";
 import Container from "../../widget/Container.vue";
 
 import ev from "../../utils/eventbus"
+import BaseView from "../BaseView.vue";
+import SearchBox from "../../common/SearchBox.vue";
 export default {
     name:"AttrView",
     data(){
         return {
+            filter:{
+                keywords:""
+            },
             source:{
                 widget:null
             }
         }
     },
     components:{
-        Text,Image,Video,Echart,Container
-    },
+    Text,
+    Image,
+    Video,
+    Echart,
+    Container,
+    BaseView,
+    SearchBox
+},
     methods:{
        selectContainer(p){
         //    console.log("选择容器")

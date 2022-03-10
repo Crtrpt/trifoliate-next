@@ -6,6 +6,7 @@
             <div class="action">
                 <i class="las la-plus-circle"></i>
                 <i class="las la-window-maximize"></i>
+                <i class="las la-times-circle cursor-pointer" @click="$emit('close')"></i>
             </div>
         </div>
         <div class="px-1 overflow-auto flex-grow">

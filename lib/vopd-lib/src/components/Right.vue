@@ -1,7 +1,5 @@
 <template>
-     <div class="border  w-[20rem] flex flex-col">
-            <Tab  class=" border-t flex-grow " direction="right" :data="right"></Tab>
-        </div>
+     <Tab  class="h-full" direction="right" :data="right"></Tab>
 </template>
 
 <script lang="ts">
@@ -27,18 +25,19 @@ export default defineComponent({
               title:"属性",
               icon:"las la-bars",
               componemt:"AttrView"
-          },{
-              title:"事件",
-              icon:"las la-ellipsis-v",
-              componemt:"EventView"
           },
+        //   {
+        //       title:"事件",
+        //       icon:"las la-ellipsis-v",
+        //       componemt:"EventView"
+        //   },
           {
               title:"数据",
               icon:"las la-database",
               componemt:"DataView"
           },{
               title:"结果",
-              icon:"las la-ellipsis-v",
+              icon:"las la-table",
               componemt:"QueryView"
           }]
       }

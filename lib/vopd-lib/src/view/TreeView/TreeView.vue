@@ -6,11 +6,11 @@
         <template v-slot:action>
                     <i class="las la-check"  v-if="!isMultipleSelect" @click="changeSelectMode"></i>
                     <i class="las la-check-double"  v-if="isMultipleSelect" @click="changeSelectMode"></i>
-                    <i class="las la-plus-circle"></i>
+                    <i class="las la-times-circle cursor-pointer" @click="$emit('close')"></i>
         </template>
          <template v-slot:content>
              <div class="flex flex-col">
-                <div class="flex-grow p-1 overflow-auto">
+                <div class="flex-grow py-1 overflow-auto">
                     <Tree v-for="i in source.list" :key="i" :data="i" :level="1"></Tree>
                 </div>
             </div> 

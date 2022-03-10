@@ -4,7 +4,7 @@
                     <SearchBox class="flex-grow" v-model="filter.keywords" @input="change" placeholder="搜索你需要的组件"></SearchBox>
         </template>
         <template v-slot:action>
-                     <i class="las la-plus-circle  cursor-pointer"></i>
+                    <i class="las la-times-circle cursor-pointer" @click="close"></i>
         </template>
          <template v-slot:content>
             <div class="grid grid-cols-2  gap-1 auto-rows-max         p-1    overflow-auto">
@@ -66,6 +66,9 @@ export default defineComponent({
     SearchBox
 },
     methods:{
+        close(v){
+            this.$emit("close")
+        },
         change(v){
             console.log("变更下")
         },  
