@@ -17,7 +17,8 @@
     "immutable": "^4.0.0",
     "install": "^0.13.0",
     "npm": "^8.5.3",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@codemirror/lang-cpp": "0.19.1",

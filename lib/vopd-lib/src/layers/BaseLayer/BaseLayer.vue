@@ -1,10 +1,14 @@
 <template>
     <div class="BaseLayer" :style=style>
-        <component class="node" v-bind:is="n.render"  v-for="n in this.source.list" :key="n+'xx'"  :data="n" 
-        @mousedown="mousedown($event,n)"
-        @click="click($event,n)"
-        @mouseenter="enter(n)" 
- />
+        <template v-for="n in this.source.list" :key="n+'xx'" >
+              <component class="node" v-bind:is="n.render"   :data="n" 
+                        v-if="!n.attr['isDelete'] && !n.attr['isEye']"
+                        @mousedown="mousedown($event,n)"
+                        @click="click($event,n)"
+                        @mouseenter="enter(n)" 
+                />
+        </template>
+      
     </div>
 </template>
 <script lang="ts">
@@ -31,6 +35,7 @@ export default {
         click(e,n){
             console.log("点击部件")
             ev.fire("BaseLayer","selectContainer",n);
+            ev.fire("BaseLayer","change",n)
             e.stopPropagation();
         },
         mousedown(e,n){
@@ -40,8 +45,10 @@ export default {
         enter(n){
             ev.fire("BaseLayer","hoverContainer",n);
         },
-        render(payload){
-            this.source=payload;
+        render(payload,ctx){
+            console.log("取消选择");
+            ev.fire("BaseLayer","cancelHandlerContainer","");
+            this.source=ctx.data.project;
         },
         active(n:any){
             this.style.pointerEvents="";
@@ -58,6 +65,7 @@ export default {
         ev.on("BaseLayer","init",this.render);
         ev.on("BaseLayer","mousedown",this.inactivated)
         ev.on("BaseLayer","mouseup",this.active)
+        ev.on("BaseLayer","change",this.render)
     },
     setup() {
         

@@ -23,7 +23,6 @@
     </div>
 </template>
 <script lang="ts">
-import "./HandlerLayer.scss";
 import ev from "../utils/eventbus"
 export default {
     name:"HandlerLayer",
@@ -60,11 +59,12 @@ export default {
            this.end=source.end;
         },
         cancelSelect(e){
+            console.log("取消选择")
                 this.start.x=0;
                 this.end.x=0;
         },
         select(e){
-            console.log(e.style);
+            
             this.start.x= parseInt(e.style.left)
             this.start.y=parseInt(e.style.top)
             this.end.x=parseInt(e.style.left)+parseInt(e.style.width)
@@ -76,6 +76,7 @@ export default {
         ev.on("HandlerLayer","mousedown",this.cancelSelect)
         ev.on("HandlerLayer","selectArea",this.render)
         ev.on("HandlerLayer","selectContainer",this.select)
+        ev.on("HandlerLayer","cancelHandlerContainer",this.cancelSelect)
     },
     setup() {
         

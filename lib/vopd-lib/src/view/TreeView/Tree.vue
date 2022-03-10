@@ -2,32 +2,35 @@
     <div class="node cursor-pointer border   hover:border hover:border-gray-200  "
     
     :class='{
-        "border-blue-400":isSelect,
-        "text-blue-400":isSelect,
-        "border-white":!isSelect
+        "border-blue-400":data.attr["isSelect"],
+        "text-blue-400":data.attr["isSelect"],
+        "border-white":!data.attr["isSelect"],
     }'
     @mouseenter="enter()"
-     @click="click($event)">
+     @click="click(data,$event)">
         <div class="name flex flex-row items-center px-2" @mouseover="hover" @mouseout="hover1">
             <i class="las la-caret-right"  @click="expand" v-if="!isExpand && data?.children?.length>0"></i>
             <i class="las la-caret-down"  @click="expand" v-if="isExpand && data?.children?.length>0"></i>
-            <p class="flex-grow" @click="expand"> {{data.name}}</p>
+            <p class="flex-grow" @click="expand"> {{data.name}} </p>
             <div class="action" v-if="isHover">
                     <i class="las la-eye"
                         :class='{
-                        "la-eye":isEye,
-                        "la-eye-slash":!isEye
+                        "la-eye":!data.attr["isEye"],
+                        "la-eye-slash":data.attr["isEye"]
                     }'
-                     @click="eye(data)"></i>
-                    <i class="las la-trash" @click="trash(data)"></i>
+                     @click="eye(data,$event)"></i>
+                    <i class="las la-trash" @click="trash(data,$event)"></i>
                     <i class="las " :class='{
-                        "la-lock":isLock,
-                        "la-unlock":!isLock
-                    }' @click="lock(data)"></i>
+                        "la-lock":data.attr["isLock"],
+                        "la-unlock":!data.attr["isLock"]
+                    }' @click="lock(data,$event)"></i>
             </div>
         </div>
         <div class="children" :style="{marginLeft:20*level+'px'}" v-if=" isExpand && data?.children?.length>0">
-            <Tree v-for="n in data.children" :key="n.id" :data="n" :level="level+1"></Tree>
+            <template v-for="n in data.children" :key="n.id">
+                <Tree  :data="n" :level="level+1" v-if="!n.attr['isDelete']"></Tree>
+            </template>
+            
         </div>
     </div>
 </template>
@@ -37,7 +40,8 @@ import ev from "../../utils/eventbus"
 export default {
     props:{
         data:Object,
-        level:Number
+        level:Number,
+        isMultipleSelect:Boolean,
     },
     data:function(){
         return {
@@ -46,32 +50,32 @@ export default {
             isLock:false,
             isEye:true,
             isTrash:true,
-            isSelect:false,
+            isDelete:false,
         }
     },
     methods:{
         enter(){
              ev.fire("TreeView","hoverContainer",this.data);
         },
-        hover(){
-            // this.isHover=true;
+        eye(node,e:any){
+            ev.fire("TreeView","eyeContainer",node)
+            ev.fire("none","change",node)
+             e.stopPropagation();
         },
-         hover1(){
-            // this.isHover=false;
-        },
-        eye(){
-            this.isEye=!this.isEye;
-        },
-        trash(){
-
-        },
-        lock(){
-            this.isLock=!this.isLock;
-        },
-        click(e:any){
-            this.isSelect=!this.isSelect;
+        trash(node,e:any){
+            ev.fire("TreeView","deleteContainer",node)
+            ev.fire("none","change",node)
             e.stopPropagation();
+        },
+        lock(node,e:any){
+            ev.fire("TreeView","lockContainer",node)
+            ev.fire("none","change",node)
+              e.stopPropagation();
+        },
+        click(node,e:any){
             ev.fire("TreeView","selectContainer",this.data)
+            ev.fire("none","change",node)
+            e.stopPropagation();
         },
         expand(){
             this.isExpand=!this.isExpand;

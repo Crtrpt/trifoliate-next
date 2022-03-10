@@ -13,7 +13,6 @@ class EventBus{
         }
         clientList?.set(clientId,handler);
         this.pipline.set(eventName,clientList);
-       
     }
     //取消订阅
     off(clientId:String,eventName:String){
@@ -33,13 +32,21 @@ class EventBus{
        
         var clientList=this.pipline.get(eventName);
         clientList?.forEach((handler,idx) => {
-            console.log(idx+":"+eventName);
-            handler(payload,this.ctx);
+            console.log(idx+":"+idx);
+            if(clientId!=idx){
+                handler(payload,this.ctx);
+            }
+            
         });
     }
     initCtx(ctx:any){
         this.ctx.dataInit(ctx);
         this.fire("vopd","init",ctx.project);
+        console.log(this.ctx.selectContainer);
+        this.on("vopd","selectContainer", this.ctx.selectContainer);
+        this.on("vopd","deleteContainer", this.ctx.deleteContainer);
+        this.on("vopd","lockContainer", this.ctx.lockContainer);
+        this.on("vopd","eyeContainer", this.ctx.eyeContainer);
     }
     queryCtx(){
         return this.ctx;

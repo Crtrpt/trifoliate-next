@@ -1,9 +1,11 @@
 <template>
-    <div class="flex items-center justify-center border rounded-full mx-1 px-2 bg-gray-200 shadow">
-      
-                <input class=" inline text-xs w-12 text-center bg-inherit" v-model="w" @change="change" type="num" />
-                <p class="text-xs">/</p>
-                <input class=" inline text-xs w-12 text-center bg-inherit" v-model="h" @change="change" type="num" />
+    <div class="flex items-center justify-center border rounded-full mx-1 px-2 bg-gray-200 shadow items-center">
+                <i class="las la-desktop"></i>
+                <!-- <input  v-model="w" @change="change" type="num" /> -->
+                <p class=" inline text-xs w-12 text-center bg-inherit"> {{w}}</p>
+                <p class="text-xs">*</p>
+                 <p class=" inline text-xs w-12 text-center bg-inherit"> {{h}}</p>
+                <!-- <input class=" inline text-xs w-12 text-center bg-inherit" v-model="h" @change="change" type="num" /> -->
               </div>
 </template>
 
@@ -12,28 +14,31 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
     props:{
-        width:String,
-        height:String
+        ctx:Object
     },
     data(){
         return {
-            w:"",
-            h:"",
+            w:this.ctx.width||"1024px",
+            h:this.ctx.height||"960px",
         }
     },
     watch:{
-       
+        "ctx":{
+            deep:true,
+            handler(n){
+                this.w=n.width;
+                this.h=n.height;
+            }
+        }
     },
-    created(){
-        console.log(this.width);
-        this.w=this.width;
-        this.h=this.height;
+    mounted(){
+
     },
     methods:{
         change(){
             var p={w:this.w,h:this.h}
             console.log(p);
-            this.$emit("input",p);
+            // this.$emit("input",p);
         }
     },
     setup() {

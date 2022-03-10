@@ -1,17 +1,19 @@
 <template>
      <BaseView>
          <template v-slot:lead>
-                   <SearchBox class="flex-grow" v-model="filter.keywords"></SearchBox>
+                <VSwitch v-model="isMultipleSelect"  ></VSwitch>
         </template>
         <template v-slot:action>
-                    <i class="las la-check"  v-if="!isMultipleSelect" @click="changeSelectMode"></i>
-                    <i class="las la-check-double"  v-if="isMultipleSelect" @click="changeSelectMode"></i>
+               <div class="flex items-center">
                     <i class="las la-times-circle cursor-pointer" @click="$emit('close')"></i>
+               </div>
         </template>
          <template v-slot:content>
              <div class="flex flex-col">
                 <div class="flex-grow py-1 overflow-auto">
-                    <Tree v-for="i in source.list" :key="i" :data="i" :level="1"></Tree>
+                    <template v-for="i in source.list" :key="i" >
+                         <Tree  v-if="!i.attr['isDelete']" :data="i" :level="1" :isMultipleSelect="isMultipleSelect"></Tree>
+                    </template>
                 </div>
             </div> 
         </template>
@@ -23,8 +25,9 @@ import ev from "../../utils/eventbus"
 import Tree from "./Tree.vue"
 import BaseView from "../BaseView.vue"
 import SearchBox from "../../common/SearchBox.vue"
+import VSwitch from "../../common/VSwitch.vue"
 export default {
-    components:{ Tree, BaseView, SearchBox },
+    components:{ Tree, BaseView, SearchBox, VSwitch },
     data(){
         return {
             lastSelect:null,
@@ -33,23 +36,38 @@ export default {
             filter:{
                     keywords:""
             },
+            searchList:[
+
+            ],
             source:{
-               
-                list:{}
+                list:[],
             }
         };
     },
+    watch:{
+        "filter.keywords":{
+            handler(n){
+                //TODO 树搜索
+                this.search(this.source.list,path);
+            }
+        }
+    },
     methods:{
+        search(list,ctx){
+            
+        },
         changeSelectMode(){
                 this.isMultipleSelect=!this.isMultipleSelect
         },
-        render(payload:any){
-            console.log(payload);
-            this.source=payload;
+        render(payload:any,ctx:any){
+            console.log(ctx.data.project);
+            this.source=ctx.data.project;
         }
     },
     mounted(){
         ev.on("TreeView","init",this.render)
+        //数据变更的时候重新拉取数据
+        ev.on("TreeView","change",this.render)
     }
 }
 </script>

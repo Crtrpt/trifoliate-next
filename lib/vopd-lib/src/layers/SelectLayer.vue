@@ -62,6 +62,7 @@ export default {
         ev.on("SelectLayer","mousedown",this.down)
         ev.on("SelectLayer","mouseup",this.up)
         ev.on("SelectLayer","mousemove",this.move)
+
     },        
     setup() {
         

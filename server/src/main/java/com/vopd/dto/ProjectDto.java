@@ -2,6 +2,7 @@ package com.vopd.dto;
 
 import lombok.Data;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Data
@@ -12,4 +13,6 @@ public class ProjectDto {
     List<Object> env;
     Integer maxId;
     Object page;
+    HashMap<String,Object> hashIds;
+    HashMap<String,Object> hashNames;
 }

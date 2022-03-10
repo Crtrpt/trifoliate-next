@@ -118,13 +118,13 @@
   "list": [
     {
       "id": 1,
-      "name": "容器",
+      "name": "容器1",
       "render": "ContainerRender",
       "widget": "Container",
       "children": [
         {
           "id": 3,
-          "name": "文字",
+          "name": "文字1",
           "render": "TextRender",
           "content": "这是一段文本11",
           "widget": "Text",
@@ -134,11 +134,13 @@
             "top": "100px",
             "position": "absolute",
             "border": "1px solid red"
-          }
+          },
+          "attr":{},
+          "ref":[]
         },
         {
           "id": 4,
-          "name": "文字",
+          "name": "文字2",
           "render": "TextRender",
           "content": "这是一段文本11",
           "widget": "Text",
@@ -148,77 +150,9 @@
             "top": "100px",
             "position": "absolute",
             "border": "1px solid red"
-          }
-        },
-        {
-          "id": 5,
-          "name": "文字",
-          "render": "TextRender",
-          "content": "这是一段文本11",
-          "widget": "Text",
-          "style": {
-            "width": "100px",
-            "left": "100px",
-            "top": "100px",
-            "position": "absolute",
-            "border": "1px solid red"
-          }
-        },
-        {
-          "id": 6,
-          "name": "文字",
-          "render": "TextRender",
-          "content": "这是一段文本11",
-          "widget": "Text",
-          "style": {
-            "width": "100px",
-            "left": "100px",
-            "top": "100px",
-            "position": "absolute",
-            "border": "1px solid red"
-          }
-        },
-        {
-          "id": 7,
-          "name": "文字",
-          "render": "TextRender",
-          "content": "这是一段文本11",
-          "widget": "Text",
-          "style": {
-            "width": "100px",
-            "left": "100px",
-            "top": "100px",
-            "position": "absolute",
-            "border": "1px solid red"
-          }
-        },
-        {
-          "id": 8,
-          "name": "文字",
-          "render": "TextRender",
-          "content": "这是一段文本11",
-          "widget": "Text",
-          "style": {
-            "width": "100px",
-            "left": "100px",
-            "top": "100px",
-            "position": "absolute",
-            "border": "1px solid red"
-          }
-        },
-        {
-          "id": 9,
-          "name": "文字",
-          "render": "TextRender",
-          "content": "这是一段文本11",
-          "widget": "Text",
-          "style": {
-            "width": "100px",
-            "left": "100px",
-            "top": "100px",
-            "position": "absolute",
-            "border": "1px solid red"
-          }
+          },
+          "attr":{},
+          "ref":[]
         }
       ],
       "style": {
@@ -228,97 +162,13 @@
         "top": "100px",
         "position": "absolute",
         "background": "lightblue"
-      }
-    },
-    {
-      "id": 2,
-      "name": "容器",
-      "render": "ContainerRender",
-      "widget": "Container",
-      "children": [
-        {
-          "id": 10,
-          "name": "文字",
-          "render": "TextRender",
-          "content": "这是一段文本11",
-          "widget": "Text",
-          "style": {
-            "width": "100px",
-            "left": "100px",
-            "top": "100px",
-            "position": "absolute",
-            "border": "1px solid red"
-          }
-        },
-        {
-          "id": 11,
-          "name": "文字",
-          "render": "TextRender",
-          "content": "这是一段文本11",
-          "widget": "Text",
-          "style": {
-            "width": "100px",
-            "left": "100px",
-            "top": "100px",
-            "position": "absolute",
-            "border": "1px solid red"
-          }
-        },
-        {
-          "id": 12,
-          "name": "文字",
-          "render": "TextRender",
-          "content": "这是一段文本11",
-          "widget": "Text",
-          "style": {
-            "width": "100px",
-            "left": "100px",
-            "top": "100px",
-            "position": "absolute",
-            "border": "1px solid red"
-          }
-        },
-        {
-          "id": 13,
-          "name": "文字",
-          "render": "TextRender",
-          "content": "这是一段文本11",
-          "widget": "Text",
-          "style": {
-            "width": "100px",
-            "left": "100px",
-            "top": "100px",
-            "position": "absolute",
-            "border": "1px solid red"
-          }
-        },
-        {
-          "id": 14,
-          "name": "文字",
-          "render": "TextRender",
-          "content": "这是一段文本11",
-          "widget": "Text",
-          "style": {
-            "width": "100px",
-            "left": "100px",
-            "top": "100px",
-            "position": "absolute",
-            "border": "1px solid red"
-          }
-        }
-      ],
-      "style": {
-        "width": "800px",
-        "left": "800px",
-        "height": "200px",
-        "top": "200px",
-        "position": "absolute",
-        "background": "lightblue"
-      }
+      },
+      "attr":{},
+      "ref":[]
     },
     {
       "id": 100,
-      "name": "容器",
+      "name": "容器3",
       "render": "ContainerRender",
       "widget": "Container",
       "children": [
@@ -347,7 +197,9 @@
                 "data": [5, 20, 36, 10, 10, 20]
               }
             ]
-          }
+          },
+          "attr":{},
+          "ref":[]
         },
         {
           "id": 102,
@@ -357,7 +209,9 @@
           "style": {
             "width": "400px",
             "height": "400px"
-          }
+          },
+          "attr":{},
+          "ref":[]
         }
       ],
       "style": {
@@ -366,13 +220,18 @@
         "height": "200px",
         "top": "400px",
         "position": "absolute"
-      }
+      },
+      "attr":{
+        "isLock": true
+      },
+      "ref":[]
     }
   ],
   "page":{
     "width": "1680px",
     "height": "1050px",
-    "scale":1
+    "scale":1,
+    "displayGrid":true
   },
   "env":[
     {
@@ -388,6 +247,8 @@
       "description":"所属企业"
     }
   ],
+  "hashIds": {},
+  "hashNames":{},
   "maxId":1,
   "api":"http://127.0.0.1:8080"
 }

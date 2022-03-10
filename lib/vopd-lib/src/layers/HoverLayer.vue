@@ -1,5 +1,7 @@
 <template>
-    <div class="HoverLayer absolute  opacity-80 border-2 pointer-events-none select-none" :style="style"  >
+    <div class="HoverLayer absolute  opacity-80 border-2 pointer-events-none select-none" :style="style"
+        v-if="style.width!='0px'"
+      >
     </div>
 </template>
 <script lang="ts">
@@ -32,10 +34,13 @@ export default {
         }
     },
     methods:{
+        cancelSelect(e){
+            console.log("select layer 取消选择")
+            this.start.x=0;
+            this.end.x=0;
+        },
         hover(e){
-           console.log("部件悬停")
-           console.log(e);
-            
+
             this.start.x= parseInt(e.style.left)
             this.start.y=parseInt(e.style.top)
             this.end.x=parseInt(e.style.left)+parseInt(e.style.width)
@@ -43,7 +48,9 @@ export default {
         }
     },
     mounted(){
-         ev.on("HoverLayer","hoverContainer",this.hover)
+        ev.on("HoverLayer","hoverContainer",this.hover)
+        ev.on("HoverLayer","cancelHandlerContainer",this.cancelSelect)
+
     },        
     setup() {
         
