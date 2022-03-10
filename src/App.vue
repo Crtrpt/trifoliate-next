@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div class="m-3 text-center  ">演示</div>
+  <div class="flex flex-col h-full">
+    <div class="m-3 text-center  " >演示</div>
 
-    <Vopd :value="data" ref="vopd"/>
+    <Vopd :value="data" ref="vopd"  style="height:90vh"/>
   </div>
   
 </template>

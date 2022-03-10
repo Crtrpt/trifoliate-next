@@ -1,5 +1,5 @@
 <template>
-    <div class="vopd flex flex-row" style="width:100%; height:600px">
+    <div class="vopd flex flex-row">
       <Left  class="w-15 " />
       <div class="flex-grow border  relative  window bg-gray-50 overflow-hidden ">
           <Center class="flex-grow-0 "/>
