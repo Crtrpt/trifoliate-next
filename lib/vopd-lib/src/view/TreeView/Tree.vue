@@ -7,11 +7,14 @@
         "border-white":!data.attr["isSelect"],
     }'
     @mouseenter="enter()"
-     @click="click(data,$event)">
+     >
         <div class="name flex flex-row items-center px-2" @mouseover="hover" @mouseout="hover1">
             <i class="las la-caret-right"  @click="expand" v-if="!isExpand && data?.children?.length>0"></i>
             <i class="las la-caret-down"  @click="expand" v-if="isExpand && data?.children?.length>0"></i>
-            <p class="flex-grow" @click="expand"> {{data.name}} </p>
+            <p class="flex-grow flex items-center" @click="click(data,$event)" > 
+                <div>{{data.name}} </div>
+                <div class=" ml-2 text-xs px-1  rounded-full text-white bg-gray-300"> {{data.id}}</div>
+                 </p>
             <div class="action" v-if="isHover">
                     <i class="las la-eye"
                         :class='{

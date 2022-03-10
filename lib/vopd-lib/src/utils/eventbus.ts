@@ -36,7 +36,6 @@ class EventBus{
             if(clientId!=idx){
                 handler(payload,this.ctx);
             }
-            
         });
     }
     initCtx(ctx:any){

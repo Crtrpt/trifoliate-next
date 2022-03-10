@@ -22,6 +22,9 @@ import EchartRender from "../../render/EchartRender.vue"
 export default {
     components:{ContainerRender,TextRender,EchartRender},
     name:"BaseLayer",
+    props:{
+        ctx:Object
+    },
     data(){
         return {
             source:{},
