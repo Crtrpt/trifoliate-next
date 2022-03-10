@@ -9,6 +9,8 @@
     "package": "echo  package"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^0.19.7",
+    "@codemirror/lang-sql": "^0.19.4",
     "typescript": "^4.6.2",
     "vopd-lib": "file:lib/vopd-lib",
     "vue": "^3.2.25"
