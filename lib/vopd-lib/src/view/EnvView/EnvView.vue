@@ -4,7 +4,7 @@
                    <SearchBox class="flex-grow" v-model="filter.keywords"></SearchBox>
         </template>
         <template v-slot:action>
-                    <i class="las la-plus-circle  cursor-pointer"></i>
+                    <i class="las la-plus-circle  cursor-pointer" @click="add"></i>
         </template>
          <template v-slot:content>
              <div  v-for="i in list" v-bind:key="i.name">
@@ -51,6 +51,12 @@ export default defineComponent({
             console.log("环境变量")
                console.log(p)
              this.list=p.env;
+        },
+        add(){
+            this.list.push({
+                name:"",
+                value:""
+            })
         }
     },
     mounted(){

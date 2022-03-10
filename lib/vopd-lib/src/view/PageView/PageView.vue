@@ -6,13 +6,13 @@
         <template v-slot:action>
                 <i class="las la-plus-circle  cursor-pointer" @click="add"></i>
                 <VDialog :open="isOpen" ref="vdialog" title="">
-                    <input   class="form-input w-full h-full outline-none leading-10 text-xl" type="text" v-model="form.name" v-on:keyup.enter="save"/>
+                    <input  placeholder="输入页面名称"  class="form-input w-full h-full outline-none leading-10 text-xl" type="text" v-model="form.name" v-on:keyup.enter="save"/>
                 </VDialog>
         </template>
          <template v-slot:content>
             <div class="grid  gap-1 auto-rows-max         p-1    overflow-auto">
                 <template v-for="(i,idx) in list" v-bind:key="i" >
-                    <div class=" flex  h-8  text-center cursor-pointer items-center border px-1  hover:border-blue-400" v-if="(filter.keywords=='' || i.name.search(filter.keywords)>-1)&& i._delete!=true" >
+                    <div  @click="edit(i,idx)"  class=" flex  h-8  text-center cursor-pointer items-center border px-1  hover:border-blue-400" v-if="(filter.keywords=='' || i.name.search(filter.keywords)>-1)&& i._delete!=true" >
                                 <div  class="flex flex-grow  items-center  text-sm">{{i.name}}</div>
                                 <div class="px-1"> 
                                     <i class="las la-pen" @click="edit(i,idx)"></i>

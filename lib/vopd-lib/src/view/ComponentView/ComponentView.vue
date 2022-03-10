@@ -30,7 +30,7 @@ export default defineComponent({
     data(){
         return {
             filter:{
-                keywords:"111"
+                keywords:""
             },
                 list:[
                 {
