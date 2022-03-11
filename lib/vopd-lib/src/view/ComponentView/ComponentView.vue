@@ -10,7 +10,7 @@
             <div class="grid grid-cols-2  gap-1 auto-rows-max         p-1    overflow-auto">
                 <template v-for="i in list" v-bind:key="i" >
                    <div v-if="filter.keywords=='' || i.name.search(filter.keywords)>-1" class="border h-20  text-center cursor-pointer hover:bg-gray-200 "  @click="add(i)">
-                        <div class="flex  justify-center items-center h-full">
+                        <div class="flex  justify-center items-center h-full" draggable="true">
                             <div>{{i.name}}</div>
                         </div>
                     </div>
@@ -57,6 +57,11 @@ export default defineComponent({
                 id:5,
                 name:"地图",
                 widget:"Map"
+                },
+                 {
+                id:6,
+                name:"表格",
+                widget:"Table"
                 },
             ]
         }

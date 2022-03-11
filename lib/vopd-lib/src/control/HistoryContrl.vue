@@ -1,7 +1,7 @@
 <template>
     <div class="flex items-center justify-center border rounded-full mx-1 px-2 bg-gray-200 shadow">
-        <i class="las la-border-all"></i>
-        <VSwitch v-model="display" @change="change"></VSwitch>
+       <i class="las la-undo cursor-pointer"></i>
+       <i class="las la-redo cursor-pointer"></i>
     </div>
 </template>
 
@@ -9,23 +9,23 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import ev from "../utils/eventbus"
-import VSwitch from "../common/VSwitch.vue"
+
 
 export default defineComponent({
     props: {
-        ctx: Object
+        
     },
     data() {
         return {
-            display: this.ctx.displayGrid || true
+           
         };
     },
     methods: {
         change() {
-            console.log(this.display);
-            this.$emit("input", this.display);
+            console.log("change");
+           
         }
     },
-    components: { VSwitch }
+    components: {  }
 })
 </script>

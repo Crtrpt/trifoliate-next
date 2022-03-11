@@ -126,13 +126,12 @@
           "id": 3,
           "name": "文字1",
           "render": "TextRender",
-          "content": "这是一段文本11",
+          "content": "111",
           "widget": "Text",
           "style": {
             "width": "100px",
-            "left": "100px",
-            "top": "100px",
-            "position": "absolute",
+            "height": "100px",
+
             "border": "1px solid red"
           },
           "attr":{},
@@ -142,13 +141,25 @@
           "id": 4,
           "name": "文字2",
           "render": "TextRender",
-          "content": "这是一段文本11",
+          "content": "222",
           "widget": "Text",
           "style": {
             "width": "100px",
-            "left": "100px",
-            "top": "100px",
-            "position": "absolute",
+            "height": "100px",
+            "border": "1px solid red"
+          },
+          "attr":{},
+          "ref":[]
+        },
+        {
+          "id": 5,
+          "name": "文字3",
+          "render": "TextRender",
+          "content": "222",
+          "widget": "Text",
+          "style": {
+            "width": "100px",
+            "height": "100px",
             "border": "1px solid red"
           },
           "attr":{},
@@ -231,7 +242,11 @@
     "width": "1680px",
     "height": "1050px",
     "scale":1,
-    "displayGrid":true
+    "displayGrid":true,
+    "marginLeft":"80px" ,
+    "marginRight":"80px" ,
+    "marginTop":"80px" ,
+    "marginBottom":"80px"
   },
   "env":[
     {

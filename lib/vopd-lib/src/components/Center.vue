@@ -1,6 +1,6 @@
 <template>
       <div class="flex-grow border  relative  window bg-gray-50 overflow-hidden ">
-        <Control class=" left-8  top-4  absolute  control rounded-sm z-40"  >
+        <Control class=" left-8  top-10  absolute  control rounded-sm z-40"  >
                 <div class="border border-t-gray-200 p-2 absolute mt-4  shadow">
                     <div class="">
                       <i class="las la-mouse-pointer  "
@@ -28,6 +28,14 @@
                 </div>
         </Control>
 
+        <Control class=" absolute  z-40">
+               <RolerContrl :ctx="page" />
+        </Control>
+
+        <Control class=" left-20 mt-4 top-4   absolute control z-40 flex">
+               <HistoryContrl />
+        </Control>
+
         <Control class=" right-5 mt-4 top-4   absolute control z-40 flex">
                 <PageSize   :ctx="page" @input="changeSize"></PageSize>
 
@@ -37,7 +45,7 @@
         <Control class=" right-5 mt-4 bottom-4  absolute control z-40">
                 <div class=" ">
                   <PageScale v-model="page.scale"></PageScale>
-                  </div>
+                </div>
         </Control> 
 
         <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  >
@@ -45,10 +53,15 @@
                 :style="{
                   width: page.width,
                   height:page.height,
-                  margin:'80px 80px 80px 80px',
+                  marginLeft:page.marginLeft ,
+                  marginRight:page.marginRight ,
+                  marginTop:page.marginTop ,
+                  marginBottom:page.marginBottom ,
                   transform: 'scale('+page.scale+')',
                   'transform-origin': 'left top'
-                  }">
+                  }"
+              @dragover="allowDrop($event)"
+            >
             <div class="layers">
             <!-- <Layer name="refLineLayer" /> -->
           
@@ -82,10 +95,12 @@ import ToolView from '../view/ToolView/ToolView.vue'
 import PageScale from '../control/PageScale.vue'
 import PageSize from '../control/PageSize.vue'
 import GridContrl from '../control/GridContrl.vue'
+import HistoryContrl from '../control/HistoryContrl.vue'
+import RolerContrl from '../control/RolerContrl.vue'
 
 
 export default defineComponent({
-  components: { Layer, Control, ToolView, PageScale, PageSize, GridContrl },
+  components: { Layer, Control, ToolView, PageScale, PageSize, GridContrl, HistoryContrl, RolerContrl },
   computed:{
     pageScale(){
       return (this.page.scale)*100
@@ -97,6 +112,10 @@ export default defineComponent({
         width:"1024px",
         height:"960px",
         displayGrid:true,
+        marginLeft:"80px" ,
+        marginRight:"80px" ,
+        marginTop:"80px" ,
+        marginBottom:"80px"
       },
       mode:0,
       modeList:[
@@ -117,6 +136,9 @@ export default defineComponent({
     }
   },
   methods:{
+    allowDrop(e){
+        e.preventDefault();
+    },  
     changeSize(p:any){
         this.page.width=p.w;
         this.page.height=p.h;

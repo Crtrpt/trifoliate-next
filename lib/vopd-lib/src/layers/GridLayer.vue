@@ -52,14 +52,14 @@ export default {
                 ctx.setLineDash([0]);
                 for(var i=0;i<parseInt(this.width);i=i+100){
                     ctx.beginPath(); 
-                    let s=i
+                    let s=i+0.5
                     ctx.moveTo(s,0);
                     ctx.lineTo(s,this.height);
                     ctx.stroke();
                 }
                 for(var i=0;i<parseInt(this.height);i=i+100){
                     ctx.beginPath(); 
-                    let s=i
+                    let s=i+0.5
                     ctx.moveTo(0,s);
 
                     ctx.lineTo(this.width,s);

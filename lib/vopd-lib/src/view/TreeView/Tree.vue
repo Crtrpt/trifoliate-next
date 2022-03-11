@@ -1,6 +1,6 @@
 <template>
     <div class="node cursor-pointer border   hover:border hover:border-gray-200  "
-    
+        @dragover="allowDrop($event)"
     :class='{
         "border-blue-400":data.attr["isSelect"],
         "text-blue-400":data.attr["isSelect"],
@@ -57,6 +57,9 @@ export default {
         }
     },
     methods:{
+        allowDrop(e){
+            e.preventDefault();
+        },
         enter(){
              ev.fire("TreeView","hoverContainer",this.data);
         },
