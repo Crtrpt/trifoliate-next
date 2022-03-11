@@ -18,9 +18,10 @@ import ev from "../../utils/eventbus";
 import ContainerRender from "../../render/ContainerRender.vue";
 import TextRender from "../../render/TextRender.vue"
 import EchartRender from "../../render/EchartRender.vue"
+import MapRender from "../../render/MapRender.vue";
 
 export default {
-    components:{ContainerRender,TextRender,EchartRender},
+    components:{ContainerRender,TextRender,EchartRender,MapRender},
     name:"BaseLayer",
     props:{
         ctx:Object

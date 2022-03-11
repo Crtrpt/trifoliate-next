@@ -218,7 +218,7 @@
           "render": "MapRender",
           "widget": "Map",
           "style": {
-            "width": "400px",
+            "width": "800px",
             "height": "400px"
           },
           "attr":{},
@@ -226,11 +226,12 @@
         }
       ],
       "style": {
-        "width": "400px",
-        "left": "500px",
-        "height": "200px",
+        "width": "1680px",
+        "left": "0px",
+        "height": "400px",
         "top": "400px",
-        "position": "absolute"
+        "position": "absolute",
+        "display": "flex"
       },
       "attr":{
         "isLock": true

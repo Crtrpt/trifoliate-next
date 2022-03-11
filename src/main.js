@@ -8,7 +8,8 @@ import {
     DialogDescription,
   } from '@headlessui/vue'
   
-import {TreeView,AttrView,EventView,DataView,QueryView,EnvView,PageView,ComponentView,ContainerRender,TextRender,EchartRender} from "../lib/vopd-lib/src/main.js"
+import {TreeView,AttrView,EventView,DataView,QueryView,EnvView,PageView,ComponentView,
+  ContainerRender,TextRender,EchartRender,MapRender} from "../lib/vopd-lib/src/main.js"
 
 let app=createApp(App);
 app.component("TreeView",TreeView)
@@ -22,5 +23,6 @@ app.component("ComponentView",ComponentView)
 app.component("ContainerRender",ContainerRender)
 app.component("TextRender",TextRender)
 app.component("EchartRender",EchartRender)
+app.component("MapRender",MapRender)
 
 app.mount('#app')
