@@ -60,7 +60,12 @@ export default defineComponent({
     },
     methods:{
         changeSelect(i:number){
-            this.active=i;
+            if(i==this.active){
+                this.active=-1;
+            }else{
+                this.active=i;
+            }
+           
         },
         close(){
             this.active=-1;
