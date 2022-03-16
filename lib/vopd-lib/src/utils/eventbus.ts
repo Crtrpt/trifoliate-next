@@ -47,6 +47,7 @@ class EventBus{
         this.on("vopd","deleteContainer", this.ctx.deleteContainer);
         this.on("vopd","lockContainer", this.ctx.lockContainer);
         this.on("vopd","eyeContainer", this.ctx.eyeContainer);
+        this.on("vopd","expandContainer", this.ctx.expandContainer);
         this.on("vopd","changeStyle", this.ctx.changeStyle);
         this.on("vopd","addNode", this.ctx.addNode);
     }

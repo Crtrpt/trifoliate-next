@@ -16,11 +16,6 @@ export default defineComponent({
               icon:"las la-cubes",
               componemt:"ComponentView"
           },
-          {
-              title:"层级",
-              icon:"las la-layer-group",
-              componemt:"TreeView"
-          },
         //   {
         //       title:"页面",
         //       icon:"lar la-copy",

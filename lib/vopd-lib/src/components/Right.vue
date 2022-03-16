@@ -17,7 +17,14 @@ export default defineComponent({
   components:{ TreeView, AttrView, DataView, MultipleSelectView, QueryView, EventView, Tab, TabItem },
   data(){
       return {
-          right:[{
+          right:[
+              
+          {
+              title:"层级",
+              icon:"las la-layer-group",
+              componemt:"TreeView"
+          },  
+          {
               title:"属性",
               icon:"las la-bars",
               componemt:"AttrView"
@@ -27,6 +34,7 @@ export default defineComponent({
         //       icon:"las la-ellipsis-v",
         //       componemt:"EventView"
         //   },
+
           {
               title:"数据",
               icon:"las la-database",

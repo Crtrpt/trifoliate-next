@@ -1,5 +1,5 @@
 import {Collection, fromJS} from 'immutable';
-
+import vue from "vue"
 class Ctx{
     data={};
     //可以添加的节点列表
@@ -29,7 +29,7 @@ class Ctx{
             style:node.style,
             ref:[],
             attr:{},
-            children:[],
+            children:[]
         }
 
         if(p.id==null){
@@ -63,6 +63,10 @@ class Ctx{
     eyeContainer(p,ctx){
         console.log("eye:"+p.id)
         ctx.hashIds.get(p.id).attr["isEye"]=!ctx.hashIds.get(p.id).attr["isEye"];
+    }
+    expandContainer(p,ctx){
+        console.log("expand:"+p.id)
+        ctx.hashIds.get(p.id).attr["isExpand"]=!ctx.hashIds.get(p.id).attr["isExpand"]
     }
     lockContainer(p,ctx){
         console.log("lock:"+p.id)

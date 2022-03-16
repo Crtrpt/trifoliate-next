@@ -9,15 +9,15 @@
     @mouseenter="enter()"
      >
         <div class="name flex flex-row items-center px-2" @mouseover="hover" @mouseout="hover1">
-            <i class="las la-caret-right"  @click="expand" v-if="!isExpand && data?.children?.length>0"></i>
-            <i class="las la-caret-down"  @click="expand" v-if="isExpand && data?.children?.length>0"></i>
+            <i class="las la-caret-right"  @click="expand(data,$event)" v-if="!data.attr['isExpand'] && data.children?.length>0"></i>
+            <i class="las la-caret-down"  @click="expand(data,$event)" v-if="data.attr['isExpand'] && data.children?.length>0 "></i>
             <p class="flex-grow flex items-center" @click="click(data,$event)" > 
                 <div>{{data.name}} </div>
                 <div class=" ml-2 text-xs px-1  rounded-full text-white bg-gray-300 " 
                 :class="{
                     ' bg-blue-500':data.attr['isSelect']
-                }" > {{data.id}}</div>
-                 </p>
+                }" > {{data.id}} </div>
+            </p>
             <div class="action" v-if="isHover">
                     <i class="las la-eye"
                         :class='{
@@ -32,8 +32,8 @@
                     }' @click="lock(data,$event)"></i>
             </div>
         </div>
-        <div class="children" :style="{marginLeft:20*level+'px'}" v-if=" isExpand && data?.children?.length>0">
-            <template v-for="n in data.children" :key="n.id">
+        <div class="children" :style="{marginLeft:20*level+'px'}" v-if=" data.attr['isExpand']  && data.children?.length>0">
+            <template v-for="n in data.children" :key="n.id+'tree'">
                 <Tree  :data="n" :level="level+1" v-if="!n.attr['isDelete']"></Tree>
             </template>
             
@@ -42,6 +42,7 @@
 </template>
 
 <script lang="ts">
+import { handleError } from '@vue/runtime-core';
 import ev from "../../utils/eventbus"
 export default {
     props:{
@@ -51,12 +52,6 @@ export default {
     },
     data:function(){
         return {
-            isHover:true,
-            isExpand:true,
-            isLock:false,
-            isEye:true,
-            isTrash:true,
-            isDelete:false,
         }
     },
     methods:{
@@ -86,8 +81,9 @@ export default {
             // ev.fire("none","change",node)
             e.stopPropagation();
         },
-        expand(){
-            this.isExpand=!this.isExpand;
+        expand(node,e){
+            ev.fire("TreeView","expandContainer",node)
+             e.stopPropagation();
         }
     },
     name:"Tree"

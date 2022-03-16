@@ -11,7 +11,7 @@
          <template v-slot:content>
              <div class="flex flex-col">
                 <div class="flex-grow py-1 overflow-auto">
-                    <template v-for="i in source.list" :key="i" >
+                    <template v-for="i in source.list" :key="i.id+'tree'" >
                          <Tree  v-if="!i.attr['isDelete']" :data="i" :level="1" :isMultipleSelect="isMultipleSelect"></Tree>
                     </template>
                 </div>
@@ -60,15 +60,21 @@ export default {
                 this.isMultipleSelect=!this.isMultipleSelect
         },
         render(payload:any,ctx:any){
-            console.log(ctx.data.project);
+            console.log("重绘");
             this.source=ctx.data.project;
+        },
+        addNode(p,ctx){
+            this.render(p,ctx);
+            
+            console.log("前置渲染")
+             this.$forceUpdate();
         }
     },
     mounted(){
-        this.render(ev.ctx.data.project,ev.ctx);
+        // this.render(ev.ctx.data.project,ev.ctx);
         ev.on("TreeView","init",this.render)
         //数据变更的时候重新拉取数据
-        ev.on("TreeView","change",this.render)
+        ev.on("TreeView","addNode",this.addNode)
     }
 }
 </script>
