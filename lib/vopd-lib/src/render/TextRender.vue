@@ -18,6 +18,8 @@ export default {
     },
     name:"TextRender",
      mounted(){
+
+         console.log(ev.ctx.hashIds.get(this.data.id));
          ev.ctx.hashIds.get(this.data.id).ref["layer"]=this.$refs.node;
     } 
 }

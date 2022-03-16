@@ -17,7 +17,6 @@ export default {
   data(){
     return {
       nodeList:[
-
                 {
                     id:"1",
                     name:"容器",
@@ -25,31 +24,20 @@ export default {
                     widget:"Container",
                     icon:"las la-stop",
                     style:{
-                      width:"100%",
-                      height:"100%",
-                    }
-                },
-                {
-                    id:"11",
-                    name:"网格",
-                    render:"ContainerRender",
-                    widget:"Container",
-                    icon:"las la-stop",
-                    style:{
-                      display:"grid",
-                      gridTemplateColumns: "repeat(4, 25%)",
-                      gridTemplateRows: " 200px 200px 200px 200px",
-                      gridGap: "10px",
-                      width:"100%",
-                      minHeight:"200px",
-                    }
+                      width:"400px",
+                      height:"200px",
+                    },
+                    children:[]
                 },
                 {
                     id:"5",
                     name:"文字",
                     widget:"Text",
                     render:"TextRender",
-                    icon:"las la-font"
+                    icon:"las la-font",
+                    style:{
+                      "display":"inline"
+                    }
                 },
                 {
                     id:"6",

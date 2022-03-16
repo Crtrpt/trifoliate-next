@@ -13,7 +13,7 @@
         </div>
         <KeepAlive>
 
-                    <component class="content flex-grow overflow-auto border w-80" :key="vnode.componemt" :is="vnode.componemt" ref="cur" @close="close" v-if="vnode!=null" />
+                    <component class="content flex-grow overflow-auto border w-80 h-full" :key="vnode.componemt" :is="vnode.componemt" ref="cur" @close="close" v-if="vnode!=null" />
 
         </KeepAlive>
         <div class="flex flex-col border-y border-t-gray-200 " v-if="direction=='right'">

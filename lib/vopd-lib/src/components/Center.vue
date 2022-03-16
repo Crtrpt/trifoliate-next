@@ -48,7 +48,7 @@
                 </div>
         </Control> 
 
-        <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  >
+        <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  @scroll="scroll" >
           <div ref="canvas" class="  relative overflow-hidden  border shadow doc  bg-white" 
                 :style="{
                   width: page.width,
@@ -116,7 +116,9 @@ export default defineComponent({
         marginLeft:"80px" ,
         marginRight:"80px" ,
         marginTop:"80px" ,
-        marginBottom:"80px"
+        marginBottom:"80px",
+        scrollTop:"0",
+        scrollLeft:'0',
       },
       mode:0,
       modeList:[
@@ -137,6 +139,11 @@ export default defineComponent({
     }
   },
   methods:{
+    scroll(e){
+      this.page.scrollTop=this.$refs.view.scrollTop
+      this.page.scrollLeft=this.$refs.view.scrollLeft
+      console.log(this.page);
+    },
     allowDrop(e){
         e.preventDefault();
     },  
@@ -151,6 +158,8 @@ export default defineComponent({
       console.log("页面初始化")
       this.page=p.page;
       this.page.rect=this.$refs.layer.getBoundingClientRect();
+      this.page.scrollTop=this.$refs.view.scrollTop
+      this.page.scrollLeft=this.$refs.view.scrollLeft
       this.page.view=this.$refs.view;
     }
   }, 

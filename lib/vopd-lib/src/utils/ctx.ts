@@ -1,5 +1,5 @@
 import {Collection, fromJS} from 'immutable';
-import vue from "vue"
+import {ref,reactive} from "vue"
 class Ctx{
     data={};
     //可以添加的节点列表
@@ -16,7 +16,6 @@ class Ctx{
    
     addNode(p,ctx){
         console.log("id"+p.id+"--->"+p.nodeId)
-
         var node= ctx.nodeIdMap.get(p.nodeId);
         var nextId=ctx.data.project.maxId++
         var n={
@@ -29,19 +28,20 @@ class Ctx{
             style:node.style,
             ref:[],
             attr:{},
-            children:[]
+            children: reactive([])
         }
 
         if(p.id==null){
             console.log("root")
             n.parent=null;
-            ctx.data.project.list.push(n);
+            ctx.data.project.list.push(reactive(n));
         }else{
             console.log("child")
-            n.parent=ctx.hashIds.get(p.id);
-            ctx.hashIds.get(p.id).children.push(n)
+            n.parent=p.id;
+            ctx.hashIds.get(p.id).children.push(reactive(n))
         }
-        ctx.hashIds.set(n.id,n);
+       
+        ctx.hashIds.set(n.id,reactive(n));
     }
     changeStyle(p,ctx){
         ctx.hashIds.get(p.id).style=p;
@@ -54,7 +54,7 @@ class Ctx{
         var p=e.data;
         if(ctx.selectMode && ctx.lastSelectId!=null){
             //取消选择
-            console.log("取消选择")
+            //console.log("取消选择")
             ctx.hashIds.get(ctx.lastSelectId).attr["isSelect"]=false
         }
         ctx.hashIds.get(p.id).attr["isSelect"]=true; 
@@ -66,7 +66,8 @@ class Ctx{
     }
     expandContainer(p,ctx){
         console.log("expand:"+p.id)
-        ctx.hashIds.get(p.id).attr["isExpand"]=!ctx.hashIds.get(p.id).attr["isExpand"]
+        ctx.hashIds.get(p.id).attr["isExpand"]=!ctx.hashIds.get(p.id).attr["isExpand"];
+        console.log( ctx.hashIds.get(p.id).attr["isExpand"]);
     }
     lockContainer(p,ctx){
         console.log("lock:"+p.id)
@@ -83,8 +84,6 @@ class Ctx{
         this.nodeList=payload.nodeList;
         this.hash(this.data.project.list,null);
         this.hashNodeId();
-        console.log(this.hashIds);
-        console.log(this.hashNames);
     }
     hashNodeId(){
         this.nodeList.forEach(i=>{
@@ -96,7 +95,7 @@ class Ctx{
             if(i.children?.length>0){
                 this.hash(i.children,i);
             }
-            i.parent=parent;
+            i.parent=parent.id;
             this.hashIds.set(i.id,i);
             this.hashNames.set(i.name,i);
         }

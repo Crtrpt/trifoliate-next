@@ -14,7 +14,7 @@
             </div>
           
         </div>
-        <div class="flex-grow-0 px-1">
+        <div class="flex-grow px-1">
             <slot  name="content" ></slot>
         </div>
     </div>

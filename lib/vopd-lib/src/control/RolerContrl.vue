@@ -27,6 +27,12 @@ export default defineComponent({
        height(){
            return parseInt(this.ctx.height);
        },
+       offsetLeft(){
+            return parseInt(this.ctx.scrollLeft);
+       },
+       offsetTop(){
+            return parseInt(this.ctx.scrollTop);
+       },
        left(){
            return parseInt(this.ctx.marginLeft);
        },
@@ -64,14 +70,15 @@ export default defineComponent({
                 xctx.strokeStyle = '#888'; 
                 xctx.lineWidth = 1;
                 var start=-this.left*this.scale ;
-                console.log(start);
+
+
                 for(var i=start ;i<this.width;i=i+10){
                     xctx.beginPath(); 
                     let s=i*this.scale-0.5;
                     xctx.moveTo(s,0);
                      if((i-this.left)%100==0){
                          xctx.lineTo(s,10);
-                         xctx.fillText((i-this.left), s+5, 20);
+                         xctx.fillText((i-this.left+this.offsetLeft), s+5, 20);
                      }else{
                          xctx.lineTo(s,5);
                      }
@@ -84,6 +91,8 @@ export default defineComponent({
                 yctx.clearRect(0, 0,  30,this.height);
                 yctx.strokeStyle = '#888'; 
                 yctx.lineWidth = 1;
+                console.log("偏移"+this.offsetTop)
+                console.log(-this.top*this.scale);
                 var start =-this.top*this.scale;
                 for(var i=start;i<this.height;i=i+10){
                    
@@ -92,7 +101,7 @@ export default defineComponent({
                     yctx.moveTo(0,s);
                     if((i-this.top)%100==0){
                          yctx.lineTo(15,s);
-                         yctx.fillText(i-this.top, 10, s+12);
+                         yctx.fillText(i-this.top+this.offsetTop, 10, s+12);
                     }else{
                          yctx.lineTo(10,s);
                      }
