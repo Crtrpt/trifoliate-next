@@ -1,15 +1,15 @@
 <template>
-    <div v-for="i in attr" :key="i">
-        <component v-bind:is="i.type"  :meta="i" v-model="i.value" />
+    <div v-for="i in attr" :key="i" > 
+        <component v-bind:is="i.type"  :meta="i" v-model="i.value"  @update:modelValue="change"/>
     </div>
 </template>
 
 <script lang="ts">
 import KvStr from './KvStr.vue'
 import KvInt from './KvInt.vue'
-import KvColor from './KvColor.vue'
+import KvArray from './KvArray.vue'
 export default {
-    components: { KvStr,KvInt },
+    components: { KvStr,KvInt,KvArray },
     name:"Container",
     props:{
         data:Object
@@ -21,6 +21,16 @@ export default {
                 this.attr.id.value=n.id;
                 console.log("属性变化")
             }
+        }
+    },
+    methods:{
+        change(e){
+            console.log("收集变化")
+            var attr={};
+            for(var a in this.attr){
+                attr[a]=this.attr[a].value
+            }
+            this.$emit("change",attr);
         }
     },
     mounted(){
@@ -35,6 +45,48 @@ export default {
                             type:"KvInt",
                             value: 0,
                             placeholder:"全局唯一",
+                        },
+                        display:{
+                            name:"display",
+                            displayName:"显示",
+                            type:"KvStr",
+                            value: "normal",
+                            placeholder:"全局唯一",
+                        },
+                        postion:{
+                            name:"postion",
+                            displayName:"位置",
+                            type:"KvStr",
+                            value: "absolute",
+                            placeholder:"postion",
+                        },
+                        padding:{
+                            name:"padding",
+                            displayName:"内边距",
+                            type:"KvStr",
+                            value: "0px",
+                            placeholder:"内边距",
+                        },
+                        margin:{
+                            name:"margin",
+                            displayName:"外边距",
+                            type:"KvStr",
+                            value: "0px",
+                            placeholder:"外边距",
+                        },
+                        border:{
+                            name:"border",
+                            displayName:"边框",
+                            type:"KvStr",
+                            value: "0px",
+                            placeholder:"边框",
+                        },
+                        background:{
+                            name:"background",
+                            displayName:"背景",
+                            type:"KvStr",
+                            value: "",
+                            placeholder:"背景",
                         }
                 }
         }

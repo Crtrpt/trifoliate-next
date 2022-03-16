@@ -62,13 +62,13 @@
                   }"
               @dragover="allowDrop($event)"
             >
-            <div class="layers">
+            <div class="layers" ref="layer">
             <!-- <Layer name="refLineLayer" /> -->
           
               <Layer name="GridLayer"  :ctx="page" />
               <Layer name="BaseLayer"  :ctx="page" />
               
-              <Layer name="SelectLayer" :ctx="page" />
+              <!-- <Layer name="SelectLayer" :ctx="page" /> -->
               
               <!-- <Layer name="MouseLayer" /> -->
             
@@ -109,6 +109,7 @@ export default defineComponent({
   data(){
     return {
       page:{
+        rect:{},
         width:"1024px",
         height:"960px",
         displayGrid:true,
@@ -149,11 +150,14 @@ export default defineComponent({
     render(p:any){
       console.log("页面初始化")
       this.page=p.page;
+      this.page.rect=this.$refs.layer.getBoundingClientRect();
+      this.page.view=this.$refs.view;
     }
   }, 
   mounted(){
     ev.on("EditorView","init",this.render)
     let  el:any=this.$refs.view;
+   
 
     el.addEventListener("mousemove",(e)=>{
       ev.fire("main","mousemove",e);

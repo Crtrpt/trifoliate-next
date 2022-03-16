@@ -8,10 +8,25 @@ class Ctx{
     selected=new Map();
     hashIds=new Map();
     hashNames=new Map();
-    selectContainer(p,ctx){
-        console.log("select:"+p.id);
-        ctx.hashIds.get(p.id).attr["isSelect"]=p||!ctx.hashIds.get(p.id).attr["isSelect"];
-        ctx.selected.set(p.id,p);
+    //false 单选 true多选
+    selectMode=true;
+    lastSelectId=null;
+    changeStyle(p,ctx){
+        ctx.hashIds.get(p.id).style=p;
+    }
+    cancelSelectContainer(e,ctx){
+        var p=e.data;
+        ctx.hashIds.get(p.id).attr["isSelect"]=false
+    }
+    selectContainer(e,ctx){
+        var p=e.data;
+        if(ctx.selectMode && ctx.lastSelectId!=null){
+            //取消选择
+            console.log("取消选择")
+            ctx.hashIds.get(ctx.lastSelectId).attr["isSelect"]=false
+        }
+        ctx.hashIds.get(p.id).attr["isSelect"]=true; 
+        ctx.lastSelectId=p.id;       
     }
     eyeContainer(p,ctx){
         console.log("eye:"+p.id)

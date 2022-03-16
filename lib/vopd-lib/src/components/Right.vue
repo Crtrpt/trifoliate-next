@@ -18,10 +18,6 @@ export default defineComponent({
   data(){
       return {
           right:[{
-              title:"层级",
-              icon:"las la-layer-group",
-              componemt:"TreeView"
-          },{
               title:"属性",
               icon:"las la-bars",
               componemt:"AttrView"

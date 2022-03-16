@@ -7,7 +7,7 @@
                     <i class="las la-times-circle cursor-pointer" @click="$emit('close')"></i>
             </template>
             <template v-slot:content>
-                    <component v-bind:is="source.widget" v-if="source?.widget!=null" :data="source"></component>
+                    <component v-bind:is="source.widget" v-if="source?.widget!=null" :data="source" @change="change"></component>
             </template>
     </BaseView>
 </template>
@@ -46,7 +46,12 @@ export default {
     methods:{
        selectContainer(p){
         //    console.log("选择容器")
-           this.source=p;
+           this.source=p.data;
+       },
+       change(p){
+           console.log("回写属性变化")
+           ev.fire("AttrView","changeStyle",p);
+           ev.fire("AttrView","change",this.source);
        }
     },
     mounted(){

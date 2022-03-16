@@ -1,5 +1,7 @@
 <template>
-    <div :style="data.style" @click="click($event)" ref="map">
+    <div :style="data.style" @click="click($event)" ref="node">
+        <div class="pointer-events-none " style="width:100%;height:100%" ref="map">
+        </div>
     </div>
 </template>
 
@@ -14,11 +16,12 @@ export default {
     methods:{
         click(e:any){
             e.stopPropagation();
-            ev.fire("Container","selectContainer",this.data)
+             ev.fire("Container","selectContainer",{e:this.$refs.node,data:this.data})
         }
     },
     name:"MapRender",
     mounted(){
+        ev.ctx.hashIds.get(this.data.id).ref["layer"]=this.$refs.node;
         var map=L.map(this.$refs.map, {
             center: [51.505, -0.09],
             zoom: 13

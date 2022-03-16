@@ -65,6 +65,7 @@ export default {
         }
     },
     mounted(){
+        this.render(ev.ctx.data.project,ev.ctx);
         ev.on("TreeView","init",this.render)
         //数据变更的时候重新拉取数据
         ev.on("TreeView","change",this.render)

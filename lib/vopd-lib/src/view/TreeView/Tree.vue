@@ -13,7 +13,10 @@
             <i class="las la-caret-down"  @click="expand" v-if="isExpand && data?.children?.length>0"></i>
             <p class="flex-grow flex items-center" @click="click(data,$event)" > 
                 <div>{{data.name}} </div>
-                <div class=" ml-2 text-xs px-1  rounded-full text-white bg-gray-300"> {{data.id}}</div>
+                <div class=" ml-2 text-xs px-1  rounded-full text-white bg-gray-300 " 
+                :class="{
+                    ' bg-blue-500':data.attr['isSelect']
+                }" > {{data.id}}</div>
                  </p>
             <div class="action" v-if="isHover">
                     <i class="las la-eye"
@@ -79,8 +82,8 @@ export default {
               e.stopPropagation();
         },
         click(node,e:any){
-            ev.fire("TreeView","selectContainer",this.data)
-            ev.fire("none","change",node)
+            ev.fire("TreeView","selectContainer",{data:this.data})
+            // ev.fire("none","change",node)
             e.stopPropagation();
         },
         expand(){

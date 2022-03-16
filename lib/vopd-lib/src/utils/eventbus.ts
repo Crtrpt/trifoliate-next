@@ -43,9 +43,11 @@ class EventBus{
         this.fire("vopd","init",ctx.project);
         console.log(this.ctx.selectContainer);
         this.on("vopd","selectContainer", this.ctx.selectContainer);
+        this.on("vopd","cancelSelectContainer", this.ctx.cancelSelectContainer);
         this.on("vopd","deleteContainer", this.ctx.deleteContainer);
         this.on("vopd","lockContainer", this.ctx.lockContainer);
         this.on("vopd","eyeContainer", this.ctx.eyeContainer);
+        this.on("vopd","changeStyle", this.ctx.changeStyle);
     }
     queryCtx(){
         return this.ctx;

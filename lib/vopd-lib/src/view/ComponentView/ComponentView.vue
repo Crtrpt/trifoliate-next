@@ -4,6 +4,7 @@
                     <SearchBox class="flex-grow" v-model="filter.keywords" @input="change" placeholder="搜索你需要的组件"></SearchBox>
         </template>
         <template v-slot:action>
+                    <!-- <i class="las la-thumbtack" @click="pin"></i> -->
                     <i class="las la-times-circle cursor-pointer" @click="close"></i>
         </template>
          <template v-slot:content>
@@ -90,6 +91,9 @@ export default defineComponent({
     SearchBox
 },
     methods:{
+        pin(v){
+            this.$emit("pin")
+        },
         close(v){
             this.$emit("close")
         },

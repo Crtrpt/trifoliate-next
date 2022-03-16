@@ -1,5 +1,5 @@
 <template>
-    <div class="HandlerLayer absolute" :style="HandlerLayerStyle"  v-if="display">
+    <div class="HandlerLayer absolute bg-blue-500 opacity-60" :style="cstyle"  v-if="display" @dblclick="cancelSelect">
         <div class="left handler"></div>
         <div class="right handler"></div>
         <div class="top handler"></div>
@@ -26,27 +26,19 @@
 import ev from "../utils/eventbus"
 export default {
     name:"HandlerLayer",
+    props:{
+        ctx:Object
+    },
     data:function(){
         return {
-            start:{x:0,y:0},
-            end:{x:0,y:0},
-            source:{}
-        }
-    },
-    computed:{
-        "display":function(){
-            return !(
-                (this.start.x-this.end.x)==0 ||
-                (this.start.y-this.end.y)==0
-            )
-        },
-        "HandlerLayerStyle":function(){
-            return  {
-                left:Math.min(this.start.x,this.end.x)+"px",
-                top:Math.min(this.start.y,this.end.y)+"px",
-                width:Math.abs(this.start.x-this.end.x)+"px",
-                height:Math.abs(this.start.y-this.end.y)+"px"
-            }
+            display:false,
+            cstyle:{
+                width:"0px",
+                height:"0px",
+                zIndex:9999,
+            },
+            source:{},
+            data:null
         }
     },
     methods:{
@@ -55,28 +47,30 @@ export default {
         },
         render(e){
            var source=JSON.parse(JSON.stringify(e));
-           this.start=source.start;
-           this.end=source.end;
         },
-        cancelSelect(e){
-            console.log("取消选择")
-                this.start.x=0;
-                this.end.x=0;
+        hide(){
+            this.display=false;
         },
-        select(e){
-            
-            this.start.x= parseInt(e.style.left)
-            this.start.y=parseInt(e.style.top)
-            this.end.x=parseInt(e.style.left)+parseInt(e.style.width)
-            this.end.y=parseInt(e.style.top)+parseInt(e.style.height);
+        cancelSelect(){
+            this.display=false;
+            ev.fire("HandlerLayer","cancelSelectContainer",{data:this.data})
+        },
+        select(p){
+            var el= ev.ctx.hashIds.get(p.data.id).ref["layer"];
+            var rec=el.getBoundingClientRect();
+            this.data=p.data;
+            this.cstyle.width=rec.width+"px";
+            this.cstyle.height=rec.height+"px";
+            this.cstyle.top=rec.top-this.ctx.rect.top+this.ctx.view.scrollTop+"px";
+            this.cstyle.left=rec.left-this.ctx.rect.left+this.ctx.view.scrollLeft+"px";
+            this.display=true;
         }
     },
     mounted(){
         ev.on("HandlerLayer","init",this.init)
-        ev.on("HandlerLayer","mousedown",this.cancelSelect)
         ev.on("HandlerLayer","selectArea",this.render)
         ev.on("HandlerLayer","selectContainer",this.select)
-        ev.on("HandlerLayer","cancelHandlerContainer",this.cancelSelect)
+        ev.on("HandlerLayer","change",this.hide)
     },
     setup() {
         

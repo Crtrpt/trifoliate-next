@@ -1,5 +1,5 @@
 <template>
-        <div class="cell flex my-1 items-center">
+        <div class="cell flex my-1 items-baseline">
             <div class="w w-1/3">{{meta.displayName}}:</div>
             <div class="border flex-grow-0 h-52 overflow-scroll" >
                 <div class=" border-y overflow-auto flex-grow" ref="editor"></div>
@@ -8,7 +8,7 @@
         </div>
 </template>
 
-<script>
+<script lang="ts">
 import KvBind from './KvBind.vue'
 
 import {EditorState, EditorView, basicSetup} from "@codemirror/basic-setup"
@@ -30,7 +30,6 @@ export default {
             deep:true,
             handler:function(n,w){
                 console.log(n.value);
-                debugger
                 this.editor.dispatch({
                     changes: {from: 0, insert: JSON.stringify(n.value,null, "  ")}
                 })

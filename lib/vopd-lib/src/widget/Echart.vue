@@ -26,6 +26,16 @@ export default {
             }
         }
     },
+    methods:{
+        change(e){
+            console.log("收集变化")
+            var attr={};
+            for(var a in this.attr){
+                attr[a]=this.attr[a].value
+            }
+            this.$emit("change",attr);
+        }
+    },
     mounted(){
         this.attr.id.value=this.data.id;
         this.attr.data.value=this.data.data;

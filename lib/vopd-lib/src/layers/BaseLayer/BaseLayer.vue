@@ -4,7 +4,6 @@
               <component class="node" v-bind:is="n.render"   :data="n" 
                         v-if="!n.attr['isDelete'] && !n.attr['isEye']"
                         @mousedown="mousedown($event,n)"
-                        @click="click($event,n)"
                         @mouseenter="enter(n)" 
                 />
         </template>
@@ -29,6 +28,7 @@ export default {
     data(){
         return {
             source:{},
+            selectIds:[],
             style:{
                 // pointerEvents:"none",
                 // userSelect:"none"
@@ -36,12 +36,6 @@ export default {
         };
     },
     methods:{
-        click(e,n){
-            console.log("点击部件")
-            ev.fire("BaseLayer","selectContainer",n);
-            ev.fire("BaseLayer","change",n)
-            e.stopPropagation();
-        },
         mousedown(e,n){
             console.log("组织时间冒泡")
             e.stopPropagation();
@@ -51,7 +45,6 @@ export default {
         },
         render(payload,ctx){
             console.log("取消选择");
-            ev.fire("BaseLayer","cancelHandlerContainer","");
             this.source=ctx.data.project;
         },
         active(n:any){
@@ -69,7 +62,7 @@ export default {
         ev.on("BaseLayer","init",this.render);
         ev.on("BaseLayer","mousedown",this.inactivated)
         ev.on("BaseLayer","mouseup",this.active)
-        ev.on("BaseLayer","change",this.render)
+        ev.on("BaseLayer","change",this.render)    
     },
     setup() {
         
