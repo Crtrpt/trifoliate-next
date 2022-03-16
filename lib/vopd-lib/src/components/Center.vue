@@ -72,7 +72,7 @@
               
               <!-- <Layer name="MouseLayer" /> -->
             
-              <Layer name="HoverLayer" :ctx="page" />
+              <!-- <Layer name="HoverLayer" :ctx="page" /> -->
 
               <Layer name="HandlerLayer" :ctx="page" />
       

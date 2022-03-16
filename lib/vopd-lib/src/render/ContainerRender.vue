@@ -1,5 +1,18 @@
 <template>
-    <div :style="data.style" @click="click($event)" ref="node">
+    <div :style="data.style" @click="click($event)" ref="node"
+    
+        :class=' {
+            "border-green-500":isDragenter,
+            "border-2":isDragenter,
+            "border-dashed":isDragenter
+        }'
+     @dragenter="dragenter($event)"
+     @drop="drop($event)"
+     @dragleave="dragleave($event)"
+     >
+        <div class="relative w-full h-full border-2 rounded-md border-dashed border-gray-400" v-if="data?.children?.length==0">
+               
+        </div>
         <template v-if="data?.children?.length>0" >
             <template  v-for="n in data.children" :key="n" >
                     <!-- 增加判断是否被删除 -->
@@ -17,9 +30,33 @@ export default {
     name:"ContainerRender",
     components:{},
     props:{
-        data:Object
+        data:Object,
+    },
+    data(){
+       return {
+            isDragenter:false,
+       }
     },
     methods:{
+        drop(e){
+            console.log("放下"+e.dataTransfer.getData("text/plain"));
+            ev.fire("Container","addNode",{
+                id:this.data.id,
+                nodeId:e.dataTransfer.getData("text/plain")
+            });
+            this.isDragenter=false;
+            e.stopPropagation();
+        },
+        dragenter(e){
+             console.log("进入")
+            this.isDragenter=true;
+             e.stopPropagation();
+        },
+        dragleave(e){
+            console.log("离开")
+            this.isDragenter=false;
+            e.stopPropagation();
+        },
         click(e){
             ev.fire("Container","selectContainer",{e:this.$refs.node,data:this.data})
             e.stopPropagation();

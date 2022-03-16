@@ -1,5 +1,5 @@
 <template>
-    <div class="BaseLayer" :style=style>
+    <div class="BaseLayer w-full h-full absolute" :style=style @drop="drop($event)">
         <template v-for="n in this.source.list" :key="n+'xx'" >
               <component class="node" v-bind:is="n.render"   :data="n" 
                         v-if="!n.attr['isDelete'] && !n.attr['isEye']"
@@ -7,7 +7,6 @@
                         @mouseenter="enter(n)" 
                 />
         </template>
-      
     </div>
 </template>
 <script lang="ts">
@@ -36,6 +35,13 @@ export default {
         };
     },
     methods:{
+        drop(e){
+            console.log("放下"+e.dataTransfer.getData("text/plain"));
+            ev.fire("Container","addNode",{
+                id:null,
+                nodeId:e.dataTransfer.getData("text/plain")
+            });
+        },
         mousedown(e,n){
             console.log("组织时间冒泡")
             e.stopPropagation();
@@ -44,7 +50,7 @@ export default {
             ev.fire("BaseLayer","hoverContainer",n);
         },
         render(payload,ctx){
-            console.log("取消选择");
+            console.log("layer渲染");
             this.source=ctx.data.project;
         },
         active(n:any){
@@ -63,6 +69,7 @@ export default {
         ev.on("BaseLayer","mousedown",this.inactivated)
         ev.on("BaseLayer","mouseup",this.active)
         ev.on("BaseLayer","change",this.render)    
+        ev.on("BaseLayer","addNode",this.render)    
     },
     setup() {
         

@@ -1,9 +1,11 @@
 import {Collection, fromJS} from 'immutable';
 
 class Ctx{
-    coordinates=[0,0]
-    bound=[0,0,0,0];
     data={};
+    //可以添加的节点列表
+    nodeList=[];
+    maxId=null;
+    nodeIdMap=new Map();
     //选择的节点列表
     selected=new Map();
     hashIds=new Map();
@@ -11,6 +13,36 @@ class Ctx{
     //false 单选 true多选
     selectMode=true;
     lastSelectId=null;
+   
+    addNode(p,ctx){
+        console.log("id"+p.id+"--->"+p.nodeId)
+
+        var node= ctx.nodeIdMap.get(p.nodeId);
+        var nextId=ctx.data.project.maxId++
+        var n={
+            id:nextId,
+            name:node.name+nextId,
+            render:node.render,
+            widget:node.widget,
+            content:"显示文本",
+            data:node.data,
+            style:node.style,
+            ref:[],
+            attr:{},
+            children:[],
+        }
+
+        if(p.id==null){
+            console.log("root")
+            n.parent=null;
+            ctx.data.project.list.push(n);
+        }else{
+            console.log("child")
+            n.parent=ctx.hashIds.get(p.id);
+            ctx.hashIds.get(p.id).children.push(n)
+        }
+        ctx.hashIds.set(n.id,n);
+    }
     changeStyle(p,ctx){
         ctx.hashIds.get(p.id).style=p;
     }
@@ -42,10 +74,18 @@ class Ctx{
     }
     dataInit(payload:any){
         console.log("数据状态树初始化");
+        console.log(payload)
         this.data=payload;
+        this.nodeList=payload.nodeList;
         this.hash(this.data.project.list,null);
+        this.hashNodeId();
         console.log(this.hashIds);
         console.log(this.hashNames);
+    }
+    hashNodeId(){
+        this.nodeList.forEach(i=>{
+           this.nodeIdMap.set(i.id,i);
+        })
     }
     hash(list:Array<any>,parent:any){
         for(var i of list){

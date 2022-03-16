@@ -12,11 +12,9 @@
             </div>
         </div>
         <KeepAlive>
-                <div class="content   flex-grow overflow-auto border w-80">
-                    
-                    <component  :key="vnode.componemt" :is="vnode.componemt" ref="cur" @close="close" v-if="vnode!=null" />
-                    <!-- <component   v-for="p in pin" :key="this.data[p].componemt" :is="this.data[p].componemt" ref="cur" @close="close" /> -->
-                </div> 
+
+                    <component class="content flex-grow overflow-auto border w-80" :key="vnode.componemt" :is="vnode.componemt" ref="cur" @close="close" v-if="vnode!=null" />
+
         </KeepAlive>
         <div class="flex flex-col border-y border-t-gray-200 " v-if="direction=='right'">
             <div
@@ -50,7 +48,6 @@ export default defineComponent({
     data() {
         return {
             active: 0,
-            pin:[1],
         };
     },
     computed:{

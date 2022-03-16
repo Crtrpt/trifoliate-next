@@ -16,6 +16,78 @@ export default {
   },
   data(){
     return {
+      nodeList:[
+
+                {
+                    id:"1",
+                    name:"容器",
+                    render:"ContainerRender",
+                    widget:"Container",
+                    icon:"las la-stop",
+                    style:{
+                      width:"100%",
+                      height:"100%",
+                    }
+                },
+                {
+                    id:"11",
+                    name:"网格",
+                    render:"ContainerRender",
+                    widget:"Container",
+                    icon:"las la-stop",
+                    style:{
+                      display:"grid",
+                      gridTemplateColumns: "repeat(4, 25%)",
+                      gridTemplateRows: " 200px 200px 200px 200px",
+                      gridGap: "10px",
+                      width:"100%",
+                      minHeight:"200px",
+                    }
+                },
+                {
+                    id:"5",
+                    name:"文字",
+                    widget:"Text",
+                    render:"TextRender",
+                    icon:"las la-font"
+                },
+                {
+                    id:"6",
+                    name:"图表",
+                    render:"EchartRender",
+                    widget:"Echart",
+                    icon:"las la-chart-pie",
+                    style:{
+                      "width":"100%",
+                      "height":"100%",
+                    },
+                    data:{
+                      "tooltip": {},
+                      "xAxis": {
+                        "data": ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"]
+                      },
+                      "yAxis": {},
+                      "series": [
+                        {
+                          "name": "sales",
+                          "type": "bar",
+                          "data": [10, 20, 30, 40, 50, 60]
+                        }
+                      ]
+                    },
+                  },
+                {
+                    id:"7",
+                    name:"地图",
+                    render:"MapRender",
+                    widget:"Map",
+                    icon:"las la-map",
+                    style:{
+                      "width":"100%",
+                      "height":"100%",
+                    }
+                }
+      ],
       data:{
         datasource:[],
         list:[],
@@ -29,6 +101,7 @@ export default {
     fetch("http://127.0.0.1:8080/get").then((response)=>{
         return response.json()
     }).then(res=>{
+      res.nodeList=this.nodeList;
        _this.data=res;
     })
   },

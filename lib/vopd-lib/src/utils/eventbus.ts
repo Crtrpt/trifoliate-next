@@ -48,6 +48,7 @@ class EventBus{
         this.on("vopd","lockContainer", this.ctx.lockContainer);
         this.on("vopd","eyeContainer", this.ctx.eyeContainer);
         this.on("vopd","changeStyle", this.ctx.changeStyle);
+        this.on("vopd","addNode", this.ctx.addNode);
     }
     queryCtx(){
         return this.ctx;

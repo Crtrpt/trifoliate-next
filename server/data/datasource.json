@@ -116,122 +116,6 @@
     }
   ],
   "list": [
-    {
-      "id": 1,
-      "name": "容器1",
-      "render": "ContainerRender",
-      "widget": "Container",
-      "children": [
-        {
-          "id": 3,
-          "name": "文字1",
-          "render": "TextRender",
-          "content": "111",
-          "widget": "Text",
-          "style": {
-            "width": "100px",
-            "height": "100px",
-
-            "border": "1px solid red"
-          },
-          "attr":{},
-          "ref":[]
-        },
-        {
-          "id": 4,
-          "name": "文字2",
-          "render": "TextRender",
-          "content": "222",
-          "widget": "Text",
-          "style": {
-            "width": "200px",
-            "height": "100px",
-            "border": "1px solid red"
-          },
-          "attr":{},
-          "ref":[]
-        },
-        {
-          "id": 5,
-          "name": "文字3",
-          "render": "TextRender",
-          "content": "222",
-          "widget": "Text",
-          "style": {
-            "width": "300px",
-            "height": "100px",
-            "border": "1px solid red"
-          },
-          "attr":{},
-          "ref":[]
-        }
-      ],
-      "style": {
-      },
-      "attr":{},
-      "ref":[]
-    },
-    {
-      "id": 100,
-      "name": "容器3",
-      "render": "ContainerRender",
-      "widget": "Container",
-      "children": [
-        {
-          "id": 101,
-          "name": "测试图表",
-          "render": "EchartRender",
-          "widget": "Echart",
-          "style": {
-            "width": "400px",
-            "height":"400px"
-          },
-          "data":{
-            "title": {
-              "text": "测试的Echart"
-            },
-            "tooltip": {},
-            "xAxis": {
-              "data": ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"]
-            },
-            "yAxis": {},
-            "series": [
-              {
-                "name": "sales",
-                "type": "bar",
-                "data": [5, 20, 36, 10, 10, 20]
-              }
-            ]
-          },
-          "attr":{},
-          "ref":[]
-        },
-        {
-          "id": 102,
-          "name": "测试地图",
-          "render": "MapRender",
-          "widget": "Map",
-          "style": {
-            "width": "800px",
-            "height": "400px"
-          },
-          "attr":{},
-          "ref":[]
-        }
-      ],
-      "style": {
-        "width": "1680px",
-        "left": "0px",
-        "height": "400px",
-        "top": "400px",
-        "position": "absolute",
-        "display": "flex"
-      },
-      "attr":{
-        "isLock": true
-      },
-      "ref":[]
-    }
   ],
   "page":{
     "width": "1680px",
@@ -259,6 +143,6 @@
   ],
   "hashIds": {},
   "hashNames":{},
-  "maxId":1,
+  "maxId":10,
   "api":"http://127.0.0.1:8080"
 }

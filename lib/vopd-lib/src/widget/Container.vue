@@ -87,6 +87,20 @@ export default {
                             type:"KvStr",
                             value: "",
                             placeholder:"背景",
+                        },
+                         width:{
+                            name:"width",
+                            displayName:"宽度",
+                            type:"KvStr",
+                            value: "",
+                            placeholder:"宽度",
+                        },
+                         height:{
+                            name:"height",
+                            displayName:"高度",
+                            type:"KvStr",
+                            value: "",
+                            placeholder:"高度",
                         }
                 }
         }

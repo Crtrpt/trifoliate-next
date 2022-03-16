@@ -36,6 +36,7 @@ export default {
                 width:"0px",
                 height:"0px",
                 zIndex:9999,
+                transition: 'all .2s ease'
             },
             source:{},
             data:null
