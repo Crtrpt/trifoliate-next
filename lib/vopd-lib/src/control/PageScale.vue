@@ -6,7 +6,6 @@
                 </div>
 </template>
 
-
 <script lang="ts">
 import { defineComponent } from 'vue'
 import ev from "../utils/Eventbus"
