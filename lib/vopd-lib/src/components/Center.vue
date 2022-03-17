@@ -1,6 +1,6 @@
 <template>
       <div class="flex-grow border  relative  window bg-gray-50 overflow-hidden ">
-        <!-- <Control class=" left-8  top-10  absolute  control rounded-sm z-40"  >
+        <Control class=" left-8  top-10  absolute  control rounded-sm z-40"  >
                 <div class="border border-t-gray-200 p-2 absolute mt-4  shadow">
                     <div class="">
                       <i class="las la-mouse-pointer  "
@@ -26,10 +26,13 @@
                       ></i>
                     </div>
                 </div>
-        </Control> -->
+        </Control> 
 
         <Control class=" absolute  z-40">
                <RolerContrl :ctx="page" />
+        </Control>
+        <Control class="left-40 mt-4 top-4    absolute control z-40 flex">
+               <ActionContrl :ctx="page" />
         </Control>
 
         <Control class=" left-20 mt-4 top-4   absolute control z-40 flex">
@@ -94,13 +97,14 @@ import GridContrl from '../control/GridContrl.vue'
 import HistoryContrl from '../control/HistoryContrl.vue'
 import RolerContrl from '../control/RolerContrl.vue'
 import SettingContrl from '../control/SettingContrl.vue'
+import ActionContrl from '../control/ActionContrl.vue'
 
 
 
 
 
 export default defineComponent({
-  components: { Layer, Control, ToolView, PageScale, PageSize, GridContrl, HistoryContrl, RolerContrl, SettingContrl },
+  components: { Layer, Control, ToolView, PageScale, PageSize, GridContrl, HistoryContrl, RolerContrl, SettingContrl, ActionContrl },
   computed:{
     pageScale(){
       return (this.page.scale)*100

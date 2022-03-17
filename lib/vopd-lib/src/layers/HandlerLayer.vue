@@ -24,10 +24,20 @@
 </template>
 <script lang="ts">
 import ev from "../utils/Eventbus"
+import keyboardJS from "keyboardjs";
+import { Handler } from 'leaflet';
+
 export default {
     name:"HandlerLayer",
     props:{
         ctx:Object
+    },
+    watch:{
+         display:{
+             handler(n,o){
+
+             }
+         } 
     },
     data:function(){
         return {

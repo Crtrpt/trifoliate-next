@@ -13,7 +13,11 @@ class Ctx{
     //false 单选 true多选
     selectMode=true;
     lastSelectId=null;
-   
+    deleteSelect(p,ctx){
+       
+        console.log("TODO 批量删除")
+        ctx.hashIds.get(ctx.lastSelectId).attr["isDelete"]=true;
+    }
     addNode(p,ctx){
         console.log("id"+p.id+"--->"+p.nodeId)
         var node= ctx.nodeIdMap.get(p.nodeId);
