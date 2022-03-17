@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import "./MouseLayer.scss";
-import ev from "../utils/eventbus";
+import ev from "../utils/Eventbus";
 export default {
     name:"MouseLayer",
     data:function(){

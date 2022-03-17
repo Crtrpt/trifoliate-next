@@ -52,7 +52,7 @@
 
 <script lang="ts">
 import { handleError } from '@vue/runtime-core';
-import ev from "../../utils/eventbus"
+import ev from "../../utils/Eventbus"
 export default {
     props:{
         data:Object,

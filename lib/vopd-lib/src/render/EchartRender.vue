@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import ev from "../utils/eventbus"
+import ev from "../utils/Eventbus"
 import * as echarts from 'echarts';
 
 export default {

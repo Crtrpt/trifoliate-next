@@ -8,12 +8,10 @@
 </template>
 <script lang="ts">
 
-import Vopd from '../lib/vopd-lib/src/Vopd.vue'
+
 import './index.css'
 
 export default {
-  components:{Vopd
-  },
   data(){
     return {
       nodeList:[
@@ -90,6 +88,7 @@ export default {
         return response.json()
     }).then(res=>{
       res.nodeList=this.nodeList;
+      console.log("合并数据")
        _this.data=res;
     })
   },

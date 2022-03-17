@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ev from "../utils/eventbus"
+import ev from "../utils/Eventbus"
 import {command} from "../utils/Commander";
 import keyboardJS from "keyboardjs";
 

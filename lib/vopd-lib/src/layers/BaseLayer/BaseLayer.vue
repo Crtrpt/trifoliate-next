@@ -10,23 +10,21 @@
     </div>
 </template>
 <script lang="ts">
-import "./BaseLayer.scss";
-import ev from "../../utils/eventbus";
+import ev from "../../utils/Eventbus";
 
-import ContainerRender from "../../render/ContainerRender.vue";
-import TextRender from "../../render/TextRender.vue"
-import EchartRender from "../../render/EchartRender.vue"
-import MapRender from "../../render/MapRender.vue";
+
 
 export default {
-    components:{ContainerRender,TextRender,EchartRender,MapRender},
+    components:{},
     name:"BaseLayer",
     props:{
         ctx:Object
     },
     data(){
         return {
-            source:{},
+            source:{
+                list:[]
+            },
             selectIds:[],
             style:{
                 // pointerEvents:"none",
@@ -50,7 +48,7 @@ export default {
             ev.fire("BaseLayer","hoverContainer",n);
         },
         render(payload,ctx){
-            console.log("layer渲染");
+            console.log("渲染数据");
             this.source=ctx.data.project;
         },
         active(n:any){

@@ -1,4 +1,4 @@
-import ctx from "./ctx"
+import ctx from "./Ctx"
 
 class EventBus{
     ctx=ctx

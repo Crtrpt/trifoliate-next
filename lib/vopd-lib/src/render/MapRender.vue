@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import ev from "../utils/eventbus"
+import ev from "../utils/Eventbus"
 import L from "leaflet"
 import 'leaflet/dist/leaflet.css'
 export default {

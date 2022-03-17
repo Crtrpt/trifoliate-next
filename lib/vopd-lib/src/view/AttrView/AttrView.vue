@@ -19,7 +19,7 @@ import Video from "../../widget/Video.vue";
 import Echart from "../../widget/Echart.vue";
 import Container from "../../widget/Container.vue";
 
-import ev from "../../utils/eventbus"
+import ev from "../../utils/Eventbus"
 import BaseView from "../BaseView.vue";
 import SearchBox from "../../common/SearchBox.vue";
 export default {

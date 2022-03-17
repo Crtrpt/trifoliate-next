@@ -25,7 +25,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import BaseView from "../BaseView.vue"
-import ev from "../../utils/eventbus"
+import ev from "../../utils/Eventbus"
 import SearchBox from '../../common/SearchBox.vue'
 export default defineComponent({
     name:"ComponentView",
@@ -63,7 +63,7 @@ export default defineComponent({
         }
     },
     mounted(){
-      
+        console.log("初始化容器部件")
         ev.on("ComponentView","init",this.render)
     },
     setup() {

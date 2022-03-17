@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import ev from "../../utils/eventbus"
+import ev from "../../utils/Eventbus"
 import Tree from "./Tree.vue"
 import BaseView from "../BaseView.vue"
 import SearchBox from "../../common/SearchBox.vue"

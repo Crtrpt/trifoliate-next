@@ -79,7 +79,6 @@ class Ctx{
     }
     dataInit(payload:any){
         console.log("数据状态树初始化");
-        console.log(payload)
         this.data=payload;
         this.nodeList=payload.nodeList;
         this.hash(this.data.project.list,null);

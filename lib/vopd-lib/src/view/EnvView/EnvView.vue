@@ -29,7 +29,7 @@
 import { defineComponent } from 'vue'
 import BaseView from "../BaseView.vue"
 
-import ev from "../../utils/eventbus"
+import ev from "../../utils/Eventbus"
 import SearchBox from '../../common/SearchBox.vue'
 export default defineComponent({
     name:"EnvView",

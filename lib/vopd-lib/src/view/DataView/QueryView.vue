@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import ev from "../../utils/eventbus"
+import ev from "../../utils/Eventbus"
 import JDBC from "../../datasource/JDBC.vue"
 import RESTFUL from "../../datasource/RESTFUL.vue"
 import MQTT from "../../datasource/MQTT.vue"

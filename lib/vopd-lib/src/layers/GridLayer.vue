@@ -12,7 +12,7 @@
 </style>
 <script lang="ts">
 import { nextTick } from '@vue/runtime-core';
-import ev from "../utils/eventbus"
+import ev from "../utils/Eventbus"
 export default {
     name:"GridLayer",
     props:{

@@ -44,7 +44,7 @@
         </Control>
 
 
-        <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  @scroll="scroll" >
+        <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  @scroll="scroll"  @wheel="wheel">
           <div ref="canvas" class="  relative overflow-hidden  border shadow doc  bg-white" 
                 :style="{
                   width: page.width,
@@ -85,7 +85,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Layer from './Layer.vue'
-import ev from "../utils/eventbus"
+import ev from "../utils/Eventbus"
 import Control from './Control.vue'
 import ToolView from '../view/ToolView/ToolView.vue'
 import PageScale from '../control/PageScale.vue'
@@ -94,6 +94,9 @@ import GridContrl from '../control/GridContrl.vue'
 import HistoryContrl from '../control/HistoryContrl.vue'
 import RolerContrl from '../control/RolerContrl.vue'
 import SettingContrl from '../control/SettingContrl.vue'
+
+
+
 
 
 export default defineComponent({
@@ -136,6 +139,19 @@ export default defineComponent({
     }
   },
   methods:{
+    wheel(e){
+      console.log(e);
+      if(e.ctrlKey){
+          e.preventDefault();
+          if(e.deltaY>0){
+            ev.fire("main","zoomin",null);
+          }else{
+            ev.fire("main","zoomout",null);
+          }
+      }else{
+
+      }
+    },
     scroll(e){
       this.page.scrollTop=this.$refs.view.scrollTop
       this.page.scrollLeft=this.$refs.view.scrollLeft

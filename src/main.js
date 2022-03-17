@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import VopdLib from '../lib/vopd-lib/src/VopdLib'
 
 import {
     Dialog,
@@ -8,21 +9,11 @@ import {
     DialogDescription,
   } from '@headlessui/vue'
   
-import {TreeView,AttrView,EventView,DataView,QueryView,EnvView,PageView,ComponentView,
-  ContainerRender,TextRender,EchartRender,MapRender} from "../lib/vopd-lib/src/main.js"
+
 
 let app=createApp(App);
-app.component("TreeView",TreeView)
-app.component("AttrView",AttrView)
-app.component("EventView",EventView)
-app.component("DataView",DataView)
-app.component("QueryView",QueryView)
-app.component("EnvView",EnvView)
-app.component("PageView",PageView)
-app.component("ComponentView",ComponentView)
-app.component("ContainerRender",ContainerRender)
-app.component("TextRender",TextRender)
-app.component("EchartRender",EchartRender)
-app.component("MapRender",MapRender)
+
+app.use(VopdLib);
+
 
 app.mount('#app')

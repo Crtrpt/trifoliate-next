@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-
+import ev from "../utils/Eventbus"
 export default defineComponent({
     props:[
         "value"
@@ -19,17 +19,31 @@ export default defineComponent({
             v:100
         }
     },
+    mounted(){
+        ev.on("pagescale","zoomin",(p,ctx)=>{
+            this.v=this.v+10;    
+        })
+        ev.on("pagescale","zoomout",(p,ctx)=>{
+            this.v=this.v-10;    
+        })
+    },
+    watch:{
+        "v":{
+            handler(n,v){
+               console.log("放大/缩小")
+               this.change();
+            }
+        }
+    },
     methods:{
         change(){
-             this.$emit("update:modelValue",this.v/100);
+              this.$emit("update:modelValue",this.v/100);
         },
         add(){
             this.v=this.v+1;
-            this.change();
         },
         sub(){
             this.v=this.v-1;
-            this.change();
         }
     },
     

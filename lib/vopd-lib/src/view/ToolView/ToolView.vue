@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import "./ToolView.scss";
-import ev from "../../utils/eventbus"
+import ev from "../../utils/Eventbus"
 import { defineComponent } from 'vue'
 
 export default defineComponent({
