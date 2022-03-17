@@ -44,8 +44,8 @@ export default {
     SearchBox
 },
     methods:{
-       selectContainer(p){
-        //    console.log("选择容器")
+       selectContainer(p,ctx){
+            console.log("选择容器")
            this.source=p.data;
        },
        change(p){
