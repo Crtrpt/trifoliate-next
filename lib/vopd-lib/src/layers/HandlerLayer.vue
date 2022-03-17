@@ -33,9 +33,12 @@ export default {
         ctx:Object
     },
     watch:{
-         display:{
+         data:{
+             deep:true,
              handler(n,o){
-
+                 if(n.attr['isDelete']){
+                     this.display=false;
+                 }
              }
          } 
     },
