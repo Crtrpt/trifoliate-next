@@ -32,9 +32,9 @@
                <RolerContrl :ctx="page" />
         </Control>
 
-        <!-- <Control class=" left-20 mt-4 top-4   absolute control z-40 flex">
+        <Control class=" left-20 mt-4 top-4   absolute control z-40 flex">
                <HistoryContrl />
-        </Control> -->
+        </Control>
 
         <Control class=" right-5 mt-4 top-4   absolute control z-40 flex">
                 <PageSize   :ctx="page" @input="changeSize"></PageSize>

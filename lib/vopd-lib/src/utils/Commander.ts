@@ -27,14 +27,17 @@ export class Commander{
         doAction(parm);
     }
     undo(){
+        console.log("撤销")
         if(this.cursor==0){
             return;
         }
+       
         this.cursor--;
         var cm=this.commandList[this.cursor];
         cm.undo(cm.param);
     }
     redo(){
+        console.log("重做")
         if(this.cursor>=this.commandList.length){
             return;
         }
