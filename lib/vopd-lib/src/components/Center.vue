@@ -1,6 +1,6 @@
 <template>
       <div class="flex-grow border  relative  window bg-gray-50 overflow-hidden ">
-        <Control class=" left-8  top-10  absolute  control rounded-sm z-40"  >
+        <!-- <Control class=" left-8  top-10  absolute  control rounded-sm z-40"  >
                 <div class="border border-t-gray-200 p-2 absolute mt-4  shadow">
                     <div class="">
                       <i class="las la-mouse-pointer  "
@@ -26,27 +26,23 @@
                       ></i>
                     </div>
                 </div>
-        </Control>
+        </Control> -->
 
         <Control class=" absolute  z-40">
                <RolerContrl :ctx="page" />
         </Control>
 
-        <Control class=" left-20 mt-4 top-4   absolute control z-40 flex">
+        <!-- <Control class=" left-20 mt-4 top-4   absolute control z-40 flex">
                <HistoryContrl />
-        </Control>
+        </Control> -->
 
         <Control class=" right-5 mt-4 top-4   absolute control z-40 flex">
                 <PageSize   :ctx="page" @input="changeSize"></PageSize>
-
+                <PageScale v-model="page.scale"></PageScale>
                 <GridContrl :ctx="page" @input="(p)=>{page.displayGrid=p}"></GridContrl>
+                <SettingContrl :ctx="page"></SettingContrl>
         </Control>
 
-        <Control class=" right-5 mt-4 bottom-4  absolute control z-40">
-                <div class=" ">
-                  <PageScale v-model="page.scale"></PageScale>
-                </div>
-        </Control> 
 
         <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  @scroll="scroll" >
           <div ref="canvas" class="  relative overflow-hidden  border shadow doc  bg-white" 
@@ -97,10 +93,11 @@ import PageSize from '../control/PageSize.vue'
 import GridContrl from '../control/GridContrl.vue'
 import HistoryContrl from '../control/HistoryContrl.vue'
 import RolerContrl from '../control/RolerContrl.vue'
+import SettingContrl from '../control/SettingContrl.vue'
 
 
 export default defineComponent({
-  components: { Layer, Control, ToolView, PageScale, PageSize, GridContrl, HistoryContrl, RolerContrl },
+  components: { Layer, Control, ToolView, PageScale, PageSize, GridContrl, HistoryContrl, RolerContrl, SettingContrl },
   computed:{
     pageScale(){
       return (this.page.scale)*100

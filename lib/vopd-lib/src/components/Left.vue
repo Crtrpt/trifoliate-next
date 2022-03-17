@@ -13,7 +13,7 @@ export default defineComponent({
           leftTop:[
           {
               title:"部件",
-              icon:"las la-cubes",
+              icon:"las la-plus",
               componemt:"ComponentView"
           },
         //   {

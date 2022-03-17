@@ -71,8 +71,7 @@ export default defineComponent({
                 xctx.lineWidth = 1;
                 var start=-this.left*this.scale ;
 
-
-                for(var i=start ;i<this.width;i=i+10){
+                for(var i=start ;i<this.width+this.left*2;i=i+10){
                     xctx.beginPath(); 
                     let s=i*this.scale-0.5;
                     xctx.moveTo(s,0);
@@ -94,7 +93,7 @@ export default defineComponent({
                 console.log("偏移"+this.offsetTop)
                 console.log(-this.top*this.scale);
                 var start =-this.top*this.scale;
-                for(var i=start;i<this.height;i=i+10){
+                for(var i=start;i<(this.height+this.top*2);i=i+10){
                    
                     yctx.beginPath(); 
                     let s=i*this.scale-0.5

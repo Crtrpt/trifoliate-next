@@ -1,10 +1,10 @@
 <template>
-    <div class="flex ">
+    <div class="flex">
         <div class="flex flex-col border-y border-t-gray-200 " v-if="direction=='left'">
             <div 
             class="flex  flex-col  "
             :class="{
-                'handler     cursor-pointer p-1 px-3 text-sm  text-center ':true,
+                'handler  cursor-pointer p-1 px-3 text-sm  text-center ':true,
                 'bg-blue-600  text-white':this.active==i,
             }"  v-for="(e,i) in data" :key="e.title" @click="changeSelect(i)">
                 <i :class="e.icon" class="text-3xl" ></i>
@@ -12,9 +12,10 @@
             </div>
         </div>
         <KeepAlive>
-
-                    <component class="content flex-grow overflow-auto border w-80 h-full" :key="vnode.componemt" :is="vnode.componemt" ref="cur" @close="close" v-if="vnode!=null" />
-
+            <component 
+            style="z-index:9999"
+            class="bg-white   content flex-grow overflow-auto border w-80 "
+             :key="vnode.componemt" :is="vnode.componemt" ref="cur" @close="close" v-if="vnode!=null" />
         </KeepAlive>
         <div class="flex flex-col border-y border-t-gray-200 " v-if="direction=='right'">
             <div
