@@ -28,4 +28,5 @@
     background: black;
     border-radius: 0.25em;
     visibility: hidden;
+    z-index: 10000;
 }
