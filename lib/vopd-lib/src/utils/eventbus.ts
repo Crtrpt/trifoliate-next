@@ -39,9 +39,9 @@ class EventBus{
         });
     }
     initCtx(ctx:any){
+        console.log("init============================")
         this.ctx.dataInit(ctx);
         this.fire("vopd","init",ctx.project);
-        console.log(this.ctx.selectContainer);
         this.on("vopd","selectContainer", this.ctx.selectContainer);
         this.on("vopd","cancelSelectContainer", this.ctx.cancelSelectContainer);
         this.on("vopd","deleteContainer", this.ctx.deleteContainer);
