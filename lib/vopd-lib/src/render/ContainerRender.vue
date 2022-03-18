@@ -1,6 +1,6 @@
 <template>
     <div :style="data.style" @click="click($event)" ref="node"
-        class=" transition-all"
+        class=" transition-all w-full h-full"
         :class=' {
             "border-green-500":isDragenter,
             "border-2":isDragenter,

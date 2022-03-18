@@ -21,8 +21,8 @@
                                 ></i>
                                 </DisclosureButton>
                                 <DisclosurePanel   class="grid grid-cols-2  gap-1 auto-rows-max py-1 overflow-auto">
-                                    <template v-for="i in g.list" v-bind:key="i" >
-                                        <div  class="border h-16  text-center cursor-pointer hover:bg-gray-200 "  @click="add(i)">
+                                    <template v-for="i in g.list" v-bind:key="i"  >
+                                        <div  v-if="filter.keywords=='' || i.name.search(filter.keywords)>-1 " class="border h-16  text-center cursor-pointer hover:bg-gray-200"  @click="add(i)">
                                                 <div class="flex  justify-center items-center h-full" draggable="true" @dragstart="dragstart($event,i)">
                                                     <i :class="i.icon" class="px-1"></i>
                                                     <div>{{i.name}}</div>
