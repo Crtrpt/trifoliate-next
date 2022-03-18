@@ -9,16 +9,45 @@
         </template>
          <template v-slot:content>
      
-            <div   class="grid grid-cols-2  gap-1 auto-rows-max         p-1    overflow-auto" >
-                <template v-for="i in list" v-bind:key="i" >
-                   <div v-if="filter.keywords=='' || i.name.search(filter.keywords)>-1" class="border h-20  text-center cursor-pointer hover:bg-gray-200 "  @click="add(i)">
-                        <div class="flex  justify-center items-center h-full" draggable="true" @dragstart="dragstart($event,i)">
-                             <i :class="i.icon" class="px-1"></i>
-                            <div>{{i.name}}</div>
-                        </div>
+              <div class="w-full max-w-md py-1 mx-auto bg-white ">
+                            <Disclosure v-slot="{ open }"  :defaultOpen="true">
+                                <DisclosureButton
+                                class="flex justify-between w-full px-2 py-1 text-sm font-medium text-left  bg-gray-100  hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
+                                >
+                                <span>全部({{list.length}})</span>
+                                <i
+                                    :class="open ? 'las la-angle-up' : 'las la-angle-down'"
+                                    class="w-5 h-5 text-blue-500 text-center leading-5"
+                                ></i>
+                                </DisclosureButton>
+                                <DisclosurePanel   class="grid grid-cols-2  gap-1 auto-rows-max py-1 overflow-auto">
+                                    <template v-for="i in list" v-bind:key="i" >
+                                        <div v-if="filter.keywords=='' || i.name.search(filter.keywords)>-1" class="border h-20  text-center cursor-pointer hover:bg-gray-200 "  @click="add(i)">
+                                                <div class="flex  justify-center items-center h-full" draggable="true" @dragstart="dragstart($event,i)">
+                                                    <i :class="i.icon" class="px-1"></i>
+                                                    <div>{{i.name}}</div>
+                                                </div>
+                                            </div>
+                                    </template>
+                                </DisclosurePanel>
+                            </Disclosure>
+                            <Disclosure as="div" class="mt-2" v-slot="{ open }">
+                                <DisclosureButton
+                                class="flex justify-between w-full px-2 py-1 text-sm font-medium text-left  bg-gray-100  hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
+                                >
+                                <span>布局</span>
+                               
+                                <i
+
+                                    :class="open ? 'las la-angle-up' : 'las la-angle-down'"
+                                    class="w-5 h-5 text-blue-500 text-center leading-5"
+                                ></i>
+                                </DisclosureButton>
+                                <DisclosurePanel class="px-4 pt-4 pb-2 text-sm text-gray-500">
+                                 暂无
+                                </DisclosurePanel>
+                            </Disclosure>
                     </div>
-                </template>
-            </div>
         </template>
     </BaseView>
 </template>
@@ -31,6 +60,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
+
+
 import BaseView from "../BaseView.vue"
 import ev from "../../utils/Eventbus"
 import SearchBox from '../../common/SearchBox.vue'
@@ -41,6 +73,7 @@ export default defineComponent({
     name:"ComponentView",
     data(){
         return {
+            open:true,
             filter:{
                 keywords:""
             },
@@ -48,6 +81,7 @@ export default defineComponent({
         }
     },
     components:{
+        Disclosure, DisclosureButton, DisclosurePanel,
     BaseView,
     SearchBox
 },
