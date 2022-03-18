@@ -13,7 +13,6 @@
 import ev from "../../utils/Eventbus";
 
 
-
 export default {
     components:{},
     name:"BaseLayer",
