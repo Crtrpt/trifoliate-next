@@ -1,7 +1,6 @@
 <template>
     <div :style="data.style" ref="node" @click="click($event)" >
         <div ref="chart" style="width:100%;height:100%">
-            ref="chart"
         </div>
     </div>
 </template>
@@ -25,12 +24,18 @@ export default {
             ev.fire("Container","selectContainer",{e:this.$refs.node,data:this.data})
         }
     },
-    mounted(){
-        ev.ctx.hashIds.get(this.data.id).ref["layer"]=this.$refs.node;
-        var myChart = echarts.init(this.$refs.chart);
+    updated(){
+            this.instance.dispose();
+          this.instance = echarts.init(this.$refs.chart);
             // Draw the chart
             console.log(this.data);
-            myChart.setOption(this.data.data);
+            this.instance.setOption(this.data.data);
+    },
+    mounted(){
+        ev.ctx.hashIds.get(this.data.id).ref["layer"]=this.$refs.node;
+        this.instance = echarts.init(this.$refs.chart);
+        this.instance.setOption(this.data.data);
+      
     },
     name:"EchartRender"
 }

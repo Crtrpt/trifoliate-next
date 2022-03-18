@@ -1,6 +1,6 @@
 <template>
     <div :style="data.style" @click="click($event)" ref="node"
-    
+        class=" transition-all"
         :class=' {
             "border-green-500":isDragenter,
             "border-2":isDragenter,
@@ -10,7 +10,7 @@
      @drop="drop($event)"
      @dragleave="dragleave($event)"
      >
-        <div class="relative w-full h-full text-gray-400 p-2 border-2 border-dashed border-gray-400 text-center" v-if="data?.children?.length==0">
+        <div class="relative w-full h-full select-none text-gray-400 p-2 border-2 border-dashed border-gray-400 text-center" v-if="data?.children?.length==0">
             这里可以放置一些组件
         </div>
         <template v-if="data?.children?.length>0" >

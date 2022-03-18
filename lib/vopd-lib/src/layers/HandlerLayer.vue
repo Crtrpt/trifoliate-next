@@ -1,5 +1,9 @@
 <template>
-    <div class="HandlerLayer absolute bg-blue-500 opacity-60" :style="cstyle"  v-if="display" @dblclick="cancelSelect">
+    <div class="HandlerLayer absolute bg-blue-500 opacity-60" 
+    ref="box"
+    :style="cstyle"  v-if="display" 
+    @mousedown="start($event)"
+    @dblclick="cancelSelect">
         <div class="left handler"></div>
         <div class="right handler"></div>
         <div class="top handler"></div>
@@ -45,17 +49,76 @@ export default {
     data:function(){
         return {
             display:false,
+            drag:false,
+            isMove:false,
+            s:{},
             cstyle:{
                 width:"0px",
                 height:"0px",
                 zIndex:9999,
-                transition: 'all .2s ease'
             },
             source:{},
             data:null
         }
     },
     methods:{
+        start(e){
+            if(this.$refs.box==e.path[0]){
+                this.isMove=true
+            }else{
+                this.drag=true;
+            }
+            ev.on("handler",'mousemove',this.move);
+            ev.on("handler",'mouseup',this.end);
+            this.s.x=e.screenX
+            this.s.y=e.screenY
+            this.s.el=this.$refs.box;
+            this.s.rect=this.$refs.box.getBoundingClientRect();
+            this.s.left=parseInt(this.$refs.box.style.left);
+            this.s.top=parseInt(this.$refs.box.style.top);
+
+
+        },
+        end(e){
+            this.drag=false;
+            this.isMove=false;
+            //写入快照
+            ev.off("handler","mousemove")
+            ev.off("handler","mouseup")
+
+
+             ev.fire("Container","moveSelectContainer",window.getComputedStyle(this.s.el))
+        },
+        move(e){
+            let s=this.s;
+            if(this.isMove){
+                console.log("平移")
+               
+                s.x1=e.screenX
+                s.y1=e.screenY
+                var offsetx=(s.x1-s.x);
+                var offsety=(s.y1-s.y);
+             
+                s.el.style.left=parseInt(s.left)+offsetx+"px";
+                s.el.style.top=parseInt(s.top)+offsety+"px";
+
+                
+            }
+            if(this.drag){
+                 console.log("变形")
+                
+                s.x1=e.screenX
+                s.y1=e.screenY
+                var offsetx=(s.x1-s.x);
+                var offsety=(s.y1-s.y);
+                console.log("offset x:"+offsetx+" y:"+offsety)
+                s.el.style.width=parseInt(s.rect.width)+offsetx+"px";
+                s.el.style.height=parseInt(s.rect.height)+offsety+"px";
+            }
+
+           
+
+        },
         init(e){
             this.source=e;
         },

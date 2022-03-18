@@ -29,7 +29,7 @@ class Ctx{
             widget:node.widget,
             content:"显示文本",
             data:node.data,
-            style:node.style,
+            style:JSON.parse(JSON.stringify(node.style)),
             ref:[],
             attr:{},
             children: reactive([]),
@@ -47,6 +47,14 @@ class Ctx{
         }
        
         ctx.hashIds.set(n.id,reactive(n));
+    }
+    moveSelectContainer(p,ctx){
+        console.log("移动");
+        //TODO 多选会有问题
+        ctx.hashIds.get(ctx.lastSelectId).style.left=p.left;
+        ctx.hashIds.get(ctx.lastSelectId).style.top=p.top;
+        ctx.hashIds.get(ctx.lastSelectId).style.width=p.width;
+        ctx.hashIds.get(ctx.lastSelectId).style.height=p.height;
     }
     changeStyle(p,ctx){
         ctx.hashIds.get(p.id).style=p;

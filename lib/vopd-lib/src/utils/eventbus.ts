@@ -51,6 +51,7 @@ class EventBus{
         this.on("vopd","changeStyle", this.ctx.changeStyle);
         this.on("vopd","addNode", this.ctx.addNode);
         this.on("vopd","deleteSelect", this.ctx.deleteSelect);
+        this.on("vopd","moveSelectContainer", this.ctx.moveSelectContainer);
     }
     queryCtx(){
         return this.ctx;
