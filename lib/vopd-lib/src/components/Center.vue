@@ -1,5 +1,5 @@
 <template>
-      <div class="flex-grow border  relative  window bg-gray-50 overflow-hidden ">
+      <div class="flex-grow border  relative  window bg-gray-50 overflow-hidden " ref="window">
         <Control class=" left-8  top-10  absolute  control rounded-sm z-40"  >
                 <div class="border border-t-gray-200 p-2 absolute mt-4  shadow">
                     <div class="">
@@ -98,10 +98,7 @@ import HistoryContrl from '../control/HistoryContrl.vue'
 import RolerContrl from '../control/RolerContrl.vue'
 import SettingContrl from '../control/SettingContrl.vue'
 import ActionContrl from '../control/ActionContrl.vue'
-
-
-
-
+import ContextMenu from "../common/context/ContextMenu.js"
 
 export default defineComponent({
   components: { Layer, Control, ToolView, PageScale, PageSize, GridContrl, HistoryContrl, RolerContrl, SettingContrl, ActionContrl },
@@ -181,6 +178,31 @@ export default defineComponent({
     }
   }, 
   mounted(){
+
+    const skinsContextMenu = new ContextMenu( this.$refs.window, [
+                {text: '预览', value: 'chrome-dark',  hotkey: 'F5', onclick: ()=>{}},
+                {text: '编译', value: 'chrome-bright', onclick: ()=>{}},
+                {text: '分享链接', value: 'chrome-dark',  onclick: ()=>{}},
+                {text: '显示网格', value: 'hackerman', onclick: ()=>{}},
+                null,
+                {text: '属性', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
+    ]);
+    skinsContextMenu.install();
+
+
     ev.on("EditorView","init",this.render)
     let  el:any=this.$refs.view;
    

@@ -1,7 +1,7 @@
 <template>
     <div class="flex items-center justify-center border rounded-full mx-1 px-2 bg-gray-200 shadow">
-       <i class="las la-undo cursor-pointer" @click="undo()"></i>
-       <i class="las la-redo cursor-pointer" @click="redo()"></i>
+       <i class="las la-undo cursor-pointer" @click="undo()" v-tooltip="'撤销'"></i>
+       <i class="las la-redo cursor-pointer" @click="redo()" v-tooltip="'重做'"></i>
     </div>
 </template>
 

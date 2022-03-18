@@ -1,5 +1,8 @@
 <template>
-     <div class="flex items-center justify-center border rounded-full bg-gray-200 shadow">
+     <div class="flex items-center justify-center border rounded-full bg-gray-200 shadow"
+     
+          v-tooltip="'ctrl+鼠标滑轮放大缩小视图'"
+     >
                   <i class=" item las la-search-plus leading-2 px-1 " @click="add"></i>
                   <input class=" inline text-xs w-10 bg-inherit" v-model="v" type="number" @change="change" min="0"  step="10"/>%
                   <i class="item las la-search-minus leading-2 px-1 " @click="sub"></i>

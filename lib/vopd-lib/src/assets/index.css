@@ -17,3 +17,15 @@
     background-clip: padding-box;
     border: solid transparent;
     border-width: 1px; }
+
+.popper {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    color:white;
+    background: black;
+    border-radius: 0.25em;
+    visibility: hidden;
+}

@@ -1,5 +1,8 @@
 <template>
-    <div class="flex items-center justify-center border rounded-full mx-1 px-2 bg-gray-200 shadow items-center">
+    <div class="flex items-center justify-center border rounded-full mx-1 px-2 bg-gray-200 shadow items-center"
+    
+         v-tooltip="'下拉选择页面的大小尺寸'"
+    >
                 <i class="las la-desktop"></i>
                 <VSelect class="w-30"></VSelect>
     </div>
