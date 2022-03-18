@@ -32,7 +32,8 @@ class Ctx{
             style:node.style,
             ref:[],
             attr:{},
-            children: reactive([])
+            children: reactive([]),
+            meta:node.meta,
         }
 
         if(p.id==null){
@@ -89,8 +90,11 @@ class Ctx{
         this.hashNodeId();
     }
     hashNodeId(){
-        this.nodeList.forEach(i=>{
-           this.nodeIdMap.set(i.id,i);
+        this.nodeList.forEach(g=>{
+            g.list.forEach(c=>{
+                console.log("写入")
+                this.nodeIdMap.set(c.id,c);
+            });
         })
     }
     hash(list:Array<any>,parent:any){

@@ -11,14 +11,12 @@
      @dragleave="dragleave($event)"
      >
         <div class="relative w-full h-full text-gray-400 p-2 border-2 border-dashed border-gray-400 text-center" v-if="data?.children?.length==0">
-            这里可以放置一些组件
+            这里可以放置表单组件
         </div>
         <template v-if="data?.children?.length>0" >
             <template  v-for="n in data.children" :key="n" >
-                    <!-- 增加判断是否被删除 -->
                 <component v-bind:is="n?.render" v-if="!n?.attr['isDelete'] && !n?.attr['isEye']"  :data="n"    />
             </template>
-            
         </template>
     </div>
 </template>
@@ -27,7 +25,7 @@
 import ev from "../utils/Eventbus"
 
 export default {
-    name:"ContainerRender",
+    name:"FormRender",
     components:{},
     props:{
         data:Object,

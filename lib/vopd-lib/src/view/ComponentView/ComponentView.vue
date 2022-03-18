@@ -10,41 +10,25 @@
          <template v-slot:content>
      
               <div class="w-full max-w-md py-1 mx-auto bg-white ">
-                            <Disclosure v-slot="{ open }"  :defaultOpen="true">
+                            <Disclosure v-slot="{ open }"  v-for=" g in list" :key="g"  :default-open="true" >
                                 <DisclosureButton
-                                class="flex justify-between w-full px-2 py-1 text-sm font-medium text-left  bg-gray-100  hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
+                                class="flex justify-between w-full px-2 py-1 text-sm mb-1 font-medium text-left  bg-gray-100  hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
                                 >
-                                <span>全部({{list.length}})</span>
+                                <span>{{g.name}}</span>
                                 <i
                                     :class="open ? 'las la-angle-up' : 'las la-angle-down'"
                                     class="w-5 h-5 text-blue-500 text-center leading-5"
                                 ></i>
                                 </DisclosureButton>
                                 <DisclosurePanel   class="grid grid-cols-2  gap-1 auto-rows-max py-1 overflow-auto">
-                                    <template v-for="i in list" v-bind:key="i" >
-                                        <div v-if="filter.keywords=='' || i.name.search(filter.keywords)>-1" class="border h-20  text-center cursor-pointer hover:bg-gray-200 "  @click="add(i)">
+                                    <template v-for="i in g.list" v-bind:key="i" >
+                                        <div  class="border h-16  text-center cursor-pointer hover:bg-gray-200 "  @click="add(i)">
                                                 <div class="flex  justify-center items-center h-full" draggable="true" @dragstart="dragstart($event,i)">
                                                     <i :class="i.icon" class="px-1"></i>
                                                     <div>{{i.name}}</div>
                                                 </div>
                                             </div>
                                     </template>
-                                </DisclosurePanel>
-                            </Disclosure>
-                            <Disclosure as="div" class="mt-2" v-slot="{ open }">
-                                <DisclosureButton
-                                class="flex justify-between w-full px-2 py-1 text-sm font-medium text-left  bg-gray-100  hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-                                >
-                                <span>布局</span>
-                               
-                                <i
-
-                                    :class="open ? 'las la-angle-up' : 'las la-angle-down'"
-                                    class="w-5 h-5 text-blue-500 text-center leading-5"
-                                ></i>
-                                </DisclosureButton>
-                                <DisclosurePanel class="px-4 pt-4 pb-2 text-sm text-gray-500">
-                                 暂无
                                 </DisclosurePanel>
                             </Disclosure>
                     </div>
@@ -106,11 +90,7 @@ export default defineComponent({
             this.list=ctx.nodeList;
         }
     },
-    mounted(){
-     
-        // const nanopop = reposition(this.$refs.view, this.$refs.tooltip)
-        
-       
+    mounted(){       
         console.log("初始化容器部件")
         ev.on("ComponentView","init",this.render)
     },
