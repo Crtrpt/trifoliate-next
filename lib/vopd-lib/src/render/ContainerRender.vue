@@ -10,8 +10,10 @@
      @drop="drop($event)"
      @dragleave="dragleave($event)"
      >
-        <div class="relative w-full h-full select-none text-gray-400 p-2 border-2 border-dashed border-gray-400 text-center" v-if="data?.children?.length==0">
-            这里可以放置一些组件
+        <div class="relative w-full flex  items-center justify-center h-full select-none text-gray-400 p-2 border-2 border-dashed border-gray-400 text-center" v-if="data?.children?.length==0">
+            <div>
+                这里可以放置一些组件
+            </div>
         </div>
         <template v-if="data?.children?.length>0" >
             <template  v-for="n in data.children" :key="n" >
