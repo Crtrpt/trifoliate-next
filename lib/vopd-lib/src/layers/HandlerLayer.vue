@@ -179,7 +179,8 @@ export default {
 
         if (this.handler == "rightTop") {
           s.el.style.width = parseInt(s.rect.width) + offsetx + "px";
-          s.el.style.top = parseInt(s.rect.top) + offsety + "px";
+          s.el.style.height = parseInt(s.rect.height) - offsety + "px";
+          s.el.style.top = parseInt(s.top) + offsety + "px";
         }
 
         if (this.handler == "rightBottom") {
