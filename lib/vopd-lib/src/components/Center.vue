@@ -62,16 +62,11 @@
               @dragover="allowDrop($event)"
             >
             <div class="layers" ref="layer">
-            <!-- <Layer name="refLineLayer" /> -->
           
               <Layer name="GridLayer"  :ctx="page" />
               <Layer name="BaseLayer"  :ctx="page" />
               
               <!-- <Layer name="SelectLayer" :ctx="page" /> -->
-              
-              <!-- <Layer name="MouseLayer" /> -->
-            
-              <!-- <Layer name="HoverLayer" :ctx="page" /> -->
 
               <Layer name="HandlerLayer" :ctx="page" />
       

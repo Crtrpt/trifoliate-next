@@ -71,7 +71,12 @@ export default defineComponent({
 },
     methods:{
         dragstart(e,i){
-             e.dataTransfer.setData("Text", i.id);
+            console.log(e);
+            e.dataTransfer.setData("Text", JSON.stringify({
+                 offsetX:e.offsetX,
+                 offsetY:e.offsetY,
+                 id:i.id
+            }));
         },
         pin(v){
             this.$emit("pin")

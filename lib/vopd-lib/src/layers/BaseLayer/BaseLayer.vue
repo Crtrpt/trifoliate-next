@@ -1,20 +1,17 @@
 <template>
     <div class="BaseLayer w-full h-full absolute" :style=style @drop="drop($event)">
         <template v-for="n in this.source.list" :key="n+'xx'" >
-              <component class="node" v-bind:is="n.render"   :data="n" 
-                        v-if="!n.attr['isDelete'] && !n.attr['isEye']"
-                        @mousedown="mousedown($event,n)"
-                        @mouseenter="enter(n)" 
-                />
+            <AbstractElement :data="n" />
         </template>
     </div>
 </template>
 <script lang="ts">
 import ev from "../../utils/Eventbus";
+import AbstractElement from "./AbstractElement.vue";
 
 
 export default {
-    components:{},
+    components:{ AbstractElement },
     name:"BaseLayer",
     props:{
         ctx:Object
@@ -34,20 +31,19 @@ export default {
     methods:{
         drop(e){
             console.log("放下"+e.dataTransfer.getData("text/plain"));
+            var td=JSON.parse(e.dataTransfer.getData("text/plain"));
             ev.fire("Container","addNode",{
                 id:null,
-                nodeId:e.dataTransfer.getData("text/plain")
+                nodeId:td.id,
+                style:{
+                    left:e.offsetX+"px",
+                    top:e.offsetY+"px",
+                }
             });
-        },
-        mousedown(e,n){
-            console.log("组织时间冒泡")
-            e.stopPropagation();
-        },
-        enter(n){
-            ev.fire("BaseLayer","hoverContainer",n);
+
+
         },
         render(payload,ctx){
-            console.log("渲染数据");
             this.source=ctx.data.project;
         },
         active(n:any){

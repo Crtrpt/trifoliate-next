@@ -86,7 +86,7 @@ export default {
             console.log("放下"+e.dataTransfer.getData("text/plain"));
             ev.fire("Container","addNode",{
                 id:null,
-                nodeId:e.dataTransfer.getData("text/plain")
+                nodeId:JSON.parse(e.dataTransfer.getData("text/plain")).id
             });
             e.stopPropagation();
         },

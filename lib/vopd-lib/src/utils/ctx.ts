@@ -1,5 +1,5 @@
-import {Collection, fromJS} from 'immutable';
 import {ref,reactive} from "vue"
+
 class Ctx{
     data={};
     //可以添加的节点列表
@@ -22,6 +22,10 @@ class Ctx{
         console.log("id"+p.id+"--->"+p.nodeId)
         var node= ctx.nodeIdMap.get(p.nodeId);
         var nextId=ctx.data.project.maxId++
+        var cs={
+            ...JSON.parse(JSON.stringify(node.style)),
+            ...p.style
+        }
         var n={
             id:nextId,
             name:node.name+nextId,
@@ -29,7 +33,7 @@ class Ctx{
             widget:node.widget,
             content:"显示文本",
             data:node.data,
-            style:JSON.parse(JSON.stringify(node.style)),
+            style:cs,
             ref:[],
             attr:{},
             children: reactive([]),
@@ -47,6 +51,7 @@ class Ctx{
         }
        
         ctx.hashIds.set(n.id,reactive(n));
+
     }
     moveSelectContainer(p,ctx){
         console.log("移动");

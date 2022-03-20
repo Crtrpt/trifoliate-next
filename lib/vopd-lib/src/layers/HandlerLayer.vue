@@ -1,28 +1,17 @@
 <template>
  
   <div class="HandlerLayer"  v-if="display">
-     <!-- <div class=" bg-blue-500 rounded-full text-white   px-2 text-xs inline-block text-center absolute "
-                    :style='
-                        {
-                            top:p.t+"px",
-                            left:p.l+"px",
-                        }
-                    '>
-                    {{p.t}}x{{p.l}}
-                    {{p.w}}x{{p.h}}
-    </div>   -->
     <div
-      class="box absolute"
+      class="box absolute shadow-inner"
       ref="box"
       :style="cstyle"
-     
+       @dragenter="dragenter($event)"     
       @mousedown="start($event)"
       @dblclick="cancelSelect"
     >
-      <!-- <div class="left handler"  @mousedown="setHandler('left')"></div> -->
-      <!-- <div class="right handler" @mousedown="setHandler('right')"></div> -->
-      <!-- <div class="top handler"  @mousedown="setHandler('top')"></div> -->
-      <!-- <div class="bottom handler"   @mousedown="setHandler('bottom')"></div> -->
+      <div class=" absolute rounded-full  px-2  text-xs bg-blue-500 text-white" style="top:-1.5rem">
+          {{data.name}}
+      </div>
       <div class="left_top handler" @mousedown="setHandler('leftTop')"></div>
       <div
         class="left_bottom handler"
@@ -76,11 +65,11 @@ export default {
       drag: false,
       isMove: false,
       s: {},
-      p: {
-        w: "",
-        h: "",
-        l: "",
-        t: "",
+      pstyle: {
+        width: "",
+        height: "",
+        left: "",
+        top: "",
       },
       cstyle: {
         width: "0px",
@@ -92,6 +81,9 @@ export default {
     };
   },
   methods: {
+    dragenter(e){
+        this.display=false;
+    },
     setHandler(postion) {
       this.handler = postion;
     },
@@ -105,8 +97,8 @@ export default {
       ev.on("handler", "mouseup", this.end);
       this.s.x = e.screenX;
       this.s.y = e.screenY;
-      this.s.el = this.$refs.box;
-     var rec= this.s.rect = this.$refs.box.getBoundingClientRect();
+      var s= this.s.el = this.$refs.box;
+      this.s.rect = this.$refs.box.getBoundingClientRect();
       this.s.left = parseInt(this.$refs.box.style.left);
       this.s.top = parseInt(this.$refs.box.style.top);
       this.s.width = parseInt(this.$refs.box.style.width);
@@ -188,6 +180,7 @@ export default {
           s.el.style.height = parseInt(s.rect.height) + offsety + "px";
         }
 
+    
         // var cs=window.getComputedStyle(this.s.el);
         // this.p.w=parseInt(cs.width);
         // this.p.h=parseInt(cs.height);
@@ -208,14 +201,14 @@ export default {
     },
     select(p) {
       var el = ev.ctx.hashIds.get(p.data.id).ref["layer"];
-      var rec = el.getBoundingClientRect();
+      var rect = el.getBoundingClientRect();
       this.data = p.data;
-      this.cstyle.width = rec.width + "px";
-      this.cstyle.height = rec.height + "px";
+      this.cstyle.width = rect.width + "px";
+      this.cstyle.height = rect.height + "px";
       this.cstyle.top =
-        rec.top - this.ctx.rect.top + this.ctx.view.scrollTop + "px";
+        rect.top - this.ctx.rect.top + this.ctx.view.scrollTop + "px";
       this.cstyle.left =
-        rec.left - this.ctx.rect.left + this.ctx.view.scrollLeft + "px";
+        rect.left - this.ctx.rect.left + this.ctx.view.scrollLeft + "px";
       this.display = true;
     },
   },
@@ -250,14 +243,10 @@ export default {
   height: 10px;
   // border:1px solid blue;
   background-color: white;
-  border: 1px solid #00acdc;
-  // box-shadow: 0 0 0 1px white, 0 0 10px rgb(0 0 0 / 35%);
-  // border-radius: 50%;
-  // display: inline-block;
-  // position: absolute;
+  border: 2px solid #00acdc;
 }
 .gutter {
-  border: 1px solid #ff00ff00;
+  border: 2px solid #ff00ff00;
 }
 .left {
   grid-area: left;

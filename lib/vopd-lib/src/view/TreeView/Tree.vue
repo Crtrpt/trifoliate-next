@@ -80,7 +80,7 @@ export default {
             console.log("tree 放下"+e.dataTransfer.getData("text/plain"));
             ev.fire("Container","addNode",{
                 id:this.data.id,
-                nodeId:e.dataTransfer.getData("text/plain")
+                nodeId:JSON.parse(e.dataTransfer.getData("text/plain")).id
             });
             this.isDragenter=false;
             e.stopPropagation();
