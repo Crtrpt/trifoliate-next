@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import ev from "../../utils/Eventbus";
+import ev from "../utils/Eventbus";
 
 export default defineComponent({
   props: {
@@ -56,10 +56,10 @@ export default defineComponent({
       e.stopPropagation();
     },
     click(e){
-            if(!this.data.attr['isLock']){
+          if(!this.data.attr['isLock']){
                 ev.fire("Container","selectContainer",{e:this.$refs.node,data:this.data})
                 e.stopPropagation();
-            }
+          }
     },
     enter(n) {
       ev.fire("BaseLayer", "hoverContainer", n);

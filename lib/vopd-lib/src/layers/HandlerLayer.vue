@@ -1,16 +1,19 @@
 <template>
- 
-  <div class="HandlerLayer"  v-if="display">
+  <div class="HandlerLayer" v-if="display">
     <div
       class="box absolute shadow-inner"
       ref="box"
       :style="cstyle"
-       @dragenter="dragenter($event)"     
+      @dragenter="dragenter($event)"
       @mousedown="start($event)"
       @dblclick="cancelSelect"
     >
-      <div class=" absolute rounded-full  px-2  text-xs bg-blue-500 text-white" style="top:-1.5rem">
-          {{data.name}}
+      <div
+        class="absolute rounded-full px-2 text-xs bg-blue-400 hover:bg-blue-500 text-white cursor-pointer"
+        style="top: -1.5rem"
+      >
+        <i class="las la-angle-double-up" @click="displayPath"></i>
+        {{ data.name }}
       </div>
       <div class="left_top handler" @mousedown="setHandler('leftTop')"></div>
       <div
@@ -41,7 +44,7 @@
 import ev from "../utils/Eventbus";
 import keyboardJS from "keyboardjs";
 import { Handler } from "leaflet";
-import { nextTick } from '@vue/runtime-core';
+import { nextTick } from "@vue/runtime-core";
 
 export default {
   name: "HandlerLayer",
@@ -81,8 +84,9 @@ export default {
     };
   },
   methods: {
-    dragenter(e){
-        this.display=false;
+    displayPath() {},
+    dragenter(e) {
+      this.display = false;
     },
     setHandler(postion) {
       this.handler = postion;
@@ -97,7 +101,7 @@ export default {
       ev.on("handler", "mouseup", this.end);
       this.s.x = e.screenX;
       this.s.y = e.screenY;
-      var s= this.s.el = this.$refs.box;
+      var s = (this.s.el = this.$refs.box);
       this.s.rect = this.$refs.box.getBoundingClientRect();
       this.s.left = parseInt(this.$refs.box.style.left);
       this.s.top = parseInt(this.$refs.box.style.top);
@@ -180,7 +184,6 @@ export default {
           s.el.style.height = parseInt(s.rect.height) + offsety + "px";
         }
 
-    
         // var cs=window.getComputedStyle(this.s.el);
         // this.p.w=parseInt(cs.width);
         // this.p.h=parseInt(cs.height);
@@ -200,9 +203,10 @@ export default {
       ev.fire("HandlerLayer", "cancelSelectContainer", { data: this.data });
     },
     select(p) {
-      var el = ev.ctx.hashIds.get(p.data.id).ref["layer"];
+      var data = ev.ctx.hashIds.get(p.data.id);
+      var el = data.ref["layer"];
       var rect = el.getBoundingClientRect();
-      this.data = p.data;
+      this.data = data;
       this.cstyle.width = rect.width + "px";
       this.cstyle.height = rect.height + "px";
       this.cstyle.top =

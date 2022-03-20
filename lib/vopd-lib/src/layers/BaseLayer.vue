@@ -6,7 +6,7 @@
     </div>
 </template>
 <script lang="ts">
-import ev from "../../utils/Eventbus";
+import ev from "../utils/Eventbus";
 import AbstractElement from "./AbstractElement.vue";
 
 

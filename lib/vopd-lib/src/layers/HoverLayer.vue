@@ -5,7 +5,6 @@
     </div>
 </template>
 <script lang="ts">
-import "./HoverLayer.scss";
 import ev from "../utils/Eventbus"
 export default {
     name:"SelectLayer",
