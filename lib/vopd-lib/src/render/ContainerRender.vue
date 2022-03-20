@@ -27,8 +27,5 @@ export default {
     data: Object,
   },
   methods: {},
-  mounted() {
-    ev.ctx.hashIds.get(this.data.id).ref["layer"] = this.$refs.node;
-  },
 };
 </script>

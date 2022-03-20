@@ -15,6 +15,7 @@
     v-if="!data.attr['isDelete'] && !data.attr['isEye']"
     @mousedown="mousedown($event, data)"
     @mouseenter="enter(data)"
+    ref="node"
   />
 </template>
 
@@ -25,6 +26,11 @@ import ev from "../utils/Eventbus";
 export default defineComponent({
   props: {
     data: Object,
+  },
+  mounted() {
+    console.log("注册======================")
+    console.log(this.$refs.node);
+    ev.ctx.hashIds.get(this.data.id).ref["layer"] = this.$refs.node;
   },
   data() {
     return {

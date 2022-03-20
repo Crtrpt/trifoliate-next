@@ -9,11 +9,19 @@
       @dblclick="cancelSelect"
     >
       <div
-        class="absolute rounded-full px-2 text-xs bg-blue-400 hover:bg-blue-500 text-white cursor-pointer"
+        class="absolute rounded-full  flex-nowrap  text-xs   text-white cursor-pointer"
         style="top: -1.5rem"
       >
-        <i class="las la-angle-double-up" @click="displayPath"></i>
-        {{ data.name }}
+      <div class="bg-blue-400 rounded-full flex flex-row">
+        <i
+         :class="{
+            'la-circle':!this.data.parent,
+            'la-angle-double-up':this.data.parent
+         }"
+         class="las   rounded-l-full  px-1 leading-4   hover:bg-blue-500" @click="displayPath" ></i>
+        <p class=" rounded-r-full whitespace-nowrap hover:bg-blue-500 px-1"> {{ data.name }}</p>
+      </div>
+      
       </div>
       <div class="left_top handler" @mousedown="setHandler('leftTop')"></div>
       <div
@@ -84,7 +92,13 @@ export default {
     };
   },
   methods: {
-    displayPath() {},
+    displayPath() {
+       if(this.data.parent!=null){
+            ev.fire("handler","selectContainer",{data:{
+                id:this.data.parent
+            }})
+       }
+    },
     dragenter(e) {
       this.display = false;
     },
@@ -203,9 +217,12 @@ export default {
       ev.fire("HandlerLayer", "cancelSelectContainer", { data: this.data });
     },
     select(p) {
+        console.log("handler id"+p.data.id);
       var data = ev.ctx.hashIds.get(p.data.id);
       var el = data.ref["layer"];
-      var rect = el.getBoundingClientRect();
+      console.log("el==========")
+      console.log(el);
+      var rect = el.$el.getBoundingClientRect();
       this.data = data;
       this.cstyle.width = rect.width + "px";
       this.cstyle.height = rect.height + "px";
