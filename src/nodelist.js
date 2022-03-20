@@ -8,6 +8,7 @@
         render: "ContainerRender",
         widget: "Container",
         icon: "las la-stop",
+        desc:"固定的 200px布局",
         style: {
           height: "200px"
         },
@@ -18,6 +19,7 @@
         name: "浮动布局",
         render: "ContainerRender",
         widget: "Container",
+        desc:"浮动元素自由定位",
         icon: "las la-stop",
         style: {
           position: "absolute",

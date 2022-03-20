@@ -51,8 +51,6 @@
 <script lang="ts">
 import ev from "../utils/Eventbus";
 import keyboardJS from "keyboardjs";
-import { Handler } from "leaflet";
-import { nextTick } from "@vue/runtime-core";
 
 export default {
   name: "HandlerLayer",
