@@ -147,7 +147,7 @@ export default {
     move(e) {
       let s = this.s;
       if (this.isMove) {
-        console.log("平移");
+        // console.log("平移");
 
         s.x1 = e.screenX;
         s.y1 = e.screenY;
@@ -158,7 +158,7 @@ export default {
         s.el.style.top = parseInt(s.top) + offsety + "px";
       }
       if (this.drag) {
-        console.log("变形");
+        // console.log("变形");
 
         s.x1 = e.screenX;
         s.y1 = e.screenY;
