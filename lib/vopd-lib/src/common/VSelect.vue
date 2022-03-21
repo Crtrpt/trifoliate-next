@@ -1,13 +1,13 @@
 <template>
   <div class="w-full">
-    <Listbox v-model="selectedPerson" >
+    <Listbox v-model="selected" >
       <div class="relative">
         <ListboxButton
           class="relative py-0 pl-2 pr-5 text-left rounded-lg  
           w-full
           cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm"
         >
-          <span class="block truncate  text-xs text-center">{{ selectedPerson.name }}</span>
+          <span class="block truncate  text-xs text-center">{{ selected.name }}</span>
           <span
             class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
           >
@@ -25,12 +25,13 @@
           >
             <ListboxOption
               v-slot="{ active, selected }"
-              v-for="person in people"
+              v-for="(person,i) in people"
               :key="person.name"
               :value="person"
               as="template"
             >
               <li
+              @click="change(i)"
                 :class="[
                   active ? 'text-amber-900 bg-amber-100' : 'text-gray-900',
                   'cursor-default select-none relative py-2 pl-10 pr-4',
@@ -60,7 +61,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch  } from 'vue'
 import {
   Listbox,
   ListboxLabel,
@@ -69,9 +70,26 @@ import {
   ListboxOption,
 } from '@headlessui/vue'
 
-const people = [
-  { name: '1024px * 960px' },
-  { name: '1920px * 1080px' },
-]
-const selectedPerson = ref(people[0])
+
+const props=defineProps(
+  {
+    modelValue:Number,
+    list:Array
+  }
+)
+
+const people = props.list;
+
+const e= defineEmits(["update:modelValue"])
+
+const selected = ref(props.list[props.modelValue])
+
+const change=(i)=>{
+  e("update:modelValue",i)
+}
+// watch(selected,(n,p)=>{
+//   console.log("变更")
+//    
+// })
+
 </script>

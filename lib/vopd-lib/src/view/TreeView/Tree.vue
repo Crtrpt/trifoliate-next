@@ -13,15 +13,17 @@
         "text-blue-400":data.attr["isSelect"],
         "border-white":!data.attr["isSelect"],
     }'
-    @mouseenter="enter()"
+    @mouseenter="mouseenter()"
      >
         <div class="name flex flex-row items-center px-2" @mouseover="hover" @mouseout="hover1">
             <i class="las la-caret-right"  @click="expand(data,$event)" v-if="!data.attr['isExpand'] && data.children?.length>0 "></i>
             <i class="las la-caret-down"  @click="expand(data,$event)" v-if="data.attr['isExpand']  && data.children?.length>0 "></i>
 
              <i class="w-4"   v-if=" data.children?.length==0 "></i>
-            <p class="flex-grow flex items-center" @click="click(data,$event)" > 
-                <div>{{data.name}} </div>
+            <p class="flex-grow flex items-center text-sm" @click="click(data,$event)" > 
+                <div @dblclick="edit" v-if="!isEdit">{{data.name}} </div>
+                <div v-if="isEdit" class="border-blue-500 border px-1">
+                    <input class=" outline-none"  v-on:keyup.enter="enter"  v-model="data.name" type="text"/> </div>
                 <div class=" ml-2 text-xs px-1  rounded-full text-white bg-gray-300 " 
                 :class="{
                     ' bg-blue-500':data.attr['isSelect']
@@ -61,15 +63,26 @@ export default {
     },
     data:function(){
         return {
+            isEdit:false,
             isDragenter:false
         }
     },
     methods:{
-        
+        mouseenter(){
+
+        },
+        enter(){
+            console.log("修改x")
+            this.isEdit=false
+        },
+        edit(){
+            console.log("进入编辑状态")
+            this.isEdit=true
+        },
         dragenter(e){
-             console.log("进入")
+            console.log("进入")
             this.isDragenter=true;
-             e.stopPropagation();
+            e.stopPropagation();
         },
         dragleave(e){
             console.log("离开")
@@ -87,9 +100,6 @@ export default {
         },
         allowDrop(e){
             e.preventDefault();
-        },
-        enter(){
-             ev.fire("TreeView","hoverContainer",this.data);
         },
         eye(node,e:any){
             ev.fire("TreeView","eyeContainer",node)

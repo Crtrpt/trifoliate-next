@@ -20,7 +20,7 @@
         render: "ContainerRender",
         widget: "Container",
         desc:"浮动元素自由定位",
-        icon: "las la-stop",
+        icon: "las la-copy",
         style: {
           position: "absolute",
           left: "100px",
@@ -33,9 +33,10 @@
       {
         id: "101",
         name: "行布局",
+        desc:"内部元素横向排列",
         render: "ContainerRender",
         widget: "Container",
-        icon: "las la-stop",
+        icon: "las la-grip-lines-vertical",
         style: {
           display: "flex",
         },
@@ -45,8 +46,9 @@
         id: "111",
         name: "列布局",
         render: "ContainerRender",
+        desc:"内部元素纵向排列",
         widget: "Container",
-        icon: "las la-columns",
+        icon: "las la-grip-lines",
         style: {
           flexDirection: "column",
           display: "flex",
@@ -107,7 +109,8 @@
       },
       {
         id: "106",
-        name: "剩余空间布局",
+        name: "填充布局",
+        desc:"flex 布局 沾满剩余空间",
         render: "ContainerRender",
         widget: "Container",
         icon: "las la-stop",
@@ -121,6 +124,7 @@
       {
         id: "201",
         name: "表单布局",
+        desc:"提交表单内数据到指定的服务器",
         render: "FormRender",
         widget: "Form",
         icon: "las la-stop",
@@ -129,7 +133,6 @@
         },
         children: []
       },
-
     ]
   },
   {
@@ -151,6 +154,7 @@
         render: "EchartRender",
         widget: "Echart",
         icon: "las la-chart-pie",
+        desc:"echart 图表元素",
         style: {
           "width": "100%",
           "height": "100%",
@@ -211,7 +215,7 @@
         name: "选择框",
         render: "InputRender",
         widget: "Input",
-        icon: "las la-stop",
+        icon: "las la-check",
         meta: {
           type: "checkbox",
         },

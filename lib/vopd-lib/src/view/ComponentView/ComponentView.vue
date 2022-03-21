@@ -9,8 +9,8 @@
         </template>
          <template v-slot:content>
      
-              <div class="w-full max-w-md py-1 mx-auto bg-white ">
-                            <Disclosure v-slot="{ open }"  v-for=" g in list" :key="g"  :default-open="true" >
+            <div class="w-full max-w-md py-1 mx-auto bg-white ">
+                            <Disclosure v-slot="{ open }"  v-for=" g in list" :key="g"  :default-open="false" >
                                 <DisclosureButton
                                 class="flex justify-between w-full px-2 py-1 text-sm mb-1 font-medium text-left  bg-gray-100  hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
                                 >
@@ -20,10 +20,10 @@
                                     class="w-5 h-5 text-blue-500 text-center leading-5"
                                 ></i>
                                 </DisclosureButton>
-                                <DisclosurePanel   class="grid grid-cols-2  gap-1 auto-rows-max py-1 overflow-auto">
+                                <DisclosurePanel   class="grid grid-cols-2  gap-1 auto-rows-max py-1 ">
                                     <template v-for="i in g.list" v-bind:key="i"  >
-                                        <div  v-if="filter.keywords=='' || i.name.search(filter.keywords)>-1 " class="border h-16  text-center cursor-pointer hover:bg-gray-200"  @click="add(i)">
-                                                <div v-tooltip="{text:i.desc||i.name,position:'right-middle'}"  class="flex  justify-center items-center h-full" draggable="true" @dragstart="dragstart($event,i)">
+                                        <div  v-if="filter.keywords=='' || i.name.search(filter.keywords)>-1 " class="border   text-center cursor-pointer hover:bg-gray-200  "  @click="add(i)">
+                                                <div v-tooltip="{text:i.desc||i.name,position:'right-middle'}"  class="py-1 flex  justify-center items-center " draggable="true" @dragstart="dragstart($event,i)">
                                                     <i :class="i.icon" class="px-1"></i>
                                                     <div>{{i.name}}</div>
                                                 </div>
@@ -31,7 +31,7 @@
                                     </template>
                                 </DisclosurePanel>
                             </Disclosure>
-                    </div>
+            </div>
         </template>
     </BaseView>
 </template>

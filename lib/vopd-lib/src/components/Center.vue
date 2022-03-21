@@ -180,20 +180,6 @@ export default defineComponent({
                 {text: '分享链接', value: 'chrome-dark',  onclick: ()=>{}},
                 {text: '显示网格', value: 'hackerman', onclick: ()=>{}},
                 null,
-                {text: '属性', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
-                {text: '菜单', value: 'kali_dark', onclick: ()=>{}},
     ]);
     skinsContextMenu.install();
 

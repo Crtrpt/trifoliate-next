@@ -1,10 +1,9 @@
 <template>
-    <div class="flex items-center justify-center border rounded-full mx-1 px-2 bg-gray-200 shadow items-center"
-    
+    <div class="flex items-center justify-center border rounded-full mx-1 px-2 bg-gray-200 shadow items-center"    
          v-tooltip="'下拉选择页面的大小尺寸'"
     >
                 <i class="las la-desktop"></i>
-                <VSelect class="w-30"></VSelect>
+                <VSelect class="w-30" :list="mediaList" v-model="media"></VSelect>
     </div>
 </template>
 
@@ -18,16 +17,25 @@ export default defineComponent({
     },
     data() {
         return {
-            w: this.ctx.width || "1024px",
-            h: this.ctx.height || "960px",
+            media:0,
+            mediaList:[
+                {
+                    name:"800*600",
+                    w:"800px",
+                    h:"600px",
+                },{
+                    name:"1024*960",
+                    w:"1024px",
+                    h:"960px",
+                }
+            ],
         };
     },
     watch: {
-        "ctx": {
-            deep: true,
-            handler(n) {
-                this.w = n.width;
-                this.h = n.height;
+        "media":{
+            handler(n){
+                var s=this.mediaList[n];
+                 this.$emit("input",s);
             }
         }
     },
@@ -35,11 +43,7 @@ export default defineComponent({
      
     },
     methods: {
-        change() {
-            var p = { w: this.w, h: this.h };
-            console.log(p);
-            // this.$emit("input",p);
-        }
+
     },
     setup() {
     },
