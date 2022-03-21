@@ -29,8 +29,6 @@ export default {
   updated() {
     this.instance.dispose();
     this.instance = echarts.init(this.$refs.chart);
-    // Draw the chart
-    console.log(this.data);
     this.instance.setOption(this.data.data);
   },
   mounted() {
