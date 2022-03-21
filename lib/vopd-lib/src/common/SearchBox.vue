@@ -1,5 +1,5 @@
 <template>
-    <div class="border rounded-full">
+    <div class="border rounded-full flex items-center">
                         <i class="las la-search px-1"></i>
                         <input class=" outline-none" v-model="v"  v-bind="$attrs">
     </div>

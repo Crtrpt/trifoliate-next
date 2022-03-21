@@ -1,14 +1,16 @@
 <template>
     <div>
-       <div class="x h-6 absolute left-0 right-0 " :style="{
+       <div class="x h-6 absolute left-0 right-0  " :style="{
+           marginLeft:-offsetLeft+'px',
            width:ctx.width
        }">
-        <canvas ref="xr" :width="width" height="30"></canvas>
+        <canvas ref="xr" :width="width+left*2" height="30"></canvas>
        </div>
        <div class="y w-6 absolute" :style="{
+            marginTop:-offsetTop+'px',
            height:ctx.height
        }">
-        <canvas ref="yr" :height="height" width="30"></canvas>
+        <canvas ref="yr" :height="height+top*2" width="30"></canvas>
        </div>
     </div>
 </template>
@@ -64,35 +66,32 @@ export default defineComponent({
     },
     methods:{
         renderX(){
-             console.log("绘制尺线"+this.width+" "+this.height +" "+-this.left+" "+this.scale)
                 var xctx=this.xctx;
-                xctx.clearRect(0, 0, this.width, 30);
+                xctx.clearRect(0, 0, this.width+this.left*2, 30);
                 xctx.strokeStyle = '#888'; 
                 xctx.lineWidth = 1;
-                var start=-this.left*this.scale ;
+               
+                var start=-this.left ;
 
                 for(var i=start ;i<this.width+this.left*2;i=i+10){
                     xctx.beginPath(); 
-                    let s=i*this.scale-0.5;
+                    let s=i-0.5;
                     xctx.moveTo(s,0);
                      if((i-this.left)%100==0){
                          xctx.lineTo(s,10);
-                         xctx.fillText((i-this.left+this.offsetLeft), s+5, 20);
+                         xctx.fillText((i-this.left), s+5, 20);
                      }else{
                          xctx.lineTo(s,5);
                      }
                     xctx.stroke();
                 }
         },
-        renderY(){
-            
+        renderY(){            
                 var yctx=this.yctx;
-                yctx.clearRect(0, 0,  30,this.height);
+                yctx.clearRect(0, 0,  30,this.height+this.top*2);
                 yctx.strokeStyle = '#888'; 
                 yctx.lineWidth = 1;
-                console.log("偏移"+this.offsetTop)
-                console.log(-this.top*this.scale);
-                var start =-this.top*this.scale;
+                var start =-this.top;
                 for(var i=start;i<(this.height+this.top*2);i=i+10){
                    
                     yctx.beginPath(); 
@@ -100,7 +99,7 @@ export default defineComponent({
                     yctx.moveTo(0,s);
                     if((i-this.top)%100==0){
                          yctx.lineTo(15,s);
-                         yctx.fillText(i-this.top+this.offsetTop, 10, s+12);
+                         yctx.fillText(i-this.top, 10, s+12);
                     }else{
                          yctx.lineTo(10,s);
                      }

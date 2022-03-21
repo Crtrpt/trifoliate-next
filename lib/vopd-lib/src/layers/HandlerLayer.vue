@@ -14,14 +14,24 @@
       >
       <div class="bg-blue-400 rounded-full flex flex-row">
         <i
+          v-tooltip="'选择上级'"
          :class="{
             'la-circle':!this.data.parent,
             'la-angle-double-up':this.data.parent
          }"
          class="las   rounded-l-full  px-1 leading-4   hover:bg-blue-500" @click="displayPath" ></i>
-        <p class=" rounded-r-full whitespace-nowrap hover:bg-blue-500 px-1"> {{ data.name }}</p>
+        <p 
+          v-tooltip="'组件名称'"
+        class=" rounded-r-full whitespace-nowrap hover:bg-blue-500 px-1"> {{ data.name }}</p>
       </div>
       
+      </div>
+      <div class="flex justify-center absolute w-5  flex-nowrap  text-xs   text-white cursor-pointer "
+      style="right:-30px">
+        <div class="bg-blue-400 rounded-full px-1">
+           <i  v-tooltip="'组件属性'" class="las la-dot-circle hover:bg-blue-500 rounded-t-full  "></i>
+        </div>
+       
       </div>
       <div class="left_top handler" @mousedown="setHandler('leftTop')"></div>
       <div
@@ -137,7 +147,7 @@ export default {
     move(e) {
       let s = this.s;
       if (this.isMove) {
-        console.log("平移");
+        // console.log("平移");
 
         s.x1 = e.screenX;
         s.y1 = e.screenY;
@@ -148,7 +158,7 @@ export default {
         s.el.style.top = parseInt(s.top) + offsety + "px";
       }
       if (this.drag) {
-        console.log("变形");
+        // console.log("变形");
 
         s.x1 = e.screenX;
         s.y1 = e.screenY;

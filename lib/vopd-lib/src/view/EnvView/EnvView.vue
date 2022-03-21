@@ -1,7 +1,7 @@
 <template>
     <BaseView>
          <template v-slot:lead>
-                   <SearchBox class="flex-grow" v-model="filter.keywords" placeholder="搜索你要查找的环境变量"></SearchBox>
+                   
         </template>
         <template v-slot:action>
                     <i class="las la-plus-circle  cursor-pointer" @click="add"></i>
@@ -10,7 +10,7 @@
          <template v-slot:content>
              <div class="flex-grow overflow-hidden">
                   <template  v-for="i in list" v-bind:key="i.name">
-                    <div class="flex" v-if="filter.keywords=='' || i.name.search(filter.keywords)>-1">   
+                    <div class="flex">   
                         <div class="p-1 w-1/3">
                         <input  class="border inline-block  w-full" v-model="i.name"/>
                         </div>

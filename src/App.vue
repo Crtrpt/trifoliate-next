@@ -1,8 +1,6 @@
 <template>
-  <div class="flex flex-col h-full">
-    <div class="m-3 text-center  " >演示</div>
-
-    <Vopd :value="data" ref="vopd"  style="height:90vh"/>
+  <div class="flex flex-col h-full  w-full" style="height:80%">
+    <Vopd :value="data" ref="vopd"/>
   </div>
   
 </template>
@@ -12,7 +10,7 @@
 import './index.css'
 import "../public/css/line-awesome.min.css"
 
-import nodelist from "./nodelist.js"
+import nodelist from "./nodelist.js" 
 
 export default {
   data(){
@@ -35,9 +33,6 @@ export default {
       console.log("合并数据")
        _this.data=res;
     })
-  },
-  setup() {
-    
-  },
+  }
 }
 </script>

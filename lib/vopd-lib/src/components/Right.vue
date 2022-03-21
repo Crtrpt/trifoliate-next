@@ -18,7 +18,7 @@ export default defineComponent({
   data(){
       return {
           right:[
-                       {
+            {
               title:"层级",
               icon:"las la-layer-group",
               componemt:"TreeView"
@@ -43,7 +43,9 @@ export default defineComponent({
               title:"结果",
               icon:"las la-table",
               componemt:"QueryView"
-          }]
+          }
+          
+          ]
       }
   },
   setup() {

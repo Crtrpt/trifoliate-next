@@ -1,19 +1,19 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import VopdLib from '../lib/vopd-lib/src/VopdLib'
+import { createApp } from "vue";
+import App from "./App.vue";
+import VopdLib from "../lib/vopd-lib/src/VopdLib";
 
-import {
-    Dialog,
-    DialogOverlay,
-    DialogTitle,
-    DialogDescription,
-  } from '@headlessui/vue'
-  
+let app = createApp(App);
 
+var modules=import.meta.globEager("./userDefine/*.vue")
 
-let app=createApp(App);
+var renders=[];
 
-app.use(VopdLib);
+for (const idx in modules) {
+  renders.push(modules[idx].default);
+}
 
+app.use(VopdLib, {
+  render: renders,
+});
 
-app.mount('#app')
+app.mount("#app");

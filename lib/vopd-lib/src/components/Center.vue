@@ -1,5 +1,5 @@
 <template>
-      <div class="flex-grow border  relative  window bg-gray-50 overflow-hidden " ref="window">
+      <div class="flex-grow border  relative  window bg-gray-50 overflow-hidden h-full " ref="window">
         <Control class=" left-8  top-10  absolute  control rounded-sm z-40"  >
                 <div class="border border-t-gray-200 p-2 absolute mt-4  shadow">
                     <div class="">
@@ -43,7 +43,7 @@
                 <PageSize   :ctx="page" @input="changeSize"></PageSize>
                 <PageScale v-model="page.scale"></PageScale>
                 <GridContrl :ctx="page" @input="(p)=>{page.displayGrid=p}"></GridContrl>
-                <SettingContrl :ctx="page"></SettingContrl>
+                <!-- <SettingContrl :ctx="page"></SettingContrl> -->
         </Control>
 
 
@@ -136,7 +136,7 @@ export default defineComponent({
   },
   methods:{
     wheel(e){
-      console.log(e);
+      // console.log(e);
       if(e.ctrlKey){
           e.preventDefault();
           if(e.deltaY>0){
@@ -151,7 +151,7 @@ export default defineComponent({
     scroll(e){
       this.page.scrollTop=this.$refs.view.scrollTop
       this.page.scrollLeft=this.$refs.view.scrollLeft
-      console.log(this.page);
+      // console.log(this.page);
     },
     allowDrop(e){
         e.preventDefault();
@@ -164,7 +164,7 @@ export default defineComponent({
       this.mode=m;
     },
     render(p:any){
-      console.log("页面初始化")
+      // console.log("页面初始化")
       this.page=p.page;
       this.page.rect=this.$refs.layer.getBoundingClientRect();
       this.page.scrollTop=this.$refs.view.scrollTop
@@ -174,14 +174,15 @@ export default defineComponent({
   }, 
   mounted(){
 
-    const skinsContextMenu = new ContextMenu( this.$refs.window, [
+    const menu = new ContextMenu( this.$refs.window, [
                 {text: '预览', value: 'chrome-dark',  hotkey: 'F5', onclick: ()=>{}},
                 {text: '编译', value: 'chrome-bright', onclick: ()=>{}},
-                {text: '分享链接', value: 'chrome-dark',  onclick: ()=>{}},
-                {text: '显示网格', value: 'hackerman', onclick: ()=>{}},
+                {text: '分享', value: 'chrome-dark',  onclick: ()=>{}},
+                {text: '网格', value: 'hackerman', onclick: ()=>{}},
                 null,
+                {text: '删除', value: 'kali_dark', onclick: ()=>{}},
     ]);
-    skinsContextMenu.install();
+    menu.install();
 
 
     ev.on("EditorView","init",this.render)
