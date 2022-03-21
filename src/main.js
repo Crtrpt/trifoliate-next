@@ -1,18 +1,19 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import VopdLib from '../lib/vopd-lib/src/VopdLib'
+import { createApp } from "vue";
+import App from "./App.vue";
+import VopdLib from "../lib/vopd-lib/src/VopdLib";
 
+let app = createApp(App);
 
+var modules=import.meta.globEager("./userDefine/*.vue")
 
-import FormRender from "./userDefine/FormRender.vue";
-import InputRender from "./userDefine/InputRender.vue"
+var renders=[];
 
-let app=createApp(App);
+for (const idx in modules) {
+  renders.push(modules[idx].default);
+}
 
-app.use(VopdLib,{
-  render:[
-    FormRender,InputRender
-  ]
+app.use(VopdLib, {
+  render: renders,
 });
 
-app.mount('#app')
+app.mount("#app");
