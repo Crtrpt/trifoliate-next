@@ -4,9 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": " vite build",
-    "preview": "vite preview",
-    "start": "electron .",
-    "package": "echo  package"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^0.19.7",
@@ -16,15 +14,12 @@
     "vue": "^3.2.25"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.63",
     "@vitejs/plugin-vue": "^2.0.0",
     "autoprefixer": "^10.4.1",
-    "electron": "^17.1.2",
     "postcss": "^8.4.5",
     "sass": "^1.45.2",
     "tailwindcss": "^3.0.8",
     "vite": "^2.7.2",
     "vue-tsc": "^0.29.8"
-  },
-  "main": "main.js"
+  }
 }

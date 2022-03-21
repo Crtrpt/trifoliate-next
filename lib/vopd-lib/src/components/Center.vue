@@ -43,7 +43,7 @@
                 <PageSize   :ctx="page" @input="changeSize"></PageSize>
                 <PageScale v-model="page.scale"></PageScale>
                 <GridContrl :ctx="page" @input="(p)=>{page.displayGrid=p}"></GridContrl>
-                <SettingContrl :ctx="page"></SettingContrl>
+                <!-- <SettingContrl :ctx="page"></SettingContrl> -->
         </Control>
 
 

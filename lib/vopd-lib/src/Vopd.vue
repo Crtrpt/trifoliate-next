@@ -1,7 +1,7 @@
 <template>
-    <div class="vopd flex flex-row">
+    <div class="vopd flex flex-row h-full">
       <Left  class="w-15 " />
-      <Center class="flex-grow-0 "/>
+      <Center class="flex-grow-0 h-full "/>
       <Right class="w-15"/>
     </div>
 </template>
@@ -27,12 +27,6 @@ export default defineComponent({
   },
   data(){
     return {}
-  },
-  mounted(){
-
-  },
-  setup() {
-   
   }
 })
 </script>
