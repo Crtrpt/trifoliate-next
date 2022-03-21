@@ -1,5 +1,5 @@
 <template>
-      <div class="flex-grow border  relative  window bg-gray-50 overflow-hidden " ref="window">
+      <div class="flex-grow border  relative  window bg-gray-50 overflow-hidden h-full " ref="window">
         <Control class=" left-8  top-10  absolute  control rounded-sm z-40"  >
                 <div class="border border-t-gray-200 p-2 absolute mt-4  shadow">
                     <div class="">

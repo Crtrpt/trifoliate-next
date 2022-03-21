@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-full  w-full">
+  <div class="flex flex-col h-full  w-full" style="height:80%">
     <Vopd :value="data" ref="vopd"/>
   </div>
   
@@ -10,7 +10,7 @@
 import './index.css'
 import "../public/css/line-awesome.min.css"
 
-import nodelist from "./nodelist.js"
+import nodelist from "./nodelist.js" 
 
 export default {
   data(){

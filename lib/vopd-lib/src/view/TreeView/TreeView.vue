@@ -22,10 +22,10 @@
                         "border-green-500":isDragenter,
                         "border-2":isDragenter,
                     }'
-                    v-if="source.list.length==0" >
+                    v-if="source?.list.length==0" >
                         可以把组件拖放到这里
                     </div>
-                    <template v-for="i in source.list" :key="i.id+'tree'" >
+                    <template v-for="i in source?.list" :key="i.id+'tree'" >
                          <Tree  v-if="!i.attr['isDelete']" :data="i" :level="1" :isMultipleSelect="isMultipleSelect"></Tree>
                     </template>
                 </div>
@@ -68,6 +68,15 @@ export default {
             }
         }
     },
+    updated(){
+        console.log("更新=======================");
+    },
+    created(){
+        ev.on("TreeView","init",this.render)
+        //数据变更的时候重新拉取数据
+        ev.on("none","change",this.render)
+        this.render({},ev.ctx);
+    },
     methods:{
         dragenter(e){
              console.log("进入")
@@ -101,12 +110,13 @@ export default {
             console.log(ev.ctx.data);
             this.source=ev.ctx.data.project;
         },
+        active(){
+            
+        }
     },
     mounted(){
         
-        ev.on("TreeView","init",this.render)
-        //数据变更的时候重新拉取数据
-        ev.on("none","change",this.render)
+      
     }
 }
 </script>
