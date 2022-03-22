@@ -5,11 +5,12 @@
 </template>
 
 <script lang="ts">
-import {View,Window} from "vopd-wvm/src/index";
+import {View,Window} from "vopd-wvm/dist/vopd-wvm.js";
 import { defineComponent } from "vue";
 import ev from "./utils/Eventbus";
 import Layout from "./viewLayout.js"
 
+console.log(View);
 // import state from "./utils/state";
 export default defineComponent({
   components: { Window, View },

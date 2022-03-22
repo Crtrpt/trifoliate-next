@@ -19,9 +19,12 @@
     "leaflet": "^1.7.1",
     "nanopop": "^2.1.0",
     "npm": "^8.5.3",
-    "vopd-wvm": "^0.0.8",
+   
     "vue": "^3.2.25",
     "vuex": "^4.0.2"
+  },
+  "peerDependencies": {
+     "vopd-wvm": "^0.0.10"
   },
   "devDependencies": {
     "@codemirror/lang-html": "0.19.4",
