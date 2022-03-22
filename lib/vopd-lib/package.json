@@ -17,8 +17,7 @@
     "immutable": "^4.0.0",
     "keyboardjs": "^2.6.4",
     "leaflet": "^1.7.1",
-    "nanopop": "^2.1.0",
-    "npm": "^8.5.3",
+    "nanopop": "^2.1.0"
   },
   "peerDependencies": {
      "vopd-wvm": "^0.0.10",
