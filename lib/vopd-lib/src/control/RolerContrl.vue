@@ -95,7 +95,7 @@ export default defineComponent({
                 for(var i=start;i<(this.height+this.top*2);i=i+10){
                    
                     yctx.beginPath(); 
-                    let s=i*this.scale-0.5
+                    let s=i-0.5
                     yctx.moveTo(0,s);
                     if((i-this.top)%100==0){
                          yctx.lineTo(15,s);
