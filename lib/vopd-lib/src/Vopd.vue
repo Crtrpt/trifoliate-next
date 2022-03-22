@@ -5,8 +5,7 @@
 </template>
 
 <script lang="ts">
-import View from "./common/wvm/View.vue";
-import Window from "./common/wvm/Window.vue";
+import {View,Window} from "vopd-wvm/src/index";
 import { defineComponent } from "vue";
 import ev from "./utils/Eventbus";
 
@@ -57,14 +56,17 @@ export default defineComponent({
             ],
           },
           {
+            type:"gutter"
+          },
+          {
             type: "view",
             content: "222",
             draggable: false,
             viewHandler: "ViewHandler",
             displayHandler: false,
             style: {
-              width:"600px",
               flexGrow: "1",
+              width:"0px",
             },
             item: [
               {
@@ -75,10 +77,13 @@ export default defineComponent({
             ],
           },
           {
+            type:"gutter"
+          },
+          {
             type: "view",
             content: "222",
             style: {
-              width: "300px",
+              width: "400px",
             },
             draggable: true,
             viewHandler: "ViewHandler",
