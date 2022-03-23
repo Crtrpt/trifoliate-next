@@ -21,8 +21,6 @@ export default defineComponent({
     value: {
       handler(n, o) {
         console.log("初始化数据");
-        console.log(this.value);
-        
         ev.initCtx(this.value);
       },
     },

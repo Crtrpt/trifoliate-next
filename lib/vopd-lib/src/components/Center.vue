@@ -177,12 +177,9 @@ export default defineComponent({
   mounted(){
 
     const menu = new ContextMenu( this.$refs.window, [
-                {text: '预览', value: 'chrome-dark',  hotkey: 'F5', onclick: ()=>{}},
-                {text: '编译', value: 'chrome-bright', onclick: ()=>{}},
-                {text: '分享', value: 'chrome-dark',  onclick: ()=>{}},
-                {text: '网格', value: 'hackerman', onclick: ()=>{}},
+                {text: '保存为组件', value: 'save_widget', onclick: ()=>{}},
                 null,
-                {text: '删除', value: 'kali_dark', onclick: ()=>{}},
+                {text: '删除', value: 'remove', onclick: ()=>{}},
     ]);
     menu.install();
 

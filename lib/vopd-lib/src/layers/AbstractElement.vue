@@ -31,19 +31,12 @@ export default defineComponent({
   },
   mounted() {
     console.log("注册======================")
-    console.log(this.$refs.node);
+   
     ev.ctx.hashIds.get(this.data.id).ref["layer"] = this.$refs.node;
 
 
-    // const menu = new ContextMenu(this.$refs.node, [
-    //             {text: '预览', value: 'chrome-dark',  hotkey: 'F5', onclick: ()=>{}},
-    //             {text: '编译', value: 'chrome-bright', onclick: ()=>{}},
-    //             {text: '分享', value: 'chrome-dark',  onclick: ()=>{}},
-    //             {text: '网格', value: 'hackerman', onclick: ()=>{}},
-    //             null,
-    //             {text: '删除', value: 'kali_dark', onclick: ()=>{}},
-    // ]);
-    // menu.install();
+
+  
   },
   data() {
     return {
@@ -54,11 +47,33 @@ export default defineComponent({
     context(e){
       e.stopPropagation();
       console.log("处理元素右击事件"+"===============")
-      // const menu = new ContextMenu( e.target, [,
-      //           null,
-      //           {text: '删除', value: 'kali_dark', onclick: ()=>{}},
-      // ]);
-      // menu.install();
+      console.log(this.$el);
+      const menu = new ContextMenu(this.$el, [
+                  {text: '保存为组件', value: '保存为组件',  hotkey: 'F5', onclick: ()=>{}},
+                  null,
+                  {text: '层级', value: '保存为组件',hotkey: '❯',subitems:[
+                    {
+                      text:"向上一层",
+                      hotkey: 'ctrl +'
+                    },
+                    {
+                      text:"向下一层",
+                      hotkey: 'ctrl -'
+                    },
+                    {
+                      text:"到最上层",
+                      hotkey: 'ctrl + alt +'
+                    },
+                    {
+                      text:"到最下层",
+                      hotkey: 'ctrl + alt -'
+                    },
+                  ] },
+                  null,
+                  {text: '删除组件', value: 'kali_dark', onclick: ()=>{}},
+      ]);
+      menu.install();
+      menu.show();
     },
     drop(e) {
       console.log("放下" + e.dataTransfer.getData("text/plain"));

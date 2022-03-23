@@ -32,7 +32,7 @@ export class EventBus{
        
         var clientList=this.pipline.get(eventName);
         clientList?.forEach((handler,idx) => {
-            console.log(idx+":"+idx);
+            // console.log(idx+":"+idx);
             if(clientId!=idx){
                 handler(payload,this.ctx);
             }

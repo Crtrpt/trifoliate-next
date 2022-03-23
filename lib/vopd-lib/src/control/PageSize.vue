@@ -20,13 +20,18 @@ export default defineComponent({
             media:0,
             mediaList:[
                 {
-                    name:"800px*600px",
-                    w:"800px",
-                    h:"600px",
+                    name:"1284px*2778px",
+                    w:"1284px",
+                    h:"2778px",
                 },{
                     name:"1024px*960px",
                     w:"1024px",
                     h:"960px",
+                },
+                {
+                    name:"800px*600px",
+                    w:"800px",
+                    h:"600px",
                 }
             ],
         };

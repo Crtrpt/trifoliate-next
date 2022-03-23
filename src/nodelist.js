@@ -1,4 +1,46 @@
- const nodelist = [
+const nodelist = [
+  {
+    name: "数据",
+    list: [
+      {
+        id: "202",
+        icon: "las la-database",
+        name: "数据查询",
+        desc: "通过 jdbc sql 查询数据库部件",
+      },
+      {
+        id: "202",
+        icon: "las la-server",
+        name: "http请求",
+        desc: "http 请求相关",
+      },
+    ],
+  },
+  {
+    name: "实验",
+    list: [
+      {
+        id: "202",
+        name: "组合布局",
+        type: "compose",
+        desc: "多个布局的组合模式",
+        item: ["102", "102"],
+      },
+      {
+        id: "202",
+        name: "引用布局",
+        desc: "某个布局的引用 可能修改了某些样式",
+        type: "ref",
+        ref: "102",
+      },
+      {
+        id: "202",
+        icon: "las la-clock",
+        name: "时间部件",
+        desc: "时间部件 定时 超时 或者  contab 定时执行",
+      },
+    ],
+  },
   {
     name: "固定",
     list: [
@@ -8,18 +50,18 @@
         render: "ContainerRender",
         widget: "Container",
         icon: "las la-stop",
-        desc:"固定的 200px布局",
+        desc: "固定的 200px布局",
         style: {
-          height: "200px"
+          height: "200px",
         },
-        children: []
+        children: [],
       },
       {
         id: "110",
         name: "浮动布局",
         render: "ContainerRender",
         widget: "Container",
-        desc:"浮动元素自由定位",
+        desc: "浮动元素自由定位",
         icon: "las la-copy",
         style: {
           position: "absolute",
@@ -28,32 +70,32 @@
           width: "400px",
           height: "200px",
         },
-        children: []
+        children: [],
       },
       {
         id: "101",
         name: "行布局",
-        desc:"内部元素横向排列",
+        desc: "内部元素横向排列",
         render: "ContainerRender",
         widget: "Container",
         icon: "las la-grip-lines-vertical",
         style: {
           display: "flex",
         },
-        children: []
+        children: [],
       },
       {
         id: "111",
         name: "列布局",
         render: "ContainerRender",
-        desc:"内部元素纵向排列",
+        desc: "内部元素纵向排列",
         widget: "Container",
         icon: "las la-grip-lines",
         style: {
           flexDirection: "column",
           display: "flex",
         },
-        children: []
+        children: [],
       },
       {
         id: "102",
@@ -66,7 +108,7 @@
           display: "flex",
           width: "50%",
         },
-        children: []
+        children: [],
       },
       {
         id: "103",
@@ -79,7 +121,7 @@
           display: "flex",
           width: "33.33%",
         },
-        children: []
+        children: [],
       },
       {
         id: "104",
@@ -92,7 +134,7 @@
           display: "flex",
           width: "25%",
         },
-        children: []
+        children: [],
       },
       {
         id: "105",
@@ -105,35 +147,34 @@
           display: "flex",
           width: "20%",
         },
-        children: []
+        children: [],
       },
       {
         id: "106",
         name: "填充布局",
-        desc:"flex 布局 沾满剩余空间",
+        desc: "flex 布局 沾满剩余空间",
         render: "ContainerRender",
         widget: "Container",
         icon: "las la-stop",
         style: {
-
           display: "flex",
           flexGrow: "1",
         },
-        children: []
+        children: [],
       },
       {
         id: "201",
         name: "表单布局",
-        desc:"提交表单内数据到指定的服务器",
+        desc: "提交表单内数据到指定的服务器",
         render: "FormRender",
         widget: "Form",
         icon: "las la-stop",
         style: {
-          width: "100%"
+          width: "100%",
         },
-        children: []
+        children: [],
       },
-    ]
+    ],
   },
   {
     name: "元素",
@@ -145,8 +186,8 @@
         render: "TextRender",
         icon: "las la-font",
         style: {
-          "display": "inline"
-        }
+          display: "inline",
+        },
       },
       {
         id: "6",
@@ -154,27 +195,26 @@
         render: "EchartRender",
         widget: "Echart",
         icon: "las la-chart-pie",
-        desc:"echart 图表元素",
+        desc: "echart 图表元素",
         style: {
-          "width": "100%",
-          "height": "100%",
+          width: "100%",
+          height: "100%",
         },
         data: {
-          "tooltip": {},
-          "xAxis": {
-            "data": ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"]
+          tooltip: {},
+          xAxis: {
+            data: ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"],
           },
-          "yAxis": {},
-          "series": [
+          yAxis: {},
+          series: [
             {
-              "name": "sales",
-              "type": "bar",
-              "data": [10, 20, 30, 40, 50, 60]
-            }
-          ]
+              name: "sales",
+              type: "bar",
+              data: [10, 20, 30, 40, 50, 60],
+            },
+          ],
         },
       },
-
     ],
   },
   {
@@ -187,11 +227,11 @@
         widget: "Map",
         icon: "las la-map",
         style: {
-          "width": "100%",
-          "height": "100%",
-        }
-      }
-    ]
+          width: "100%",
+          height: "100%",
+        },
+      },
+    ],
   },
   {
     name: "表单",
@@ -205,10 +245,8 @@
         meta: {
           type: "text",
         },
-        style: {
-
-        },
-        children: []
+        style: {},
+        children: [],
       },
       {
         id: "203",
@@ -219,13 +257,11 @@
         meta: {
           type: "checkbox",
         },
-        style: {
-
-        },
-        children: []
-      }
-    ]
-  }
-]
+        style: {},
+        children: [],
+      },
+    ],
+  },
+];
 
 export default  nodelist;

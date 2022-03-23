@@ -118,8 +118,8 @@
   "list": [
   ],
   "page":{
-    "width": "1680px",
-    "height": "1050px",
+    "width": "600px",
+    "height": "800px",
     "scale":1,
     "displayGrid":true,
     "marginLeft":"80px" ,

@@ -31,7 +31,7 @@ class Ctx{
             name:node.name+nextId,
             render:node.render,
             widget:node.widget,
-            content:"显示文本",
+            content:"提示的文本信息",
             data:node.data,
             style:cs,
             ref:[],
@@ -54,7 +54,7 @@ class Ctx{
 
     }
     moveSelectContainer(p,ctx){
-        console.log("移动");
+        // console.log("移动");
         //TODO 多选会有问题
         ctx.hashIds.get(ctx.lastSelectId).style.left=p.left;
         ctx.hashIds.get(ctx.lastSelectId).style.top=p.top;
