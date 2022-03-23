@@ -21,6 +21,7 @@ export default {
         list:[],
         api:"",
         env:[],
+        nodeList:[],
       }
     }
   },
@@ -30,7 +31,6 @@ export default {
         return response.json()
     }).then(res=>{
       res.nodeList=this.nodeList;
-      console.log("合并数据")
        _this.data=res;
     })
   }

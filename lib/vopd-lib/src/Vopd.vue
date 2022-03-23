@@ -5,15 +5,15 @@
 </template>
 
 <script lang="ts">
-import {View,Window} from "vopd-wvm/dist/vopd-wvm.js";
+import Window from "./common/wvm/Window.vue";
 import { defineComponent } from "vue";
 import ev from "./utils/Eventbus";
 import Layout from "./viewLayout.js"
 
-console.log(View);
+
 // import state from "./utils/state";
 export default defineComponent({
-  components: { Window, View },
+  components: { Window },
   props: {
     value: Object,
   },
@@ -22,6 +22,7 @@ export default defineComponent({
       handler(n, o) {
         console.log("初始化数据");
         console.log(this.value);
+        
         ev.initCtx(this.value);
       },
     },

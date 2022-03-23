@@ -1,6 +1,6 @@
 import ctx from "./Ctx"
 
-class EventBus{
+export class EventBus{
     ctx=ctx
     pipline:Map<String,Map<String,any>|undefined>=new Map();
     //订阅

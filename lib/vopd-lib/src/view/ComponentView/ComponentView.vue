@@ -13,7 +13,7 @@
       <i class="las la-times-circle cursor-pointer" @click="close"></i>
     </template>
     <template v-slot:content>
-      <div class="w-full max-w-md py-1 mx-auto bg-white">
+      <div class="w-full py-1  bg-white">
         <Disclosure
           v-slot="{ open }"
           v-for="g in list"

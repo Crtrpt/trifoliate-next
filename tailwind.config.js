@@ -4,7 +4,7 @@ module.exports = {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
     "./lib/vopd-lib/**/*.{vue,js,ts,jsx,tsx}",
-    "./node_modules/vopd-wvm/src/components/*.vue",
+    "./node_modules/vopd-wvm/*.js",
   ],
   theme: {
     extend: {},

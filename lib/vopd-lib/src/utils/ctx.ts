@@ -1,5 +1,5 @@
 import {ref,reactive} from "vue"
-
+import ev from "./eventbus"
 class Ctx{
     data={};
     //可以添加的节点列表
@@ -125,6 +125,21 @@ class Ctx{
     }
     set(key:String,value:any){
         
+    }
+    
+    initCtx(payload:any) {
+        this.dataInit(payload);
+        ev.fire("vopd","init",payload.project);
+        ev.on("vopd","selectContainer", this.selectContainer);
+        ev.on("vopd","cancelSelectContainer", this.cancelSelectContainer);
+        ev.on("vopd","deleteContainer", this.deleteContainer);
+        ev.on("vopd","lockContainer", this.lockContainer);
+        ev.on("vopd","eyeContainer", this.eyeContainer);
+        ev.on("vopd","expandContainer", this.expandContainer);
+        ev.on("vopd","changeStyle", this.changeStyle);
+        ev.on("vopd","addNode", this.addNode);
+        ev.on("vopd","deleteSelect", this.deleteSelect);
+        ev.on("vopd","moveSelectContainer", this.moveSelectContainer); 
     }
 }
 

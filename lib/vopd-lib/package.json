@@ -1,6 +1,6 @@
 {
   "name": "vopd-lib",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -20,7 +20,7 @@
     "nanopop": "^2.1.0"
   },
   "peerDependencies": {
-     "vopd-wvm": "^0.0.10",
+     "vopd-wvm": "^0.0.12",
      "vue": "^3.2.25"
   },
   "devDependencies": {
