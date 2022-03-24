@@ -6,11 +6,10 @@
         @dragleave="dragleave($event)"
 
     :class='{
-        "border-green-500":isDragenter,
-        "border-2":isDragenter,
-        "border-dashed":isDragenter,
-        "border-blue-400":data.attr["isSelect"],
-        "text-blue-400":data.attr["isSelect"],
+        "border-green-500":data.attr["isDragenter"],
+        "border-2":data.attr["isDragenter"],
+        "border-dashed":data.attr["isDragenter"],
+        "border-blue-400 text-blue-400":data.attr["isSelect"],
         "border-white":!data.attr["isSelect"],
     }'
     @mouseenter="mouseenter()"
@@ -53,8 +52,11 @@
 </template>
 
 <script lang="ts">
-import { handleError } from '@vue/runtime-core';
+
 import ev from "../../utils/Eventbus"
+import { mapActions } from "vuex"
+
+
 export default {
     props:{
         data:Object,
@@ -63,8 +65,7 @@ export default {
     },
     data:function(){
         return {
-            isEdit:false,
-            isDragenter:false
+            isEdit:false
         }
     },
     methods:{
@@ -81,48 +82,40 @@ export default {
         },
         dragenter(e){
             console.log("进入")
-            this.isDragenter=true;
+            this.$store.dispatch("page/setAttr",{id:this.data.id,attr:"isDragenter",val:true})
             e.stopPropagation();
         },
         dragleave(e){
-            console.log("离开")
-            this.isDragenter=false;
+             console.log("离开")
+           this.$store.dispatch("page/setAttr",{id:this.data.id,attr:"isDragenter",val:false})
             e.stopPropagation();
         },
         drop(e){
-            console.log("tree 放下"+e.dataTransfer.getData("text/plain"));
-            ev.fire("Container","addNode",{
-                id:this.data.id,
-                nodeId:JSON.parse(e.dataTransfer.getData("text/plain")).id
-            });
-            this.isDragenter=false;
+            var t=JSON.parse(e.dataTransfer.getData("text/plain"));
+            this.$store.dispatch("page/addNode",{id:this.data.id,nodeId:t.id})
             e.stopPropagation();
         },
         allowDrop(e){
             e.preventDefault();
         },
         eye(node,e:any){
-            ev.fire("TreeView","eyeContainer",node)
-            ev.fire("none","change",node)
-             e.stopPropagation();
+            this.$store.dispatch("page/setAttr",{id:this.data.id,attr:"isEye",})
+            e.stopPropagation();
         },
         trash(node,e:any){
-            ev.fire("TreeView","deleteContainer",node)
-            ev.fire("none","change",node)
+            this.$store.dispatch("page/setAttr",{id:this.data.id,attr:"isDelete"})
             e.stopPropagation();
         },
         lock(node,e:any){
-            ev.fire("TreeView","lockContainer",node)
-            ev.fire("none","change",node)
+            this.$store.dispatch("page/setAttr",{id:this.data.id,attr:"isLock"})
             e.stopPropagation();
         },
         click(node,e:any){
-            ev.fire("TreeView","selectContainer",{data:this.data})
-            // ev.fire("none","change",node)
+            this.$store.dispatch("page/setAttr",{id:this.data.id,attr:"isSelect"})
             e.stopPropagation();
         },
         expand(node,e){
-            ev.fire("TreeView","expandContainer",node)
+            this.$store.dispatch("page/setAttr",{id:this.data.id,attr:"isExpand"})
             e.stopPropagation();
         }
     },

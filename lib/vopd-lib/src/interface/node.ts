@@ -27,7 +27,7 @@ class Node {
   //组件的css 样式
   style!: StyleHTMLAttributes;
   //各种属性
-  attr!: NodeAttr;
+  attr!: any;
   //父节点
   parent?: Node ;
   //子节点

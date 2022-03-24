@@ -32,7 +32,7 @@ export default defineComponent({
   mounted() {
     console.log("注册======================")
    
-    ev.ctx.hashIds.get(this.data.id).ref["layer"] = this.$refs.node;
+    // ev.ctx.hashIds.get(this.data.id).ref["layer"] = this.$refs.node;
 
 
 

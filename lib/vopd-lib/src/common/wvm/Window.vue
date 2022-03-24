@@ -70,7 +70,7 @@
            'height':(copyData.position != 'left'&&copyData.position != 'right')?'0px':''
         }"
         v-if="type == 'view' && copyData.item.length > 0 && active != -1"
-        @drop="drop($event)"
+     
         ref="content"
         @dragover="allowDrop($event)"
       >

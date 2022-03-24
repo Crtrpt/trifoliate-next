@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col">
+    <div class="flex flex-col h-full">
         <div class="flex flex-row  justify-start items-center border border-b-gray-300">
             <i :class="[
             icon,'pl-1']"></i>

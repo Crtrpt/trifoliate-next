@@ -13,8 +13,5 @@ export default {
         ctx:Object,
         name:String
     },
-    setup() {
-       
-    },
 }
 </script>

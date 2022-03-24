@@ -1,7 +1,5 @@
 <template>
-  <div class="vopd flex flex-row h-full">
-    <Window :data="windowLayout"></Window>
-  </div>
+   <Window  class="vopd flex flex-row h-full" :data="windowLayout"></Window>
 </template>
 
 <script lang="ts">
@@ -15,13 +13,11 @@ export default defineComponent({
   props: {
     value: Object,
   },
-  watch: {
-    value: {
-      handler(n, o) {
-        console.log("初始化数据");
-        ev.initCtx(this.value);
-      },
-    },
+  methods:{
+  }, 
+  mounted(){
+     ev.initCtx(this.value);
+     this.$store.dispatch("init",this.value)
   },
   data() {
     return {

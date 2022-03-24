@@ -82,7 +82,7 @@
 </style>
 <script lang="ts">
 import { defineComponent } from "vue";
-
+import {mapGetters} from "vuex"
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 
 import BaseView from "../BaseView.vue";
@@ -91,13 +91,23 @@ import SearchBox from "../../common/SearchBox.vue";
 
 export default defineComponent({
   name: "ComponentView",
+  computed: {
+    list:{
+      get(){
+        return this.$store.getters['page/widgetList'];
+      },
+      set(value){
+
+      }
+    }
+  },
   data() {
     return {
       open: true,
       filter: {
         keywords: "",
       },
-      list: [],
+ 
     };
   },
   components: {
@@ -108,7 +118,7 @@ export default defineComponent({
     SearchBox,
   },
   destroyed(){
-       ev.off("ComponentView", "init");
+     
   },
   methods: {
     dragstart(e, i) {
@@ -135,13 +145,11 @@ export default defineComponent({
       ev.fire("ComponentView", "addComponent", i);
     },
     render(p, ctx) {
-      console.log("渲染");
-      this.list = ctx.nodeList;
+      // this.list = ctx.nodeList;
     },
   },
   created(){
-      ev.on("ComponentView", "init", this.render);
-      this.render({},ev.ctx);
+
   },
 });
 </script>

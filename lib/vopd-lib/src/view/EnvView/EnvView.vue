@@ -1,7 +1,6 @@
 <template>
     <BaseView>
          <template v-slot:lead>
-                   
         </template>
         <template v-slot:action>
                     <i class="las la-plus-circle  cursor-pointer" @click="add"></i>
@@ -47,17 +46,17 @@ export default defineComponent({
         }
     },
     components:{
-    BaseView,
-    SearchBox
-},
+        BaseView,
+        SearchBox
+    },
     methods:{
         close(v){
             this.$emit("close")
         },
-        render(p:any){
+        render(p:any,ctx:any){
             console.log("环境变量")
-               console.log(p)
-             this.list=p.env;
+               console.log(ctx);
+             this.list=ctx.data.env;
         },
         add(){
             this.list.push({
@@ -67,7 +66,8 @@ export default defineComponent({
         }
     },
     mounted(){
-        this.render(ev.ctx.data.project);
+        console.log(ev.ctx);
+        this.render({},ev.ctx);
         ev.on("EnvView","init",this.render)
     },
 })

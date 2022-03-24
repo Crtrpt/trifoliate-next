@@ -69,7 +69,7 @@
               
               <!-- <Layer name="SelectLayer" :ctx="page" /> -->
 
-              <Layer name="HandlerLayer" :ctx="page" />
+              <!-- <Layer name="HandlerLayer" :ctx="page" /> -->
       
             </div>
           </div>
@@ -165,9 +165,10 @@ export default defineComponent({
     changeMode(m:number){
       this.mode=m;
     },
-    render(p:any){
+    render(p:any,ctx){
       // console.log("页面初始化")
-      this.page=p.page;
+ 
+      this.page=ctx.data.page;
       this.page.rect=this.$refs.layer.getBoundingClientRect();
       this.page.scrollTop=this.$refs.view.scrollTop
       this.page.scrollLeft=this.$refs.view.scrollLeft

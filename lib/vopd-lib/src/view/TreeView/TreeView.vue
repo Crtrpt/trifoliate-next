@@ -2,7 +2,7 @@
      <BaseView>
          <template v-slot:lead>
                 
-                <VSwitch v-model="isMultipleSelect" class="p-1" ></VSwitch>
+                <!-- <VSwitch v-model="isMultipleSelect" class="p-1" ></VSwitch> -->
                 <SearchBox class="flex-grow" placeholder="搜索文档中的组件"></SearchBox>
         </template>
         <template v-slot:action>
@@ -11,8 +11,11 @@
                </div>
         </template>
          <template v-slot:content>
-             <div class="flex flex-col  h-full">
-                <div class="flex-grow py-1 overflow-auto">
+             <div class="flex flex-col  h-full  " 
+                  @drop="drop($event)"
+               
+             >
+                <div class="flex-grow py-1 overflow-auto border-2" >
                     <div class="p-2    text-center  border-graw-400 border-dashed border-2" 
                     @dragenter="dragenter($event)"
                     @dragleave="dragleave($event)"
@@ -22,10 +25,10 @@
                         "border-green-500":isDragenter,
                         "border-2":isDragenter,
                     }'
-                    v-if="source?.list.length==0" >
+                    v-if="page?.list?.length==0" >
                         可以把组件拖放到这里
                     </div>
-                    <template v-for="i in source?.list" :key="i.id+'tree'" >
+                    <template v-for="i in page.list" :key="i.id+'tree'" >
                          <Tree  v-if="!i.attr['isDelete']" :data="i" :level="1" :isMultipleSelect="isMultipleSelect"></Tree>
                     </template>
                 </div>
@@ -41,11 +44,20 @@ import BaseView from "../BaseView.vue"
 import SearchBox from "../../common/SearchBox.vue"
 import VSwitch from "../../common/VSwitch.vue"
 
-import store from "../../store";
+import { mapActions } from "vuex"
 
 import { env } from 'echarts'
 export default {
     components:{ Tree, BaseView, SearchBox, VSwitch },
+    computed: {
+  
+        page: {
+        get() {
+            return this.$store.getters["page/getPage"];
+        },
+        set(value) {},
+        },
+    },
     data(){
         return {
             isDragenter:false,
@@ -81,6 +93,7 @@ export default {
         this.render({},ev.ctx);
     },
     methods:{
+        // ...mapActions(['page/addNode']),
         dragenter(e){
              console.log("进入")
             this.isDragenter=true;
@@ -95,11 +108,8 @@ export default {
             e.stopPropagation();
         },
         drop(e){
-            console.log("放下"+e.dataTransfer.getData("text/plain"));
-            ev.fire("Container","addNode",{
-                id:null,
-                nodeId:JSON.parse(e.dataTransfer.getData("text/plain")).id
-            });
+            var t=JSON.parse(e.dataTransfer.getData("text/plain"));
+            this.$store.dispatch("page/addNode",{id:null,nodeId:t.id})
             e.stopPropagation();
         },
         search(list,ctx){
