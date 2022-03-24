@@ -1,10 +1,10 @@
+import { NodeGroup } from "../interface/node";
+
 const widget = {
   namespaced: true,
-  state: () => ({
-    desc: "可以添加到page中的组件",
-    count: "xxx",
-    nodeTree: [],
-  }),
+  state: () => {
+    return new NodeGroup();
+  },
   mutations: {
     test(state:any) {
       state.count++;
