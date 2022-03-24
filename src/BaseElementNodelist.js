@@ -13,6 +13,7 @@ const nodelist = [
         style: {
           height: "200px",
         },
+        package: {},
         children: [],
       },
       {
@@ -21,6 +22,7 @@ const nodelist = [
         widget: "Text",
         render: "TextRender",
         icon: "las la-font",
+        package: {},
         style: {
           display: "inline",
         },
@@ -34,6 +36,7 @@ const nodelist = [
         meta: {
           value: "./img/sample.bmp",
         },
+        package: {},
         style: {
           width: "100%",
           height: "426px",
@@ -49,6 +52,7 @@ const nodelist = [
         meta: {
           value: "./audio/sample_640x360.mp4",
         },
+        package: {},
         style: {
           width: "100%",
           height: "100%",
@@ -65,6 +69,7 @@ const nodelist = [
           width: "100%",
           height: "100%",
         },
+        package: {},
         data: {
           tooltip: {},
           xAxis: {
