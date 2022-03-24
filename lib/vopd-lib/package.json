@@ -16,11 +16,12 @@
     "echarts": "^5.3.1",
     "keyboardjs": "^2.6.4",
     "leaflet": "^1.7.1",
-    "nanopop": "^2.1.0"
+    "nanopop": "^2.1.0",
+    "vuex": "^4.0.2"
   },
   "peerDependencies": {
-     "vopd-wvm": "^0.0.12",
-     "vue": "^3.2.25"
+    "vopd-wvm": "^0.0.12",
+    "vue": "^3.2.25"
   },
   "devDependencies": {
     "@codemirror/lang-html": "0.19.4",

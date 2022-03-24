@@ -40,6 +40,9 @@ import Tree from "./Tree.vue"
 import BaseView from "../BaseView.vue"
 import SearchBox from "../../common/SearchBox.vue"
 import VSwitch from "../../common/VSwitch.vue"
+
+import store from "../../store";
+
 import { env } from 'echarts'
 export default {
     components:{ Tree, BaseView, SearchBox, VSwitch },
