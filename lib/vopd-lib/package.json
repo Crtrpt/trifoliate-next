@@ -14,7 +14,6 @@
     "@headlessui/vue": "^1.5.0",
     "@simonwep/pickr": "^1.8.2",
     "echarts": "^5.3.1",
-    "immutable": "^4.0.0",
     "keyboardjs": "^2.6.4",
     "leaflet": "^1.7.1",
     "nanopop": "^2.1.0"

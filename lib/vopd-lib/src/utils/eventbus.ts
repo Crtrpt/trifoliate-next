@@ -1,7 +1,7 @@
-import ctx from "./Ctx"
+import store from "./Ctx"
 
 export class EventBus{
-    ctx=ctx
+    ctx=store;
     pipline:Map<String,Map<String,any>|undefined>=new Map();
     //订阅
     on(clientId:String,eventName:String,handler:any){
@@ -39,7 +39,6 @@ export class EventBus{
         });
     }
     initCtx(ctx:any){
-        console.log("init============================")
         this.ctx.dataInit(ctx);
         this.fire("vopd","init",ctx.project);
         this.on("vopd","selectContainer", this.ctx.selectContainer);

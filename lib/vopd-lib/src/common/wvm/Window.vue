@@ -95,9 +95,8 @@
     </template>
     <template v-if="type == 'window'">
       <template   v-for="w in this.copyData.item"
-        
         :key="w"
-        :mitt="this.eventHub">
+        :ev="this.eventHub">
             <Window v-if="w.type!='gutter'" :data="w"></Window>
             <Gutter class="flex-shrink-0" v-if="w.type=='gutter'" :data="w" :position="'row'" ></Gutter>
         </template>
@@ -139,28 +138,23 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import View from "./View.vue";
-import mitt from "mitt";
+import store from "../../utils/eventbus";
 import ViewHandler from "./ViewHandler.vue";
 import Gutter from "./Gutter.vue";
-import { off } from "keyboardjs";
 export default defineComponent({
   props: {
     select: {
       type: Number,
       default: 0,
     },
-    mitt: Object,
+    ev: Object,
     data: Object,
   },
   created() {
-    if (this.mitt == null) {
-      this.eventHub = mitt();
-    } else {
-      this.eventHub = this.mitt;
-    }
     if (this.data.type != "gutter") {
-      this.eventHub.on("closeView", this.closeView);
-      this.eventHub.on("displayView", this.displayView);
+      console.log("订阅",this.data.name,"closeView")
+      this.eventHub.on(this.data.name,"closeView", this.closeView);
+      this.eventHub.on(this.data.name,"displayView", this.displayView);
     }
   },
   watch: {
@@ -179,7 +173,7 @@ export default defineComponent({
   },
   data() {
     return {
-      eventHub: null,
+      eventHub: store,
       type: this.data.type,
       active: this.select,
       copyData: this.data,

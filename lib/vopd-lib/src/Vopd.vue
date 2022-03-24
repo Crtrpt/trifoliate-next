@@ -10,8 +10,6 @@ import { defineComponent } from "vue";
 import ev from "./utils/Eventbus";
 import Layout from "./viewLayout.js"
 
-
-// import state from "./utils/state";
 export default defineComponent({
   components: { Window },
   props: {
