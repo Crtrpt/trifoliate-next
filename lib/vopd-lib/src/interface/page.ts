@@ -59,6 +59,10 @@ class RuntimePage implements RuntimePageInterface {
     newNode.attr = {
       isExpand: false,
     };
+    newNode.style = {
+      ...widget.style,
+      ...payload.style,
+    };
     if (payload.id) {
       this.hashIds.get(payload.id)!.children.push(newNode);
       this.hashIds.get(payload.id)!.attr["isExpand"] = true;
@@ -77,15 +81,6 @@ class RuntimePage implements RuntimePageInterface {
       n!.attr[payload.attr] = payload.val;
     }
     if (payload.attr == "isSelect" || payload.val == true) {
-
-      // if (this.selectOne) {
-      //   //取消上一个的选择状态
-      
-      //   var ps = this.selectList[0];
-      //   if (ps != null) {
-      //     this.hashIds.get(ps)!.attr["isSelect"] = false;
-      //   }
-      // }
       this.selectList?.push(payload.id);
     }
   }

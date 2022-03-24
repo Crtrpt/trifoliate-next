@@ -41,16 +41,12 @@ export default {
   },
   methods: {
     drop(e) {
-      console.log("放下" + e.dataTransfer.getData("text/plain"));
-      var td = JSON.parse(e.dataTransfer.getData("text/plain"));
-      ev.fire("Container", "addNode", {
-        id: null,
-        nodeId: td.id,
-        style: {
+        var t=JSON.parse(e.dataTransfer.getData("text/plain"));
+        this.$store.dispatch("page/addNode",{id:null,nodeId:t.id,style:{
           left: e.offsetX + "px",
           top: e.offsetY + "px",
-        },
-      });
+        }})
+        e.stopPropagation();
     },
     render(payload, ctx) {
       this.source = ctx.data.list;

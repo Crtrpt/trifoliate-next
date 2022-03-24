@@ -29,14 +29,7 @@ export default defineComponent({
   props: {
     data: Object,
   },
-  mounted() {
-    console.log("注册======================")
-   
-    // ev.ctx.hashIds.get(this.data.id).ref["layer"] = this.$refs.node;
-
-
-
-  
+  mounted() {  
   },
   data() {
     return {
@@ -76,12 +69,8 @@ export default defineComponent({
       menu.show();
     },
     drop(e) {
-      console.log("放下" + e.dataTransfer.getData("text/plain"));
-      ev.fire("Container", "addNode", {
-        id: this.data.id,
-        nodeId: JSON.parse(e.dataTransfer.getData("text/plain")).id,
-      });
-      this.isDragenter = false;
+      var t=JSON.parse(e.dataTransfer.getData("text/plain"));
+      this.$store.dispatch("page/addNode",{id:this.data.id,nodeId:t.id})     
       e.stopPropagation();
     },
     dragenter(e) {

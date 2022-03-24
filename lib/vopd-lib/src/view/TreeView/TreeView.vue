@@ -1,9 +1,7 @@
 <template>
      <BaseView>
-         <template v-slot:lead>
-                
-                <!-- <VSwitch v-model="isMultipleSelect" class="p-1" ></VSwitch> -->
-                <SearchBox class="flex-grow" placeholder="搜索文档中的组件"></SearchBox>
+         <template v-slot:lead>    
+            <SearchBox class="flex-grow" placeholder="搜索文档中的组件"></SearchBox>
         </template>
         <template v-slot:action>
                <div class="flex items-center">
@@ -87,10 +85,6 @@ export default {
         console.log("更新=======================");
     },
     created(){
-        ev.on("TreeView","init",this.render)
-        //数据变更的时候重新拉取数据
-        ev.on("none","change",this.render)
-        this.render({},ev.ctx);
     },
     methods:{
         // ...mapActions(['page/addNode']),
@@ -116,7 +110,7 @@ export default {
             
         },
         changeSelectMode(){
-                this.isMultipleSelect=!this.isMultipleSelect
+            this.isMultipleSelect=!this.isMultipleSelect
         },
         render(payload:any,ctx:any){
             console.log("重绘");

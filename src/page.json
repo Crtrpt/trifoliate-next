@@ -23,7 +23,8 @@
           "icon": "las la-stop",
           "desc": "固定的 200px布局",
           "style": {
-            "height": "200px"
+            "height": "200px",
+            "position":"absolute"
           },
           "package": {},
           "children": []
