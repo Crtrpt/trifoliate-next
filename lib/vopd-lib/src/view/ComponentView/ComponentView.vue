@@ -18,7 +18,7 @@
           v-slot="{ open }"
           v-for="g in list"
           :key="g"
-          :default-open="true"
+          :default-open="g.isOpen"
         >
           <DisclosureButton
             class="

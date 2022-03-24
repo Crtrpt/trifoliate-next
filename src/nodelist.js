@@ -1,5 +1,76 @@
 const nodelist = [
   {
+    name: "元素",
+    isOpen: true,
+    list: [
+      {
+        id: "5",
+        name: "文字",
+        widget: "Text",
+        render: "TextRender",
+        icon: "las la-font",
+        style: {
+          display: "inline",
+        },
+      },
+      {
+        id: "8",
+        name: "图片",
+        widget: "Image",
+        render: "ImageRender",
+        icon: "las la-font",
+        meta: {
+          value: "./img/sample.bmp",
+        },
+        style: {
+          width: "100%",
+          height: "426px",
+        },
+      },
+      {
+        id: "9",
+        name: "视频",
+        widget: "Audio",
+        render: "AudioRender",
+        icon: "las la-youtube",
+        value: "",
+        meta: {
+          value: "./audio/sample_640x360.mp4",
+        },
+        style: {
+          width: "100%",
+          height: "100%",
+        },
+      },
+      {
+        id: "6",
+        name: "图表",
+        render: "EchartRender",
+        widget: "Echart",
+        icon: "las la-chart-pie",
+        desc: "echart 图表元素",
+        style: {
+          width: "100%",
+          height: "100%",
+        },
+        data: {
+          tooltip: {},
+          xAxis: {
+            data: ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"],
+          },
+          yAxis: {},
+          series: [
+            {
+              name: "sales",
+              type: "bar",
+              data: [10, 20, 30, 40, 50, 60],
+            },
+          ],
+        },
+      },
+    ],
+  },
+  {
     name: "数据",
     list: [
       {
@@ -42,7 +113,7 @@ const nodelist = [
     ],
   },
   {
-    name: "固定",
+    name: "布局",
     list: [
       {
         id: "100",
@@ -176,47 +247,7 @@ const nodelist = [
       },
     ],
   },
-  {
-    name: "元素",
-    list: [
-      {
-        id: "5",
-        name: "文字",
-        widget: "Text",
-        render: "TextRender",
-        icon: "las la-font",
-        style: {
-          display: "inline",
-        },
-      },
-      {
-        id: "6",
-        name: "图表",
-        render: "EchartRender",
-        widget: "Echart",
-        icon: "las la-chart-pie",
-        desc: "echart 图表元素",
-        style: {
-          width: "100%",
-          height: "100%",
-        },
-        data: {
-          tooltip: {},
-          xAxis: {
-            data: ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"],
-          },
-          yAxis: {},
-          series: [
-            {
-              name: "sales",
-              type: "bar",
-              data: [10, 20, 30, 40, 50, 60],
-            },
-          ],
-        },
-      },
-    ],
-  },
+
   {
     name: "地图",
     list: [

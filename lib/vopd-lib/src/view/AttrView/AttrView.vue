@@ -14,7 +14,6 @@
 
 <script lang="ts">
 import Text from "../../widget/Text.vue";
-import Image from "../../widget/Image.vue";
 import Video from "../../widget/Video.vue";
 import Echart from "../../widget/Echart.vue";
 import Container from "../../widget/Container.vue";

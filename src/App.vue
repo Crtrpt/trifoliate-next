@@ -1,8 +1,5 @@
 <template>
-  <div class="flex flex-col h-full  w-full" style="height:80%">
-    <Vopd :value="data" ref="vopd"/>
-  </div>
-  
+  <Vopd :value="data" ref="vopd" class="flex flex-col h-full  w-full" style="height:100%"/>
 </template>
 <script lang="ts">
 
