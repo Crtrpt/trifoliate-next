@@ -9,7 +9,6 @@
 </template>
 
 <script lang="ts">
-import ev from "../utils/Eventbus";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 export default {
@@ -19,10 +18,6 @@ export default {
   methods: {
     click(e: any) {
       e.stopPropagation();
-      ev.fire("Container", "selectContainer", {
-        e: this.$refs.node,
-        data: this.data,
-      });
     },
   },
   updated() {

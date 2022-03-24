@@ -4,7 +4,7 @@ import VopdLib from "../lib/vopd-lib/src/VopdLib";
 
 let app = createApp(App);
 
-var modules=import.meta.globEager("./userDefine/*.vue")
+var modules = import.meta.globEager("./component/*.vue");
 
 var renders=[];
 

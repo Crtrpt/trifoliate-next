@@ -29,12 +29,10 @@
 </template>
 
 <script lang="ts">
-import ev from "../utils/Eventbus";
-import AbstractElement from "../layers/AbstractElement.vue";
 
 export default {
   name: "ContainerRender",
-  components: { AbstractElement },
+  components: {  },
   props: {
     data: Object,
   },

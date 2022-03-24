@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import ev from "../utils/Eventbus";
+
 import * as echarts from "echarts";
 
 export default {
@@ -19,11 +19,6 @@ export default {
   },
   methods: {
     click(e) {
-      e.stopPropagation();
-      ev.fire("Container", "selectContainer", {
-        e: this.$refs.node,
-        data: this.data,
-      });
     },
   },
   updated() {
@@ -32,7 +27,6 @@ export default {
     this.instance.setOption(this.data.data);
   },
   mounted() {
-    ev.ctx.hashIds.get(this.data.id).ref["layer"] = this.$refs.node;
     this.instance = echarts.init(this.$refs.chart);
     this.instance.setOption(this.data.data);
   },

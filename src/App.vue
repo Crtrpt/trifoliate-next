@@ -7,7 +7,7 @@
 import './index.css'
 import "../public/css/line-awesome.min.css"
 
-import nodelist from "./nodelist.js" 
+import nodelist from "./BaseElementNodelist.js" 
 
 export default {
   data(){
