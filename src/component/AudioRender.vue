@@ -1,5 +1,5 @@
 <template>
-  <div>
+ 
   <video 
     controls
     autoplay
@@ -7,7 +7,7 @@
   >
     <source :src="data.meta.value" >
   </video>
-  </div>
+
 </template>
 
 <script lang="ts">

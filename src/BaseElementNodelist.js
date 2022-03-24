@@ -39,7 +39,7 @@ const nodelist = [
         package: {},
         style: {
           width: "100%",
-          height: "426px",
+          height: "100%",
         },
       },
       {
