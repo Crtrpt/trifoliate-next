@@ -24,22 +24,22 @@ export default defineComponent({
     },
     computed:{
         width(){
-           return parseInt(this.ctx.width);
+           return parseInt(this.ctx.style.width);
        },
        height(){
-           return parseInt(this.ctx.height);
+           return parseInt(this.ctx.style.height);
        },
        offsetLeft(){
-            return parseInt(this.ctx.scrollLeft);
+            return parseInt(this.ctx.style.scrollLeft);
        },
        offsetTop(){
-            return parseInt(this.ctx.scrollTop);
+            return parseInt(this.ctx.style.scrollTop);
        },
        left(){
-           return parseInt(this.ctx.marginLeft);
+           return parseInt(this.ctx.style.marginLeft);
        },
        top(){
-           return parseInt(this.ctx.marginTop);
+           return parseInt(this.ctx.style.marginTop);
        },
        scale(){
            return this.ctx.scale;
@@ -103,7 +103,7 @@ export default defineComponent({
                     }else{
                          yctx.lineTo(10,s);
                      }
-
+                     
                     yctx.stroke();
                 }
         },

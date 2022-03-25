@@ -32,20 +32,20 @@
         <Control class=" absolute  z-40">
                <RolerContrl :ctx="page" />
         </Control>
-        <Control class="left-40 mt-4 top-4    absolute control z-40 flex">
+        <!-- <Control class="left-40 mt-4 top-4    absolute control z-40 flex">
                <ActionContrl :ctx="page" />
-        </Control>
+        </Control> -->
 
         <Control class=" left-20 mt-4 top-4   absolute control z-40 flex">
                <HistoryContrl />
         </Control>
 
-        <Control class=" right-5 mt-4 top-4   absolute control z-40 flex">
+        <!-- <Control class=" right-5 mt-4 top-4   absolute control z-40 flex">
                 <PageSize   :ctx="page" @input="changeSize"></PageSize>
                 <PageScale v-model="page.scale"></PageScale>
                 <GridContrl :ctx="page" @input="(p)=>{page.displayGrid=p}"></GridContrl>
-                <!-- <SettingContrl :ctx="page"></SettingContrl> -->
-        </Control>
+                <SettingContrl :ctx="page"></SettingContrl>
+        </Control> -->
 
 
         <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  @scroll="scroll"  @wheel="wheel">
@@ -54,13 +54,14 @@
               @dragover="allowDrop($event)"
             >
             <div class="layers" ref="layer">
-          
-              <Layer name="GridLayer"  :ctx="page" />
-              <Layer name="BaseLayer"  :ctx="page" />
+              <GridLayer :ctx="page"></GridLayer>
+              <BaseLayer :ctx="page"></BaseLayer>
+              <HandlerLayer :ctx="page" :mitt="mitt"></HandlerLayer>
+
               
               <!-- <Layer name="SelectLayer" :ctx="page" /> -->
 
-              <Layer name="HandlerLayer" :ctx="page" :mitt="mitt" />
+              
       
             </div>
           </div>
@@ -75,7 +76,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Layer from './Layer.vue'
 import ev from "../utils/Eventbus"
 import Control from './Control.vue'
 import ToolView from '../view/ToolView/ToolView.vue'
@@ -89,7 +89,7 @@ import ActionContrl from '../control/ActionContrl.vue'
 import ContextMenu from "../common/context/ContextMenu.js"
 import mitt from 'mitt'
 export default defineComponent({
-  components: { Layer, Control, ToolView, PageScale, PageSize, GridContrl, HistoryContrl, RolerContrl, SettingContrl, ActionContrl },
+  components: {  Control, ToolView, PageScale, PageSize, GridContrl, HistoryContrl, RolerContrl, SettingContrl, ActionContrl },
   computed: {
     page: {
       get() {
@@ -200,9 +200,6 @@ export default defineComponent({
     //   ev.fire("main","mouseleave",e);
     // })
   },
-  setup() {
-    
-  }
 })
 </script>
 
