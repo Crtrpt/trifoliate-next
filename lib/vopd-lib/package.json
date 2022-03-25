@@ -14,6 +14,7 @@
     "@codemirror/view": "^0.19.15",
     "@headlessui/vue": "^1.5.0",
     "keyboardjs": "^2.6.4",
+    "mitt": "^3.0.0",
     "nanopop": "^2.1.0",
     "vuex": "^4.0.2"
   },
@@ -43,7 +44,6 @@
   "files": [
     "dist"
   ],
-
   "main": "./dist/vopd-lib.umd.js",
   "module": "./dist/vopd-lib.es.js",
   "exports": {

@@ -111,7 +111,7 @@ export default {
             e.stopPropagation();
         },
         click(node,e:any){
-            this.$store.dispatch("page/setAttr",{id:this.data.id,attr:"isSelect"})
+            this.$store.dispatch("page/setAttr",{id:this.data.id,attr:"isSelect",val:!this.data.attr['isSelect']})
             e.stopPropagation();
         },
         expand(node,e){

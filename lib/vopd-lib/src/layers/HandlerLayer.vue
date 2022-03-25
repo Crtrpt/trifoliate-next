@@ -1,9 +1,9 @@
 <template>
-  <div class="HandlerLayer" v-if="display">
+  <div class="HandlerLayer" v-if="page.displaySelect">
     <div
-      class="box absolute shadow-inner"
+      class="box absolute shadow-inner transition"
       ref="box"
-      :style="cstyle"
+      :style="page.selectStyle"
       @dragenter="dragenter($event)"
       @mousedown="start($event)"
       @dblclick="cancelSelect"
@@ -13,7 +13,7 @@
         style="top: -1.5rem"
       >
       <div class="bg-blue-400 rounded-full flex flex-row">
-        <i
+        <!-- <i
           v-tooltip="'选择上级'"
          :class="{
             'la-circle':!this.data.parent,
@@ -22,7 +22,7 @@
          class="las   rounded-l-full  px-1 leading-4   hover:bg-blue-500" @click="displayPath" ></i>
         <p 
           v-tooltip="'组件名称'"
-        class=" rounded-r-full whitespace-nowrap hover:bg-blue-500 px-1"> {{ data.name }}</p>
+        class=" rounded-r-full whitespace-nowrap hover:bg-blue-500 px-1"> {{ data.name }}</p> -->
       </div>
       
       </div>
@@ -60,12 +60,20 @@
 </template>
 <script lang="ts">
 import ev from "../utils/Eventbus";
-import keyboardJS from "keyboardjs";
 
 export default {
   name: "HandlerLayer",
   props: {
     ctx: Object,
+    mitt:Object,
+  },
+  computed: {
+    page: {
+      get() {
+        return this.$store.getters["page/getPage"];
+      },
+      set(value) {},
+    },
   },
   watch: {
     data: {
@@ -80,7 +88,7 @@ export default {
   data: function () {
     return {
       handler: null,
-      display: false,
+      display: true,
       drag: false,
       isMove: false,
       s: {},
@@ -119,8 +127,8 @@ export default {
       } else {
         this.drag = true;
       }
-      ev.on("handler", "mousemove", this.move);
-      ev.on("handler", "mouseup", this.end);
+      this.mitt.on("mousemove", this.move);
+      this.mitt.on("mouseup", this.end);
       this.s.x = e.screenX;
       this.s.y = e.screenY;
       var s = (this.s.el = this.$refs.box);
@@ -135,14 +143,17 @@ export default {
       this.isMove = false;
       this.handler = null;
       //写入快照
-      ev.off("handler", "mousemove");
-      ev.off("handler", "mouseup");
+      this.mitt.off("mousemove");
+      this.mitt.off("mouseup");
 
-      ev.fire(
-        "Container",
-        "moveSelectContainer",
-        window.getComputedStyle(this.s.el)
-      );
+     var newCs=window.getComputedStyle(this.s.el);
+      this.$store.dispatch("page/moveNode",{style:{
+          left: newCs.left,
+          top: newCs.top,
+          width:newCs.width,
+          height:newCs.height
+        }})
+        e.stopPropagation();
     },
     move(e) {
       let s = this.s;
@@ -211,41 +222,13 @@ export default {
         // this.p.h=parseInt(cs.height);
       }
     },
-    init(e) {
-      this.source = e;
-    },
-    render(e) {
-      var source = JSON.parse(JSON.stringify(e));
-    },
-    hide() {
+    cancelSelect(e) {
       this.display = false;
-    },
-    cancelSelect() {
-      this.display = false;
-      ev.fire("HandlerLayer", "cancelSelectContainer", { data: this.data });
-    },
-    select(p) {
-        console.log("handler id"+p.data.id);
-      var data = ev.ctx.hashIds.get(p.data.id);
-      var el = data.ref["layer"];
-      console.log("el==========")
-      console.log(el);
-      var rect = el.$el.getBoundingClientRect();
-      this.data = data;
-      this.cstyle.width = rect.width + "px";
-      this.cstyle.height = rect.height + "px";
-      this.cstyle.top =
-        rect.top - this.ctx.rect.top + this.ctx.view.scrollTop + "px";
-      this.cstyle.left =
-        rect.left - this.ctx.rect.left + this.ctx.view.scrollLeft + "px";
-      this.display = true;
+     this.$store.dispatch("page/cancelSelect")
+     e.stopPropagation();
     },
   },
   mounted() {
-    ev.on("HandlerLayer", "init", this.init);
-    ev.on("HandlerLayer", "selectArea", this.render);
-    ev.on("HandlerLayer", "selectContainer", this.select);
-    ev.on("HandlerLayer", "change", this.hide);
   },
   setup() {},
 };

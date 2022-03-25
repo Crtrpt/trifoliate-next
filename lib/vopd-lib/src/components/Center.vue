@@ -50,16 +50,7 @@
 
         <div   class="z-10 overflow-auto view h-full w-full" :class="[modeList[this.mode].cursor]"  ref="view"  @scroll="scroll"  @wheel="wheel">
           <div ref="canvas" class="  relative overflow-hidden  border shadow doc  bg-white" 
-                :style="{
-                  width: page.width,
-                  height:page.height,
-                  marginLeft:page.marginLeft ,
-                  marginRight:page.marginRight ,
-                  marginTop:page.marginTop ,
-                  marginBottom:page.marginBottom ,
-                  transform: 'scale('+page.scale+')',
-                  'transform-origin': 'left top'
-                  }"
+                :style="page.style"
               @dragover="allowDrop($event)"
             >
             <div class="layers" ref="layer">
@@ -69,7 +60,7 @@
               
               <!-- <Layer name="SelectLayer" :ctx="page" /> -->
 
-              <!-- <Layer name="HandlerLayer" :ctx="page" /> -->
+              <Layer name="HandlerLayer" :ctx="page" :mitt="mitt" />
       
             </div>
           </div>
@@ -96,28 +87,32 @@ import RolerContrl from '../control/RolerContrl.vue'
 import SettingContrl from '../control/SettingContrl.vue'
 import ActionContrl from '../control/ActionContrl.vue'
 import ContextMenu from "../common/context/ContextMenu.js"
-
+import mitt from 'mitt'
 export default defineComponent({
   components: { Layer, Control, ToolView, PageScale, PageSize, GridContrl, HistoryContrl, RolerContrl, SettingContrl, ActionContrl },
-  computed:{
-    pageScale(){
-      return (this.page.scale)*100
-    }
+  computed: {
+    page: {
+      get() {
+        return this.$store.getters["page/getPage"];
+      },
+      set(value) {},
+    },
   },
   data(){
     return {
-      page:{
-        rect:{},
-        width:"1024px",
-        height:"960px",
-        displayGrid:true,
-        marginLeft:"80px" ,
-        marginRight:"80px" ,
-        marginTop:"80px" ,
-        marginBottom:"80px",
-        scrollTop:"0",
-        scrollLeft:'0',
-      },
+      mitt:mitt(),
+      // page:{
+      //   rect:{},
+      //   width:"1024px",
+      //   height:"960px",
+      //   displayGrid:true,
+      //   marginLeft:"80px" ,
+      //   marginRight:"80px" ,
+      //   marginTop:"80px" ,
+      //   marginBottom:"80px",
+      //   scrollTop:"0",
+      //   scrollLeft:'0',
+      // },
       mode:0,
       modeList:[
         {
@@ -186,24 +181,24 @@ export default defineComponent({
 
 
     ev.on("EditorView","init",this.render)
-    let  el:any=this.$refs.view;
+    var el=this.page.el=this.$refs.view;
    
 
     el.addEventListener("mousemove",(e)=>{
-      ev.fire("main","mousemove",e);
-    }),
-    el.addEventListener("mousedown",(e)=>{
-      ev.fire("main","mousedown",e);
-    }),
+      this.mitt.emit("mousemove",e);
+    });
+    // el.addEventListener("mousedown",(e)=>{
+    //   ev.fire("main","mousedown",e);
+    // }),
     el.addEventListener("mouseup",(e)=>{
-      ev.fire("main","mouseup",e);
-    }),
-    el.addEventListener("mouseenter",(e)=>{
-      ev.fire("main","mouseenter",e);
-    }),
-    el.addEventListener("mouseleave",(e)=>{
-      ev.fire("main","mouseleave",e);
-    })
+      this.mitt.emit("mouseup",e);
+    });
+    // el.addEventListener("mouseenter",(e)=>{
+    //   ev.fire("main","mouseenter",e);
+    // }),
+    // el.addEventListener("mouseleave",(e)=>{
+    //   ev.fire("main","mouseleave",e);
+    // })
   },
   setup() {
     

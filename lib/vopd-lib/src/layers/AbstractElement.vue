@@ -15,7 +15,8 @@
     :data="data"
     v-if="!data.attr['isDelete'] && !data.attr['isEye']"
     @mousedown="mousedown($event, data)"
-    @mouseenter="enter(data)"
+    @mouseenter="mouseenter($event,data)"
+    @mouseleave="mouseleave($event,data)"
     ref="node"
   />
 </template>
@@ -30,6 +31,7 @@ export default defineComponent({
     data: Object,
   },
   mounted() {  
+    this.data.attr['el']=this.$el;
   },
   data() {
     return {
@@ -84,19 +86,26 @@ export default defineComponent({
       e.stopPropagation();
     },
     mousedown(e, n) {
-      console.log("组织时间冒泡");
       e.stopPropagation();
     },
     click(e){
           if(!this.data.attr['isLock']){
-                ev.fire("Container","selectContainer",{e:this.$refs.node,data:this.data})
-                e.stopPropagation();
+              this.$store.dispatch("page/setAttr",{id:this.data.id,attr:"isSelect",val:true})
+              e.stopPropagation();
           }
     },
-    enter(n) {
-      ev.fire("BaseLayer", "hoverContainer", n);
+    mouseenter(e) {
+       if(!this.data.attr['isLock']){
+            this.$store.dispatch("page/setAttr",{id:this.data.id,attr:"isHover",val:true})
+              e.stopPropagation();
+      }
+    },
+    mouseleave(e) {
+       if(!this.data.attr['isLock']){
+            this.$store.dispatch("page/setAttr",{id:this.data.id,attr:"isHover",val:false})
+              e.stopPropagation();
+      }
     },
   },
-  setup() {},
 });
 </script>

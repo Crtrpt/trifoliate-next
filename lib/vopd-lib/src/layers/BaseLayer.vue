@@ -10,7 +10,6 @@
   </div>
 </template>
 <script lang="ts">
-import ev from "../utils/Eventbus";
 import AbstractElement from "./AbstractElement.vue";
 
 export default {
@@ -62,12 +61,6 @@ export default {
     },
   },
   mounted() {
-    console.log("加载完成");
-    ev.on("BaseLayer", "init", this.render);
-    ev.on("BaseLayer", "mousedown", this.inactivated);
-    ev.on("BaseLayer", "mouseup", this.active);
-    ev.on("BaseLayer", "change", this.render);
-    ev.on("BaseLayer", "addNode", this.render);
   },
 };
 </script>

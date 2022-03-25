@@ -21,9 +21,16 @@ const page = {
     addNode(state: any, payload: any) {
       state.addNode(payload);
     },
+    moveNode(state:any,payload:any){
+      state.moveNode(payload);
+    },
     setAttr(state: any, payload: any) {
       state.setAttr(payload);
     },
+    cancelSelect(state:any,payload:any){
+      state.cancelSelect(payload);
+    },
+    
   },
   actions: {
     init: {
@@ -39,12 +46,26 @@ const page = {
         namespacedContext.commit("addNode", payload);
       },
     },
+    //移动节点
+    moveNode:{
+      root:false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("moveNode", payload);
+      },
+    },
     //增加节点
     setAttr: {
       root: false,
       handler(namespacedContext: any, payload: any) {
         namespacedContext.commit("setAttr", payload);
       },
+    },
+    //cancelSelect
+    cancelSelect: {
+        root: false,
+        handler(namespacedContext: any, payload: any) {
+          namespacedContext.commit("cancelSelect", payload);
+        },
     },
   },
 };

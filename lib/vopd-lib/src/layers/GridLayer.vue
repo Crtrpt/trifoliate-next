@@ -33,17 +33,16 @@ export default {
     },
     computed:{
        width(){
-           return parseInt(this.ctx.width);
+           return parseInt(this.ctx.style.width);
        },
        height(){
-           return parseInt(this.ctx.height);
+           return parseInt(this.ctx.style.height);
        }
     },
     methods:{
        render(){
            
             nextTick(()=>{
-                console.log("绘制"+this.width+" "+this.height)
                 var grid=this.$refs.grid;
                 var ctx= grid.getContext('2d');
               
