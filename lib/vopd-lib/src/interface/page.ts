@@ -1,4 +1,5 @@
 import { off } from "keyboardjs";
+import { Commander } from "./commander";
 import { Node } from "./node";
 
 interface Page {
@@ -25,6 +26,8 @@ class RuntimePage implements RuntimePageInterface {
     marginRight:"80px",
     marginBottom:"80px",
   }
+  //命令栈 前进回退用
+  command:Commander=new Commander
   control:Map<String,Node>=new Map();
   //0 默认模式
   channel:number=0;
@@ -42,7 +45,7 @@ class RuntimePage implements RuntimePageInterface {
   selectIds?: Map<String, Node> = new Map();
   nodeList?: [];
   nodeIdMap?: Map<String, any> = new Map();
-
+  
   fromJson(source: any): Page {
     this.maxId = source.maxId;
     this.list = source.list;
