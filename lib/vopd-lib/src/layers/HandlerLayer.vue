@@ -9,30 +9,34 @@
       @dblclick="cancelSelect"
     >
       <div
-        class="absolute rounded-full  flex-nowrap  text-xs   text-white cursor-pointer"
+        class="
+          absolute
+          rounded-full
+          flex-nowrap
+          text-xs text-white
+          cursor-pointer
+        "
         style="top: -1.5rem"
       >
-      <div class="bg-blue-400 rounded-full flex flex-row">
-        <!-- <i
+        <div class="bg-blue-400 rounded-full flex flex-row">
+          <!-- <i
           v-tooltip="'选择上级'"
          :class="{
             'la-circle':!this.data.parent,
             'la-angle-double-up':this.data.parent
          }"
          class="las   rounded-l-full  px-1 leading-4   hover:bg-blue-500" @click="displayPath" ></i>-->
-        <!-- <p 
+          <!-- <p 
           v-tooltip="'组件名称'"
         class=" rounded-r-full whitespace-nowrap hover:bg-blue-500 px-1"> {{ data.name }}</p>  -->
+        </div>
       </div>
-      
-      </div>
-      <div class="flex justify-center absolute w-5  flex-nowrap  text-xs   text-white cursor-pointer "
+      <!-- <div class="flex justify-center absolute w-5  flex-nowrap  text-xs   text-white cursor-pointer "
       style="right:-30px">
         <div class="bg-blue-400 rounded-full px-1">
            <i  v-tooltip="'组件属性'" class="las la-dot-circle hover:bg-blue-500 rounded-t-full  "></i>
         </div>
-       
-      </div>
+      </div> -->
       <div class="left_top handler" @mousedown="setHandler('leftTop')"></div>
       <div
         class="left_bottom handler"
@@ -49,7 +53,6 @@
 
       <div class="top gutter" @mousedown="setHandler('top')"></div>
       <div class="bottom gutter" @mousedown="setHandler('bottom')"></div>
-
     </div>
   </div>
 </template>
@@ -60,7 +63,7 @@ export default {
   name: "HandlerLayer",
   props: {
     ctx: Object,
-    mitt:Object,
+    mitt: Object,
   },
   computed: {
     page: {
@@ -104,11 +107,13 @@ export default {
   },
   methods: {
     displayPath() {
-       if(this.data.parent!=null){
-            ev.fire("handler","selectContainer",{data:{
-                id:this.data.parent
-            }})
-       }
+      if (this.data.parent != null) {
+        ev.fire("handler", "selectContainer", {
+          data: {
+            id: this.data.parent,
+          },
+        });
+      }
     },
     dragenter(e) {
       this.display = false;
@@ -141,14 +146,16 @@ export default {
       this.mitt.off("mousemove");
       this.mitt.off("mouseup");
 
-     var newCs=window.getComputedStyle(this.s.el);
-      this.$store.dispatch("page/moveNode",{style:{
+      var newCs = window.getComputedStyle(this.s.el);
+      this.$store.dispatch("page/moveNode", {
+        style: {
           left: newCs.left,
           top: newCs.top,
-          width:newCs.width,
-          height:newCs.height
-        }})
-        e.stopPropagation();
+          width: newCs.width,
+          height: newCs.height,
+        },
+      });
+      e.stopPropagation();
     },
     move(e) {
       let s = this.s;
@@ -219,12 +226,11 @@ export default {
     },
     cancelSelect(e) {
       this.display = false;
-     this.$store.dispatch("page/cancelSelect")
-     e.stopPropagation();
+      this.$store.dispatch("page/cancelSelect");
+      e.stopPropagation();
     },
   },
-  mounted() {
-  },
+  mounted() {},
   setup() {},
 };
 </script>
@@ -233,8 +239,8 @@ export default {
 .box {
   cursor: move;
   display: inline-grid;
-  grid-template-columns: 10px auto  10px;
-  grid-template-rows: 10px auto  10px;
+  grid-template-columns: 10px auto 10px;
+  grid-template-rows: 10px auto 10px;
 
   //  grid-template-columns: 10px auto 10px auto 10px;
   // grid-template-rows: 10px auto 10px auto 10px;

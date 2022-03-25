@@ -121,16 +121,10 @@
   ],
   "env":[
     {
-      "id": "name",
-      "name": "项目名称",
-      "value":"vopd在线可视化",
-      "description":"描述的信息============="
-    },
-    {
-      "id": "所属企业",
-      "name": "版权信息",
-      "value":"xx有限公司",
-      "description":"所属企业"
+      "id": "var1",
+      "name": "变量名称",
+      "value":"变量值",
+      "description":"描述信息"
     }
   ],
   "hashIds": {},
