@@ -78,7 +78,6 @@
 import { defineComponent } from 'vue'
 import ev from "../utils/Eventbus"
 import Control from './Control.vue'
-import ToolView from '../view/ToolView/ToolView.vue'
 import PageScale from '../control/PageScale.vue'
 import PageSize from '../control/PageSize.vue'
 import GridContrl from '../control/GridContrl.vue'
@@ -89,7 +88,7 @@ import ActionContrl from '../control/ActionContrl.vue'
 import ContextMenu from "../common/context/ContextMenu.js"
 import mitt from 'mitt'
 export default defineComponent({
-  components: {  Control, ToolView, PageScale, PageSize, GridContrl, HistoryContrl, RolerContrl, SettingContrl, ActionContrl },
+  components: {  Control, PageScale, PageSize, GridContrl, HistoryContrl, RolerContrl, SettingContrl, ActionContrl },
   computed: {
     page: {
       get() {
