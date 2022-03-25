@@ -36,7 +36,7 @@ class RuntimePage implements RuntimePageInterface {
   hashIds: Map<String, Node> = new Map();
   hashNames: Map<String, Node[]> = new Map();
   displaySelect:boolean=false;
-  selectStyle:any={};
+  selectStyle: any = {};
   selectOne: Boolean = true;
   selectList: String[] = [];
   selectIds?: Map<String, Node> = new Map();
@@ -67,8 +67,20 @@ class RuntimePage implements RuntimePageInterface {
 
 
   moveNode(payload:any){
-    console.log("移动节点")
     console.log(payload);
+    if (this.selectOne) {
+      var lastSelect = this.selectList.at(-1);
+      if (lastSelect) {
+        var lastEl = this.hashIds
+          .get(lastSelect)
+        lastEl!.style.width = payload.style.width;
+        lastEl!.style.height = payload.style.height;
+        lastEl!.style.top = payload.style.top;
+        lastEl!.style.left = payload.style.left;
+      } else {
+        console.log("取消选择");
+      }
+    }
   }
 
   addNode(payload: any) {
@@ -80,7 +92,8 @@ class RuntimePage implements RuntimePageInterface {
     newNode.attr = {
       isExpand: false,
     };
-    newNode.parent=payload.id;
+    newNode.parent = payload.id;
+    newNode.content = widget.content;
     newNode.style = {
       ...widget.style,
       ...payload.style,
@@ -107,8 +120,8 @@ class RuntimePage implements RuntimePageInterface {
         var viewRect=this.el?.getBoundingClientRect();
         
         var cs={
-          "top":rect.top-viewRect!.top-parseInt(this.style.marginTop)+this.el?.scrollTop+"px",
-          "left":rect.left-viewRect!.left-parseInt(this.style.marginLeft)+this.el?.scrollLeft+"px",
+          "top":rect.top-viewRect!.top-parseInt(this.style.marginTop)+this.el!.scrollTop+"px",
+          "left":rect.left-viewRect!.left-parseInt(this.style.marginLeft)+this.el!.scrollLeft+"px",
           "width":rect.width+"px",
           "height":rect.height+"px",
           "z-index":9999,

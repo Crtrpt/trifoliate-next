@@ -19,10 +19,10 @@
             'la-circle':!this.data.parent,
             'la-angle-double-up':this.data.parent
          }"
-         class="las   rounded-l-full  px-1 leading-4   hover:bg-blue-500" @click="displayPath" ></i>
-        <p 
+         class="las   rounded-l-full  px-1 leading-4   hover:bg-blue-500" @click="displayPath" ></i>-->
+        <!-- <p 
           v-tooltip="'组件名称'"
-        class=" rounded-r-full whitespace-nowrap hover:bg-blue-500 px-1"> {{ data.name }}</p> -->
+        class=" rounded-r-full whitespace-nowrap hover:bg-blue-500 px-1"> {{ data.name }}</p>  -->
       </div>
       
       </div>
@@ -44,17 +44,12 @@
         @mousedown="setHandler('rightBottom')"
       ></div>
 
-      <div class="left_up gutter" @mousedown="setHandler('left')"></div>
-      <div class="left_down gutter" @mousedown="setHandler('left')"></div>
-      <div class="right_up gutter" @mousedown="setHandler('right')"></div>
-      <div class="right_down gutter" @mousedown="setHandler('right')"></div>
+      <div class="left gutter" @mousedown="setHandler('left')"></div>
+      <div class="right gutter" @mousedown="setHandler('right')"></div>
 
-      <div class="top_left gutter" @mousedown="setHandler('top')"></div>
-      <div class="top_right gutter" @mousedown="setHandler('top')"></div>
-      <div class="bottom_left gutter" @mousedown="setHandler('bottom')"></div>
-      <div class="bottom_right gutter" @mousedown="setHandler('bottom')"></div>
+      <div class="top gutter" @mousedown="setHandler('top')"></div>
+      <div class="bottom gutter" @mousedown="setHandler('bottom')"></div>
 
-      <!-- <div class="center handler"></div> -->
     </div>
   </div>
 </template>
@@ -238,17 +233,20 @@ export default {
 .box {
   cursor: move;
   display: inline-grid;
-  grid-template-columns: 10px auto 10px auto 10px;
-  grid-template-rows: 10px auto 10px auto 10px;
+  grid-template-columns: 10px auto  10px;
+  grid-template-rows: 10px auto  10px;
+
+  //  grid-template-columns: 10px auto 10px auto 10px;
+  // grid-template-rows: 10px auto 10px auto 10px;
   border: 1px solid #00acdc;
   // background-color: #b4cd8a;
   // opacity: .75;
   grid-template-areas:
-    "left_top top_left  top top_right right_top"
-    "left_up . . . right_up"
-    "left . center . right"
-    "left_down . center . right_down"
-    "left_bottom bottom_left  bottom bottom_right right_bottom";
+    "left_top   top  right_top"
+    // "left_up . . . right_up"
+    "left  center  right"
+    // "left_down . center . right_down"
+    "left_bottom   bottom  right_bottom";
 }
 .handler {
   width: 10px;

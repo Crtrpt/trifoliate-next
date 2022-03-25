@@ -25,7 +25,7 @@ class Node {
   //组件对应的组件的实体
   render?: String;
   //组件的css 样式
-  style!: StyleHTMLAttributes;
+  style!: CSSStyleDeclaration;
   //各种属性
   attr!: any;
   //父节点

@@ -24,7 +24,7 @@
           "desc": "固定的 200px布局",
           "style": {
             "height": "100px",
-            "width":"100px",
+            "width":"200px",
             "position":"absolute"
           },
           "package": {},
@@ -36,6 +36,7 @@
           "widget": "Text",
           "render": "TextRender",
           "icon": "las la-font",
+          "content":"修改要展示的文字",
           "package": {},
           "placeHolder":"文本提示信息",
           "data":{},
