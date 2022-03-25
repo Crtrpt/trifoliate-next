@@ -54,7 +54,7 @@
                   filter.keywords == '' || i.name.search(filter.keywords) > -1
                 "
                 class="border h-16 text-center cursor-pointer hover:bg-gray-200"
-                @click="add(i)"
+                @click="add($event,i)"
               >
                 <div
                   v-tooltip="{
@@ -85,9 +85,9 @@ import { defineComponent } from "vue";
 import {mapGetters} from "vuex"
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 
-import BaseView from "../BaseView.vue";
-import ev from "../../utils/Eventbus";
-import SearchBox from "../../common/SearchBox.vue";
+import BaseView from "./BaseView.vue";
+import ev from "../utils/Eventbus";
+import SearchBox from "../common/SearchBox.vue";
 
 export default defineComponent({
   name: "ComponentView",
@@ -141,8 +141,9 @@ export default defineComponent({
     change(v) {
       console.log("变更下");
     },
-    add(i: any) {
-      ev.fire("ComponentView", "addComponent", i);
+    add(e:any,data: any) {
+      this.$store.dispatch("page/addNode",{id:null,nodeId:data.id})
+      e.stopPropagation();
     },
     render(p, ctx) {
       // this.list = ctx.nodeList;

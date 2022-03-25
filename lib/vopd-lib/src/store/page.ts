@@ -21,16 +21,21 @@ const page = {
     addNode(state: any, payload: any) {
       state.addNode(payload);
     },
-    moveNode(state:any,payload:any){
+    moveNode(state: any, payload: any) {
       state.moveNode(payload);
     },
     setAttr(state: any, payload: any) {
       state.setAttr(payload);
     },
-    cancelSelect(state:any,payload:any){
+    cancelSelect(state: any, payload: any) {
       state.cancelSelect(payload);
     },
-    
+    redo(state: any, payload: any) {
+      state.redo(payload);
+    },
+    undo(state: any, payload: any) {
+      state.undo(payload);
+    },
   },
   actions: {
     init: {
@@ -47,8 +52,8 @@ const page = {
       },
     },
     //移动节点
-    moveNode:{
-      root:false,
+    moveNode: {
+      root: false,
       handler(namespacedContext: any, payload: any) {
         namespacedContext.commit("moveNode", payload);
       },
@@ -60,12 +65,24 @@ const page = {
         namespacedContext.commit("setAttr", payload);
       },
     },
+    redo: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("redo", payload);
+      },
+    },
+    undo: {
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("undo", payload);
+      },
+    },
     //cancelSelect
     cancelSelect: {
-        root: false,
-        handler(namespacedContext: any, payload: any) {
-          namespacedContext.commit("cancelSelect", payload);
-        },
+      root: false,
+      handler(namespacedContext: any, payload: any) {
+        namespacedContext.commit("cancelSelect", payload);
+      },
     },
   },
 };

@@ -19,7 +19,6 @@
                     </div>
              </template>
              </div>
-            
         </template>
     </BaseView>
 </template>

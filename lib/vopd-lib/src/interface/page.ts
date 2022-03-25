@@ -45,7 +45,7 @@ class RuntimePage implements RuntimePageInterface {
   selectIds?: Map<String, Node> = new Map();
   nodeList?: [];
   nodeIdMap?: Map<String, any> = new Map();
-  
+
   fromJson(source: any): Page {
     this.maxId = source.maxId;
     this.list = source.list;
@@ -67,7 +67,14 @@ class RuntimePage implements RuntimePageInterface {
   name?: String | undefined;
   list?: Node | Node[] | undefined;
   pageAttr?: Map<String, String> | undefined;
-
+  redo() {
+    console.log("TODO 重做");
+    this.command.redo();
+  }
+  undo() {
+    console.log("TODO 撤销")
+    this.command.undo();
+  }
 
   moveNode(payload:any){
     console.log(payload);

@@ -8,14 +8,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ev from "../utils/Eventbus"
-import {command} from "../utils/Commander";
 import keyboardJS from "keyboardjs";
 
 export default defineComponent({
     mounted(){
-        keyboardJS.bind("ctrl > z",(e)=>{command.undo()});
-        keyboardJS.bind("ctrl > y",(e)=>{command.redo()});
+        keyboardJS.bind("ctrl > z",(e)=>{this.undo()});
+        keyboardJS.bind("ctrl > y",(e)=>{this.redo()});
         keyboardJS.watch();
     },
     props: {
@@ -28,10 +26,10 @@ export default defineComponent({
     },
     methods: {
         undo(){
-            command.undo()
+            this.$store.dispatch("page/undo",{})
         },
         redo(){
-            command.redo()
+            this.$store.dispatch("page/redo",{})
         }
     },
     components: {  }
